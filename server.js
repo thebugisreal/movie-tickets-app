@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const users = require('./routers/api/users');
+const userRoute = require('./api/routes/user.route');
 
 // connect mongodb
 mongoose.connect('mongodb://localhost/cgv-database', { useNewUrlParser: true });
@@ -23,8 +23,8 @@ app.use(bodyParser.json());
 // create port for server > localhost:3000
 const port = process.env.PORT || 5000;
 
-// use routers
-app.use('/api/users', users);
+// use routes
+app.use('/api/users', userRoute);
 
 
 app.get('/', (req, res) => {
