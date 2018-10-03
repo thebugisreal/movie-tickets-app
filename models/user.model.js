@@ -18,10 +18,7 @@ const userSchema = new Schema({
 		type: String,
 		default: 'http://i.pravatar.cc/120'
 	},
-	phone: String,
-	address: String
+	phone: String
 });
 
-const User = mongoose.model('User', userSchema, 'users'); // The third parameter is name of collection on mongodb database
-
-module.exports = User;
+module.exports = User = mongoose.model('user', userSchema);
