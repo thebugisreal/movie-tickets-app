@@ -14,11 +14,11 @@ const userSchema = new Schema({
 		type: String,
 		required: true
 	},
-	avatar: {
-		type: String,
-		default: 'http://i.pravatar.cc/120'
-	},
-	phone: String
+	phone: String,
+	products: {
+		type: Array,
+		default: []
+	}
 });
 
-module.exports = User = mongoose.model('user', userSchema);
+module.exports = User = mongoose.model('users', userSchema);
