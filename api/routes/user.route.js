@@ -8,7 +8,7 @@ const controller = require('../controllers/user.controller');
 // @access  Public
 router.get('/', controller.getAllUser);
 
-// @route   GET api/users
+// @route   GET api/users/:id
 // @desc    Get user by id
 // @access  Public
 router.get('/:id', controller.getUser);
@@ -23,9 +23,15 @@ router.post('/', controller.createUser);
 // @access  Public
 router.patch('/:id', controller.updateUser);
 
+// @route   PATCH api/users/new-ticker/:id
+// @desc    Add new ticket for user
+// @access  Public
+router.patch('/new-ticket/:id', controller.addTicket);
+
 // @route   DELETE api/users/:id
 // @desc    Delete a user
 // @access  Public
 router.delete('/:id', controller.deleteUser);
 
+// export router to use on server.js *important!
 module.exports = router;

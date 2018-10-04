@@ -1,7 +1,16 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// create new schema
 const userSchema = new Schema({
+	firstName: {
+		type: String,
+		required: true
+	},
+	lastName: {
+		type: String,
+		required: true
+	},
 	email: {
 		type: String,
 		required: true
@@ -10,15 +19,19 @@ const userSchema = new Schema({
 		type: String,
 		required: true
 	},
-	name: {
+	birthday: {
 		type: String,
 		required: true
 	},
-	phone: String,
-	products: {
+	phone: {
+		type: String,
+		required: true
+	},
+	tickets: {
 		type: Array,
 		default: []
 	}
 });
 
+// export schema to use on user.controller.js
 module.exports = User = mongoose.model('users', userSchema);
