@@ -6,7 +6,8 @@ const mongoose = require('mongoose');
 const userRoute = require('./api/routes/user.route');
 
 // connect mongodb
-mongoose.connect('mongodb://localhost/cgv-database', { useNewUrlParser: true });
+mongoose.connect('mongodb://thebugisreal:newlife7896@ds121673.mlab.com:21673/cgv', { useNewUrlParser: true });
+// mongoose.connect('mongodb://localhost/cgv-database', { useNewUrlParser: true });
 
 // check connect successfully
 const db = mongoose.connection;

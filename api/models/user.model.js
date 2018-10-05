@@ -34,4 +34,4 @@ const userSchema = new Schema({
 });
 
 // export schema to use on user.controller.js
-module.exports = User = mongoose.model('users', userSchema);
+module.exports = User = mongoose.model('User', userSchema, 'users');
