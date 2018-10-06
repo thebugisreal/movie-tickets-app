@@ -9,6 +9,8 @@ import {
   NavItem,
   NavLink } from 'reactstrap';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 class Header extends Component {
 	constructor(props) {
     super(props);
@@ -38,7 +40,10 @@ class Header extends Component {
                 <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+                <NavLink href="/components/">
+                	<FontAwesomeIcon icon="user" />
+                Components
+                </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/components/">Components</NavLink>
