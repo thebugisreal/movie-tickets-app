@@ -2,40 +2,18 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-import Header from './components/Header';
-
-import { Alert } from 'reactstrap';
+import Header from './components/layout/Header';
+import Main from './components/layout/Main';
+import Footer from './components/layout/Footer';
 
 class App extends Component {
   render() {
     return (
       <div>
-      <Header />
-      <Alert color="primary">
-        This is a primary alert — check it out!
-      </Alert>
-      <Alert color="secondary">
-        This is a secondary alert — check it out!
-      </Alert>
-      <Alert color="success">
-        This is a success alert — check it out!
-      </Alert>
-      <Alert color="danger">
-        This is a danger alert — check it out!
-      </Alert>
-      <Alert color="warning">
-        This is a warning alert — check it out!
-      </Alert>
-      <Alert color="info">
-        This is a info alert — check it out!
-      </Alert>
-      <Alert color="light">
-        This is a light alert — check it out!
-      </Alert>
-      <Alert color="dark">
-        This is a dark alert — check it out!
-      </Alert>
-    </div>
+        <Header />
+        <Main />
+        <Footer />
+      </div>
     );
   }
 }
