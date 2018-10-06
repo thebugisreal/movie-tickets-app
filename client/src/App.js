@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
+import Header from './components/Header';
+
 import { Alert } from 'reactstrap';
 
 class App extends Component {
   render() {
     return (
       <div>
+      <Header />
       <Alert color="primary">
         This is a primary alert — check it out!
       </Alert>
