@@ -26,32 +26,42 @@ class Header extends Component {
     });
   }
   render() {
-    return (     
-      <Navbar color="dark" dark expand="md">
+    return (
+    	<header className="header">
+      <Navbar className="header__nav" expand="md">
         <Container>
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
+          <NavbarBrand className="header__logo font-weight-bold mr-5" href="/">CGV Cinemas</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="d-flex justify-content-between w-100" navbar>
-              <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+            <Nav className="d-flex w-100" navbar>
+              <NavItem className="mr-3">
+                <NavLink href="#">PHIM</NavLink>
               </NavItem>
-              <NavItem className="flex-grow-1">
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+              <NavItem className="mr-3">
+                <NavLink href="#">RẠP CGV</NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink href="/components/">
-                	<FontAwesomeIcon icon="user" />
-                Components
+              <NavItem className="mr-3">
+                <NavLink href="#">THÀNH VIÊN</NavLink>
+              </NavItem>
+              <NavItem className="mr-3">
+                <NavLink href="#">CULTUREPLEX</NavLink>
+              </NavItem>
+              <NavItem className="header__login ml-auto border">
+                <NavLink href="#">
+                	<FontAwesomeIcon className="mr-2" icon="user" />
+                  ĐĂNG NHẬP
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+                <NavLink href="#">
+                  <FontAwesomeIcon icon="search" />
+                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>
           </Container>
-      </Navbar>      
+      </Navbar> 
+      </header>     
     );
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Alert, Container } from 'reactstrap';
 
-import Slider from './Slider';
+import Slider from '../Slider';
 
 class Main extends Component {
   render() {

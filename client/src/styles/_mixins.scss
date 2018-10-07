@@ -1,0 +1,128 @@
+// responsive
+@mixin bp-es {
+  @media only screen and (max-width: 575px) {
+    @content;
+  }
+}
+
+@mixin bp-sm {
+  @media only screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin bp-md {
+  @media only screen and (max-width: 991px) {
+    @content;
+  }
+}
+
+@mixin bp-lg {
+  @media only screen and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin bp-xl {
+  @media only screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+// use for :after & :before
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+	content: $content;
+	display: $display;
+	position: $pos;
+}
+
+// convert px to rem
+@mixin font-size($size) {
+	$remSize: $size / 16px;
+	// font-size: $size;
+	font-size: $remSize * 1rem;
+}
+
+// transtion for any browser
+@mixin transition($transition...) {
+	-webkit-transition: $transition;
+	-moz-transition: $transition;
+	-ms-transition: $transition;
+	-o-transition: $transition;
+	transition: $transition;
+}
+
+// transform for any browser
+@mixin transform($transform...) {
+	-webkit-transform: $transform;
+	-moz-transform: $transform;
+	-ms-transform: $transform;
+	-o-transform: $transform;
+	transform: $transform;
+}
+
+// box-shadow for any browser
+@mixin box-shadow($shadow...) {
+	-webkit-box-shadow: $shadow;
+	-moz-box-shadow: $shadow;
+	box-shadow: $shadow;
+}
+
+// opacity
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+// flex
+@mixin flex-center() {
+  display: flex;
+  align-items: center;
+}
+
+@mixin padding($padding) {
+  padding: $padding;
+  box-sizing: border-box;
+}
+
+// animation
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }  
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }  
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};      
+}
+
+// usage: animation
+//
+// @include keyframes(slide-down) {
+//   0% { opacity: 1; }
+//   90% { opacity: 0; }
+// }
+
+// .element {
+//   width: 100px;
+//   height: 100px;
+//   background: black;
+//   @include animation('slide-down 5s 3');
+// }

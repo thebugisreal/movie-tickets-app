@@ -1,0 +1,10 @@
+@import 'mixins';
+@import 'variables';
+
+a {
+	color: #f8f9fa;
+	@include transition(all .3s ease);
+	&:hover {
+		color: $primary-color;
+	}
+}
