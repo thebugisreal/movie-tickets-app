@@ -1,0 +1,4 @@
+.slider {
+	background-color: #080808;
+	@include transition(all .3s ease);
+}

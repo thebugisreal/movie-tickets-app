@@ -1,10 +1,13 @@
-@import 'mixins';
-@import 'variables';
-
 a {
-	color: #f8f9fa;
 	@include transition(all .3s ease);
+	color: #f8f9fa;
 	&:hover {
 		color: $primary-color;
+		text-decoration: none;
 	}
+}
+
+ul, li {
+	list-style-type: none;
+	padding: 0;
 }

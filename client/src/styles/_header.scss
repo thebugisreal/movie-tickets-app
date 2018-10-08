@@ -1,6 +1,3 @@
-@import 'mixins';
-@import 'variables';
-
 .header {
 	&__nav {
 	    background: #1b1b1b;
@@ -12,5 +9,19 @@
 	    -webkit-text-stroke-width: 1px;
 	    -webkit-text-stroke-color: $primary-color;
 	    text-shadow: 0px 0px 25px $primary-color;
+	}
+	&__login {
+		@include transition(all .3s ease);
+		&:hover {
+			border-color: $primary-color!important;
+		}
+		&:after {
+			@include pseudo;
+		    height: 60%;
+		    width: 1px;
+		    right: -23px;
+		    background: #6d6d6d;
+		    top: 8px;
+		}
 	}
 }
