@@ -28,7 +28,7 @@ class Header extends Component {
   render() {
     return (
     	<header className="header">
-        <Navbar className="header__nav" expand="md">
+        <Navbar dark className="header__nav" expand="lg">
           <Container>
             <NavbarBrand className="header__logo font-weight-bold mr-5" href="/">CGV Cinemas</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
@@ -46,14 +46,12 @@ class Header extends Component {
                 <NavItem className="mr-3">
                   <NavLink href="#">CULTUREPLEX</NavLink>
                 </NavItem>
-                <NavItem className="header__login mr-3 ml-auto border position-relative">
-                  <NavLink href="#">
+                <NavItem className="ml-lg-auto my-2 my-md-0 d-flex">
+                  <NavLink className="header__login mr-3 px-2 border position-relative" href="#">
                   	<FontAwesomeIcon className="mr-2" icon="user" />
                     ĐĂNG NHẬP
                   </NavLink>
-                </NavItem>
-                <NavItem className="ml-3">
-                  <NavLink href="#">
+                  <NavLink className="ml-4 ml-lg-3" href="#">
                     <FontAwesomeIcon icon="search" />
                   </NavLink>
                 </NavItem>

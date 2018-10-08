@@ -67,7 +67,7 @@ class Footer extends Component {
         					<FontAwesomeIcon icon={['fab', 'github']} />
         				</li>
         			</ul>
-        			<div className="footer__permission">
+        			<div className="footer__permission my-3">
         				<a href="https://github.com">CGV</a>
         			</div>
         		</Col>
@@ -82,7 +82,9 @@ class Footer extends Component {
         	</Row>
         	<Row className="pt-2 pb-5">
         		<Col xs="12" className="d-flex">
-        			<div className="footer__logo"></div>
+              <div>
+                <div className="footer__logo"></div>
+              </div>
         			<div>
         				<h3 className="footer__title">CÔNG TY TNHH CJ CGV VIETNAM</h3>
 	        			<p className="footer__text text-uppercase">Giấy CNĐKDN: 0303675393, đăng ký lần đầu ngày 31/7/2008, đăng ký thay đổi lần thứ 5 ngày 14/10/2015, cấp bởi Sở KHĐT thành phố Hồ Chí Minh.</p>

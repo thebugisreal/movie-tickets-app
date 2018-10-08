@@ -1,8 +1,8 @@
 a {
 	@include transition(all .3s ease);
-	color: #f8f9fa;
+	color: #f8f9fa!important;
 	&:hover {
-		color: $primary-color;
+		color: $primary-color!important;
 		text-decoration: none;
 	}
 }

@@ -6,19 +6,19 @@
 }
 
 @mixin bp-sm {
-  @media only screen and (max-width: 767px) {
+  @media only screen and (min-width: 576px) {
     @content;
   }
 }
 
 @mixin bp-md {
-  @media only screen and (max-width: 991px) {
+  @media only screen and (min-width: 768px) {
     @content;
   }
 }
 
 @mixin bp-lg {
-  @media only screen and (max-width: 1199px) {
+  @media only screen and (min-width: 960px) {
     @content;
   }
 }
