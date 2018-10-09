@@ -3,7 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Slider from './components/Slider';
+// import Slider from './components/Slider';
+import QuickBooking from './components/QuickBooking';
 // font-awesome
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -16,7 +17,8 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <Slider />
+        <div style={{height: '500px', background: 'black'}}></div>
+        <QuickBooking />
         <Footer />
       </div>
     );

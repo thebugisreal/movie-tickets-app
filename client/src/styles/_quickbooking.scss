@@ -1,0 +1,90 @@
+.quickBooking {
+  background-color: #000;
+  box-shadow: 0 8px 12px rgba(0,0,0,.2);
+  height: 55px;
+
+  &:before {
+    @include pseudo;
+    background-color: #131313;
+    height: 100%;
+    width: 140px;
+    left: 0;
+  }
+
+  &__title {
+    height: 55px;
+    background: #131313;
+    padding: 0 30px 0 0;
+    z-index: 1;
+    color: #f8f9fa;
+    &:after {
+      @include pseudo;
+      top: 0;
+      right: -55px;
+      border-top: 55px solid transparent;
+      border-left: 55px solid #131313;
+    }
+  }
+
+  &__booth {
+    @include font-size(14px);
+    color: #969696;
+    z-index: 1;
+    height: 55px;
+  }
+
+  &__name {
+    @include transition(all .5s ease);
+  }
+
+  &__slash {
+    right: -100px;
+    width: 100px;
+    overflow: hidden;
+    &:after {
+      @include pseudo;
+      width: 10px;
+      height: 100px;
+      top: -25px;
+      background: #131313;
+      transform: rotate(-44deg);
+      right: 40px;
+    }
+  }
+
+  &__text {
+    border-bottom: 1px solid #303030;
+    height: 30px;
+    cursor: not-allowed;
+    &--active {
+      cursor: pointer;
+    }
+  }
+
+  &__menu {
+    @include transition(all .5s ease);
+    top: -130px;
+    background: #131313;
+    padding: 5px 15px;
+    box-sizing: border-box;
+    font-size: 13px;
+    height: 155px;
+    overflow: hidden;
+    left: 0;
+    border-radius: 5px;
+  }
+
+  &__list {
+    @include transition(all .3s ease);
+    line-height: 28px;
+    cursor: pointer;
+    border-bottom: 1px solid #272727;
+    &:last-child {
+      border-bottom: none;
+    }
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+}

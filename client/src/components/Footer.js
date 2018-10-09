@@ -12,19 +12,19 @@ class Footer extends Component {
         			<h3 className="footer__title text-uppercase">CGV Việt Nam</h3>
         			<ul>
         				<li className="footer__list text-uppercase">
-        					<a href="https://github.com">Giới Thiệu</a>
+        					<a className="footer__link" href="https://github.com">Giới Thiệu</a>
         				</li>
         				<li className="footer__list text-uppercase">
-        					<a href="https://github.com">Tiện Ích Online</a>
+        					<a className="footer__link" href="https://github.com">Tiện Ích Online</a>
         				</li>
         				<li className="footer__list text-uppercase">
-        					<a href="https://github.com">Thẻ Quà Tặng</a>
+        					<a className="footer__link" href="https://github.com">Thẻ Quà Tặng</a>
         				</li>
         				<li className="footer__list text-uppercase">
-        					<a href="https://github.com">Tuyển Dụng</a>
+        					<a className="footer__link" href="https://github.com">Tuyển Dụng</a>
         				</li>
         				<li className="footer__list text-uppercase">
-        					<a href="https://github.com">Liên Hệ Quảng Cáo CGV</a>
+        					<a className="footer__link" href="https://github.com">Liên Hệ Quảng Cáo CGV</a>
         				</li>
         			</ul>
         		</Col>
@@ -32,19 +32,19 @@ class Footer extends Component {
         			<h3 className="footer__title text-uppercase">Điều khoản sử dụng</h3>
         			<ul>
         				<li className="footer__list text-uppercase">
-        					<a href="https://github.com">Điều Khoản Chung</a>
+        					<a className="footer__link" href="https://github.com">Điều Khoản Chung</a>
         				</li>
         				<li className="footer__list text-uppercase">
-        					<a href="https://github.com">Điều Khoản Giao Dịch</a>
+        					<a className="footer__link" href="https://github.com">Điều Khoản Giao Dịch</a>
         				</li>
         				<li className="footer__list text-uppercase">
-        					<a href="https://github.com">Chính Sách Thanh Toán</a>
+        					<a className="footer__link" href="https://github.com">Chính Sách Thanh Toán</a>
         				</li>
         				<li className="footer__list text-uppercase">
-        					<a href="https://github.com">Chính Sách Bảo Mật</a>
+        					<a className="footer__link" href="https://github.com">Chính Sách Bảo Mật</a>
         				</li>
         				<li className="footer__list text-uppercase">
-        					<a href="https://github.com">Câu Hỏi Thường Gặp</a>
+        					<a className="footer__link" href="https://github.com">Câu Hỏi Thường Gặp</a>
         				</li>
         			</ul>
         		</Col>

@@ -1,5 +1,5 @@
 .footer {
-	background: url(./static/footerbg.png) rgba(0,0,0,1);
+	background: url(./static/footerbg.png) rgba(8,8,8,1);
 	background-size: cover;
 	color: #999;
 
@@ -11,14 +11,15 @@
 
 	&__list {
 		@include font-size(14px);
-    	line-height: 1.8;
-		a {
-			color: #999!important;
-			&:hover {
-				color: $primary-color!important;
-			}
-		}
+    line-height: 1.8;
 	}
+
+  &__link {
+    color: #999!important;
+    &:hover {
+      color: $primary-color!important;
+    }
+  }
 
 	&__text {
 		@include font-size(13px);
