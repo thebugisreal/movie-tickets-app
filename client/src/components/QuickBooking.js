@@ -7,7 +7,7 @@ class QuickBooking extends Component {
     super(props);
     this.state = { 
       titleStyle: {
-        fontSize: '14px',
+        fontSize: '13px',
         transform: 'translateY(0px)',
         color: '#969696'
       },
