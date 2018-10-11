@@ -20,7 +20,7 @@
     &:after {
       @include pseudo;
       top: 0;
-      right: -55px;
+      right: -40px;
       border-top: 55px solid transparent;
       border-left: 55px solid #131313;
     }
@@ -38,7 +38,7 @@
   }
 
   &__slash {
-    right: -100px;
+    right: -85px;
     width: 100px;
     overflow: hidden;
     &:after {
@@ -48,7 +48,7 @@
       top: -25px;
       background: #131313;
       transform: rotate(-44deg);
-      right: 40px;
+      right: 50px;
     }
   }
 

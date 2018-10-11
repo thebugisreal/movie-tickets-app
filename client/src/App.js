@@ -4,7 +4,7 @@ import './App.scss';
 import Header from './components/Header';
 import Footer from './components/Footer';
 // import Slider from './components/Slider';
-import QuickBooking from './components/QuickBooking';
+import QuickBooking from './components/quick_booking/QuickBooking';
 // font-awesome
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
