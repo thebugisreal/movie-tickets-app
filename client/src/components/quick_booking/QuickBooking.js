@@ -6,13 +6,14 @@ import Date from './Date';
 import Time from './Time';
 
 class QuickBooking extends Component {
-
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-      
-  //   };
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      cinemaHasChoose: false,
+      movieHasChoose: false,
+      dateHasChoose: false
+    };
+  }
 
   render() {
     return (

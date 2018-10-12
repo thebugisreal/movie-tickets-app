@@ -28,7 +28,6 @@
 
   &__booth {
     @include font-size(14px);
-    color: #969696;
     z-index: 1;
     height: 55px;
   }
@@ -55,15 +54,22 @@
   &__text {
     border-bottom: 1px solid #303030;
     height: 30px;
-    cursor: not-allowed;
-    &--active {
-      cursor: pointer;
-    }
+    // cursor: not-allowed;
+    // &--active {
+    //   cursor: pointer;
+    // }
+  }
+
+  &__line {
+    @include transition(all .3s ease);
+    bottom: -1px;
+    height: 1px;
+    background: #ab8000;
   }
 
   &__menu {
-    @include transition(all .5s ease);
-    top: -130px;
+    @include transition(all .3s ease);
+    top: -140px;
     background: #131313;
     padding: 5px 15px;
     box-sizing: border-box;
@@ -77,6 +83,7 @@
   &__list {
     @include transition(all .3s ease);
     line-height: 28px;
+    color: #969696;
     cursor: pointer;
     border-bottom: 1px solid #272727;
     &:last-child {
