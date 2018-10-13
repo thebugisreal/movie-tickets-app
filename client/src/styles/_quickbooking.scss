@@ -54,6 +54,9 @@
   &__text {
     border-bottom: 1px solid #303030;
     height: 30px;
+    padding: 5px 2px;
+    color: #ddd;
+    overflow: hidden;
     // cursor: not-allowed;
     // &--active {
     //   cursor: pointer;
@@ -62,8 +65,9 @@
 
   &__line {
     @include transition(all .3s ease);
-    bottom: -1px;
+    bottom: 1px;
     height: 1px;
+    left: 0;
     background: #ab8000;
   }
 

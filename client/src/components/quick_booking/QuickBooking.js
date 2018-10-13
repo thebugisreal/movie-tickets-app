@@ -9,10 +9,17 @@ class QuickBooking extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cinemaHasChoose: false,
+      cinema: 0,
       movieHasChoose: false,
       dateHasChoose: false
     };
+    this.getDataCinema = this.getDataCinema.bind(this);
+  }
+  
+  getDataCinema(value) {
+    this.setState({
+      cinema: value
+    })
   }
 
   render() {
@@ -26,7 +33,9 @@ class QuickBooking extends Component {
                 <div className="quickBooking__slash position-absolute h-100"></div>
               </span>
             </Col>
-            <Cinema />
+            <Cinema
+              onReceiveCinema={ this.getDataCinema }
+            />
             <Movie />
             <Date />
             <Time />
