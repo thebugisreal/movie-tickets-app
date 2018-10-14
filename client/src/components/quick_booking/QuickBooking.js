@@ -10,8 +10,8 @@ class QuickBooking extends Component {
     super(props);
     this.state = {
       cinema: 0,
-      movieHasChoose: false,
-      dateHasChoose: false
+      movie: false,
+      data: false
     };
     this.getDataCinema = this.getDataCinema.bind(this);
   }

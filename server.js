@@ -7,10 +7,10 @@ const mongoose = require('mongoose');
 
 // routes
 const userRoute = require('./api/routes/user.route');
+const movieRoute = require('./api/routes/movie.route');
 
 // connect mongodb
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
-// mongoose.connect('mongodb://localhost/cgv-database', { useNewUrlParser: true });
 
 // check connect successfully
 const db = mongoose.connection;
@@ -27,6 +27,7 @@ app.use(bodyParser.json());
 
 // use routes
 app.use('/api/users', userRoute);
+app.use('/api/movies', movieRoute);
 
 // to know when server starting...
 app.listen(port, () => {
