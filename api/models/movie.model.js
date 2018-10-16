@@ -7,7 +7,10 @@ const movieSchema = new Schema({
 		type: String,
     required: true
   },
-  director: String,
+  director: {
+    type: Array,
+    default: []
+  },
   cast: {
     type: Array,
     default: []
