@@ -53,7 +53,7 @@
 
   &__text {
     border-bottom: 1px solid #303030;
-    height: 30px;
+    height: 28px;
     padding: 5px 2px;
     color: #ddd;
     overflow: hidden;
@@ -65,7 +65,7 @@
 
   &__line {
     @include transition(all .3s ease);
-    bottom: 1px;
+    bottom: 0;
     height: 1px;
     left: 0;
     background: #ab8000;
@@ -73,20 +73,35 @@
 
   &__menu {
     @include transition(all .3s ease);
-    top: -140px;
+    bottom: 40px;
     background: #131313;
-    padding: 5px 15px;
+    padding: 2px 15px;
     box-sizing: border-box;
     font-size: 13px;
-    height: 155px;
-    overflow: hidden;
+    max-height: 200px;
+    overflow-y: scroll; 
     left: 0;
     border-radius: 5px;
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #1b1b1b; 
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #313131; 
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555; 
+    }
+    & ul {
+      margin: 0;
+    }
   }
 
   &__list {
     @include transition(all .3s ease);
-    line-height: 28px;
+    padding: 5px 0;
     color: #969696;
     cursor: pointer;
     border-bottom: 1px solid #272727;
