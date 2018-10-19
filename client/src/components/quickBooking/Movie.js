@@ -10,7 +10,7 @@ class Movie extends Component {
         color: '#969696'    
       },
       styleMenu: false,
-      text: '',
+      text: ''
     }
 
     this.showMenu = this.showMenu.bind(this);

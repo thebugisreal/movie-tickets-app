@@ -9,6 +9,8 @@ class Cinema extends Component {
         transform: 'translate(0,0) scale(1)',
         color: '#333'
       },
+      styleMouse: { cursor: 'not-allowed' },
+      menu: false,
       styleMenu: false,
       text: ''
     };
@@ -17,7 +19,7 @@ class Cinema extends Component {
   }
 
   showMenu() {
-    if(this.props.active) {
+    if(this.state.menu) {
       this.setState({
         styleName : {
           transform: 'translate(-5px,-20px) scale(.8)',
@@ -33,14 +35,15 @@ class Cinema extends Component {
       text: data,
       styleMenu: !this.state.styleMenu
     })
+    this.props.onReceiveCinema(data);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.active) {
       this.setState({
-        styleName: {
-          color: '#969696'
-        },
+        styleName: { color: '#969696' },
+        styleMouse: { cursor: 'pointer' },
+        menu: true,
         text: ''
       })
     }
@@ -48,7 +51,7 @@ class Cinema extends Component {
 
   render() {
     let data = '';
-    if (this.props.active) {
+    if (this.state.menu) {
       data = this.props.movie[0].cinema.map((item, index) => (
         <li key={index} onClick={ () => this.chooseCinema(item.name) } className="quickBooking__list">{item.name}</li>
       ));
@@ -60,7 +63,7 @@ class Cinema extends Component {
         </span>
         <span
           className="w-75 quickBooking__text position-relative d-flex"
-          style={ this.props.active ? {cursor: 'pointer'} : {cursor: 'not-allowed'} }
+          style={ this.state.styleMouse }
           onClick={ this.showMenu }
         >
           { this.state.text }
