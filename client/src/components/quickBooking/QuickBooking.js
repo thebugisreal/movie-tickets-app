@@ -18,8 +18,7 @@ class QuickBooking extends Component {
       cinemaActive: false,
       date: [],
       dateActive: false,
-      time: [],
-      timeActive: false 
+      time: []
     };
 
     this.onSetMovie = this.onSetMovie.bind(this);
@@ -39,8 +38,7 @@ class QuickBooking extends Component {
       movie: data,
       movieActive: true,
       cinemaActive: false,
-      dateActive: false,
-      timeActive: false
+      dateActive: false
     });
   }
 
@@ -49,7 +47,7 @@ class QuickBooking extends Component {
     this.setState({
       cinema: data,
       cinemaActive: true,
-      movieActive: false
+      dateActive: false
     });
   }
 
@@ -57,18 +55,16 @@ class QuickBooking extends Component {
     const data = this.state.cinema[0].info.filter(item => item.date === date );
     this.setState({
       date: data,
-      dateActive: true,
-      cinemaActive: false
+      dateActive: true
     });
   }
 
   onSetTime(time) {
     const data = this.state.date[0].times.filter(item => item.time === time );
     this.setState({
-      time: data,
-      timeActive: true,
-      dateActive: false
+      time: data
     });
+    console.log(`Do something with Data`);
   }
 
   render() {

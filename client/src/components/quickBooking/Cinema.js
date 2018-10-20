@@ -9,17 +9,33 @@ class Cinema extends Component {
         transform: 'translate(0,0) scale(1)',
         color: '#333'
       },
-      styleMouse: { cursor: 'not-allowed' },
-      menu: false,
       styleMenu: false,
+      styleMouse: {
+        cursor: 'not-allowed'
+      },
       text: ''
     };
     this.showMenu = this.showMenu.bind(this);
     this.chooseCinema = this.chooseCinema.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.movie !== prevProps.movie) {
+      this.setState({
+        styleName: {
+          transform: 'translate(0,0) scale(1)',
+          color: '#969696'
+        },
+        styleMouse: {
+          cursor: 'pointer'
+        },
+        text: ''
+      })
+    }
+  }
+
   showMenu() {
-    if(this.state.menu) {
+    if(this.props.active) {
       this.setState({
         styleName : {
           transform: 'translate(-5px,-20px) scale(.8)',
@@ -38,27 +54,20 @@ class Cinema extends Component {
     this.props.onReceiveCinema(data);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.active) {
-      this.setState({
-        styleName: { color: '#969696' },
-        styleMouse: { cursor: 'pointer' },
-        menu: true,
-        text: ''
-      })
-    }
-  }
-
   render() {
     let data = '';
-    if (this.state.menu) {
+    if (this.props.active) {
       data = this.props.movie[0].cinema.map((item, index) => (
         <li key={index} onClick={ () => this.chooseCinema(item.name) } className="quickBooking__list">{item.name}</li>
       ));
     }
+    
     return (
     	<Col sm="2" className="quickBooking__booth d-flex align-items-center position-relative">
-        <span className="quickBooking__name position-absolute" style={ this.state.styleName }>
+        <span
+          className="quickBooking__name position-absolute"
+          style={ this.state.styleName }
+        >
           Tên Rạp
         </span>
         <span

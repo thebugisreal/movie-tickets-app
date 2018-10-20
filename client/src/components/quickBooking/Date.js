@@ -9,17 +9,45 @@ class Date extends Component {
         transform: 'translate(0,0) scale(1)',
         color: '#333'
       },
-      styleMouse: { cursor: 'not-allowed' },
-      menu: false,
       styleMenu: false,
+      styleMouse: {
+        cursor: 'not-allowed'
+      },
       text: ''
     };
     this.showMenu = this.showMenu.bind(this);
     this.chooseDate = this.chooseDate.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.cinema !== prevProps.cinema) {
+      this.setState({
+        styleName: {
+          transform: 'translate(0,0) scale(1)',
+          color: '#969696'
+        },
+        styleMouse: {
+          cursor: 'pointer'
+        },
+        text: ''
+      })
+    }
+  }
+
+  componentWillUpdate(prevProps) {
+    if (this.props.active !== prevProps.active) {
+      this.setState({
+        styleName: {
+          transform: 'translate(0,0) scale(1)',
+          color: '#969696'
+        },
+        text: ''
+      })
+    }
+  }
+
   showMenu() {
-    if(this.state.menu) {
+    if(this.props.active) {
       this.setState({
         styleName : {
           transform: 'translate(-5px,-20px) scale(.8)',
@@ -38,27 +66,19 @@ class Date extends Component {
     this.props.onReceiveDate(data);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.active) {
-      this.setState({
-        styleName: { color: '#969696' },
-        styleMouse: { cursor: 'pointer' },
-        menu: true,
-        text: ''
-      })
-    }
-  }
-
   render() {
     let data = '';
-    if (this.state.menu) {
+    if (this.props.active) {
       data = this.props.cinema[0].info.map((item, index) => (
         <li key={index} onClick={ () => this.chooseDate(item.date) } className="quickBooking__list">{item.date}</li>
       ));
     }
     return (
       <Col sm="2" className="quickBooking__booth d-flex align-items-center position-relative">
-        <span className="quickBooking__name position-absolute" style={ this.state.styleName }>
+        <span 
+          className="quickBooking__name position-absolute" 
+          style={ this.state.styleName }
+        >
           Ngày Chiếu
         </span>
         <span
