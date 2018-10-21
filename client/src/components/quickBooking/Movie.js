@@ -40,7 +40,7 @@ class Movie extends Component {
       <li key={index} onClick={ () => this.chooseMovie(item) } className="quickBooking__list">{item}</li>
     ))
     return (
-      <Col sm={{ size: 2, offset: 1 }} className="quickBooking__booth d-flex align-items-center position-relative">
+      <Col md={{ size: 2, offset: 1 }} className="quickBooking__booth d-flex align-items-center position-relative">
         <span className="quickBooking__name position-absolute" style={ this.state.styleName }>
           Tên Phim
         </span>

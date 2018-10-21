@@ -63,7 +63,7 @@ class Cinema extends Component {
     }
     
     return (
-    	<Col sm="2" className="quickBooking__booth d-flex align-items-center position-relative">
+    	<Col md="2" className="quickBooking__booth d-flex align-items-center position-relative">
         <span
           className="quickBooking__name position-absolute"
           style={ this.state.styleName }

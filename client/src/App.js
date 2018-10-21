@@ -15,6 +15,24 @@ import { faUser, faSearch } from '@fortawesome/free-solid-svg-icons';
 library.add(fab, faUser, faSearch)
 
 class App extends Component {
+  // constructor(props){
+  //   super(props);
+
+  //   this.state = {
+  //       width: 0
+  //   }
+  // }
+
+  // componentDidMount(){
+  //   this.updateWidth();
+  //   window.addEventListener('resize', this.updateWidth.bind(this))
+  //   console.log(window.innerWidth);
+  // }
+
+  // updateWidth(){
+  //   this.setState({width: window.innerWidth});
+  // }
+
   render() {
     return (
       <Provider store={store}>
@@ -23,6 +41,7 @@ class App extends Component {
         <div style={{height: '500px', background: 'black'}}></div>
         <QuickBooking />
         <Footer />
+        <div style={{height: '500px', background: 'black'}}></div>
       </div>
       </Provider>
     );

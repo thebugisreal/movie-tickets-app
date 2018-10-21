@@ -12,15 +12,16 @@
   }
 
   &__title {
+    @include bp-xl{ padding: 0 30px 0 0; }
     height: 55px;
     background: #131313;
-    padding: 0 30px 0 0;
     z-index: 1;
     color: #f8f9fa;
     &:after {
+      @include bp-es{ display: none }
       @include pseudo;
       top: 0;
-      right: -40px;
+      right: -39px;
       border-top: 55px solid transparent;
       border-left: 55px solid #131313;
     }
