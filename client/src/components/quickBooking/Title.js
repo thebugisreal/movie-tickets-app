@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Col } from 'reactstrap';
 
-class Title extends Component {
-  render() {
+const Title = () => {
     return (
       <Col lg="2" md="3" className="position-relative px-0 px-sm-3">
         <span className="quickBooking__title d-flex align-items-center justify-content-center justify-content-sm-start font-weight-bold">
@@ -11,7 +10,6 @@ class Title extends Component {
         </span>
       </Col>
     );
-  }
-}
+};
 
 export default Title;
