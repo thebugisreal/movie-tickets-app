@@ -7,7 +7,7 @@ class Footer extends Component {
     return (
       <footer className="footer">
         <Container>
-        	<Row className="pt-5 pb-2">
+        	<Row className="pt-3 pt-sm-5 pb-2">
         		<Col lg="3" md="6" sm="12">
         			<h3 className="footer__title text-uppercase">CGV Việt Nam</h3>
         			<ul>

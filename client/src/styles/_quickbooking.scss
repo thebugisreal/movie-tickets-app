@@ -110,4 +110,19 @@
     }
   }
 
+  &__mobile {
+    @include transition(all .3s ease);
+    top: 0;
+    right: 0;
+    background: #000;
+    height: 100%;
+    z-index: 999;
+
+    &--icon {
+      width: 40px;
+      height: 40px;
+    }
+
+  }
+
 }

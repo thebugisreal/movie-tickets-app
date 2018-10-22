@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Col } from 'reactstrap';
 
 class Date extends Component {
 	constructor(props) {
@@ -74,7 +73,7 @@ class Date extends Component {
       ));
     }
     return (
-      <Col md="2" className="quickBooking__booth d-flex align-items-center position-relative">
+      <div className="w-100">
         <span 
           className="quickBooking__name position-absolute" 
           style={ this.state.styleName }
@@ -98,7 +97,7 @@ class Date extends Component {
         >
           <ul> {data} </ul>
         </div>
-      </Col>
+      </div>
     );
   }
 }

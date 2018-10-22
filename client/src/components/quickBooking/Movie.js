@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col } from 'reactstrap';
+// import { Col } from 'reactstrap';
 
 class Movie extends Component {
 	constructor(props) {
@@ -40,7 +40,7 @@ class Movie extends Component {
       <li key={index} onClick={ () => this.chooseMovie(item) } className="quickBooking__list">{item}</li>
     ))
     return (
-      <Col md={{ size: 2, offset: 1 }} className="quickBooking__booth d-flex align-items-center position-relative">
+      <div className="w-100">
         <span className="quickBooking__name position-absolute" style={ this.state.styleName }>
           Tên Phim
         </span>
@@ -61,7 +61,7 @@ class Movie extends Component {
         >
           <ul> { movie } </ul>
         </div>
-      </Col> 
+      </div>
     );
   }
 }

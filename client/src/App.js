@@ -10,9 +10,9 @@ import QuickBooking from './components/quickBooking/QuickBooking';
 // font-awesome
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faUser, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faSearch, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 // add font icon to library
-library.add(fab, faUser, faSearch)
+library.add(fab, faUser, faSearch, faAngleLeft)
 
 class App extends Component {
   // constructor(props){
