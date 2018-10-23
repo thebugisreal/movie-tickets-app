@@ -1,6 +1,6 @@
 .quickBooking {
   background-color: #000;
-  box-shadow: 0 8px 12px rgba(0,0,0,.2);
+  // box-shadow: 0 8px 12px rgba(0,0,0,.2);
   height: 55px;
 
   &:before {
@@ -29,7 +29,6 @@
 
   &__booth {
     @include font-size(14px);
-    z-index: 1;
     height: 55px;
   }
 
@@ -53,6 +52,8 @@
   }
 
   &__text {
+    @include bp-sm{ width: 80% }
+    width: 100%;
     border-bottom: 1px solid #303030;
     height: 28px;
     padding: 5px 2px;
@@ -70,15 +71,15 @@
 
   &__menu {
     @include transition(all .3s ease);
-    bottom: 40px;
+    @include bp-sm{ bottom: 40px; top: inherit; max-height: 200px; overflow-y: scroll; border-radius: 5px }
+    top: 80px;
+    left: 0;
     background: #131313;
     padding: 2px 15px;
     box-sizing: border-box;
     font-size: 13px;
-    max-height: 200px;
-    overflow-y: scroll; 
-    left: 0;
-    border-radius: 5px;
+    width: 100%;
+    z-index: 999;
     &::-webkit-scrollbar {
       width: 4px;
     }
