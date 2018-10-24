@@ -10,33 +10,35 @@ class QuickBooking extends Component {
     super(props);
     this.state = {
       isToggle: false,
+      isSticky: true,
       movie: {
         title: 'Tên Phim',
         list: [],
-        hasChosen: null, // get data: hasChosen.name
+        hasChosen: null, // get data: hasChosen[0].name
         active: true
       },
       cinema: {
         title: 'Tên Rạp',
         list: [],
-        hasChosen: null, // get data: hasChosen.name
+        hasChosen: null, // get data: hasChosen[0].name
         active: false
       },
       date: {
         title: 'Ngày Chiếu',
         list: [],
-        hasChosen: null, // get data: hasChosen.date
+        hasChosen: null, // get data: hasChosen[0].date
         active: false
       },
       time: {
         title: 'Xuất Chiếu',
         list: [],
-        hasChosen: null, // get data: hasChosen
+        hasChosen: null, // get data: hasChosen[0].time | hasChosen[0].seat
         active: false
       }
     };
 
     this.handleToggle = this.handleToggle.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
     this.onReceiveMovie = this.onReceiveMovie.bind(this);
     this.onReceiveCinema = this.onReceiveCinema.bind(this);
     this.onReceiveDate = this.onReceiveDate.bind(this);
@@ -48,6 +50,7 @@ class QuickBooking extends Component {
     this.props.fetchMovies();
   }
 
+  // after fetched, assign data to state
   componentWillReceiveProps(nextProps) {
     const data = nextProps.movies.map(item => item.name);
     this.setState({
@@ -58,6 +61,28 @@ class QuickBooking extends Component {
     })
   }
 
+  // listen event scroll
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  // sticky quick booking
+  handleScroll() {
+    const footer = document.getElementById('footer').scrollHeight;
+    const page = document.body.scrollHeight;
+    const fixed = page - footer;
+    if (window.scrollY + window.innerHeight > fixed) {
+      this.setState({
+        isSticky: false
+      })
+    } else {
+      this.setState({
+        isSticky: true
+      })
+    }
+  }
+
+  // toggle menu mobile
   handleToggle() {
     this.setState({
       isToggle: !this.state.isToggle
@@ -125,113 +150,116 @@ class QuickBooking extends Component {
   }
 
   onReceiveTime(data) {
+    const currentTime = this.state.date.hasChosen[0].times.filter(item => item.time === data);
     this.setState({
       time: {
         ...this.state.time,
-        hasChosen: data
+        hasChosen: currentTime
       }
     })
-    
+    console.log('Do something...');
   }
 
   render() {
     return (
-      <section className="quickBooking position-relative">
-        <Container>
-          <Row>
-            <Col lg="2" md="3" className="position-relative px-0 px-sm-3">
-              <span 
-                className="quickBooking__title d-flex align-items-center justify-content-center justify-content-sm-start font-weight-bold"
-                onClick={ this.handleToggle }
-              >
-                ĐẶT VÉ NHANH
-                <div className="quickBooking__slash position-absolute h-100 d-none d-sm-block"></div>
-              </span>
-            </Col>
-            <Col md={{ size: 2, offset: 1 }} className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
-              <Select 
-                title={ this.state.movie.title }
-                data={ this.state.movie.list }
-                active={ this.state.movie.active }
-                onReceive={ this.onReceiveMovie }
-              />
-            </Col>
-            <Col md="2" className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
-              <Select
-                title={ this.state.cinema.title }
-                data={ this.state.cinema.list }
-                active={ this.state.cinema.active }
-                onReceive={ this.onReceiveCinema }
-              />
-            </Col>
-            <Col md="2" className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
-              <Select
-                title={ this.state.date.title }
-                data={ this.state.date.list }
-                active={ this.state.date.active }
-                onReceive={ this.onReceiveDate }
-              />
-            </Col>
-            <Col md="2" className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
-              <Select
-                title={ this.state.time.title }
-                data={ this.state.time.list }
-                active={ this.state.time.active }
-                onReceive={ this.onReceiveTime }
-              />
-            </Col>
-          </Row>
-          {/* Menu for mobile: START */}
-          <div 
-            className="quickBooking__mobile d-block d-sm-none position-fixed"
-            style={ this.state.isToggle === true ? { width: '100%' } : { width: '0' } }
-          >
-            <div className="d-flex text-light border-bottom border-secondary">
-              <div className="quickBooking__mobile--icon d-flex justify-content-center align-items-center">
-                <FontAwesomeIcon 
-                  icon="angle-left"
+      <div>
+        <section className={"quickBooking" + ( this.state.isSticky ? ' fixed-bottom' : ' position-relative' ) }>
+          <Container>
+            <Row>
+              <Col lg="2" md="3" className="position-relative px-0 px-sm-3">
+                <span 
+                  className="quickBooking__title d-flex align-items-center justify-content-center justify-content-sm-start font-weight-bold"
                   onClick={ this.handleToggle }
+                >
+                  ĐẶT VÉ NHANH
+                  <div className="quickBooking__slash position-absolute h-100 d-none d-sm-block"></div>
+                </span>
+              </Col>
+              <Col md={{ size: 2, offset: 1 }} className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
+                <Select 
+                  title={ this.state.movie.title }
+                  data={ this.state.movie.list }
+                  active={ this.state.movie.active }
+                  onReceive={ this.onReceiveMovie }
                 />
-              </div>
-              <div className="align-self-center border-left border-secondary pl-3">Đặt Vé Nhanh</div>
-            </div>
-            
-            <div className="quickBooking__booth pt-5 px-5 d-flex d-sm-none align-items-center position-relative">
-              <Select 
-                title={ this.state.movie.title }
-                data={ this.state.movie.list }
-                active={ this.state.movie.active }
-                onReceive={ this.onReceiveMovie }
+              </Col>
+              <Col md="2" className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
+                <Select
+                  title={ this.state.cinema.title }
+                  data={ this.state.cinema.list }
+                  active={ this.state.cinema.active }
+                  onReceive={ this.onReceiveCinema }
+                />
+              </Col>
+              <Col md="2" className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
+                <Select
+                  title={ this.state.date.title }
+                  data={ this.state.date.list }
+                  active={ this.state.date.active }
+                  onReceive={ this.onReceiveDate }
+                />
+              </Col>
+              <Col md="2" className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
+                <Select
+                  title={ this.state.time.title }
+                  data={ this.state.time.list }
+                  active={ this.state.time.active }
+                  onReceive={ this.onReceiveTime }
+                />
+              </Col>
+            </Row>
+          </Container>    
+        </section>
+        {/* Menu for mobile: START */}
+        <div 
+          className="quickBooking__mobile d-block d-sm-none position-fixed"
+          style={ this.state.isToggle === true ? { width: '100%' } : { width: '0' } }
+        >
+          <div className="d-flex text-light border-bottom border-secondary">
+            <div className="quickBooking__mobile--icon d-flex justify-content-center align-items-center">
+              <FontAwesomeIcon 
+                icon="angle-left"
+                onClick={ this.handleToggle }
               />
             </div>
-            <div className="quickBooking__booth pt-5 px-5  d-flex d-sm-none align-items-center position-relative">
-              <Select
-                title={ this.state.cinema.title }
-                data={ this.state.cinema.list }
-                active={ this.state.cinema.active }
-                onReceive={ this.onReceiveCinema }
-              />
-            </div>
-            <div className="quickBooking__booth pt-5 px-5 d-flex d-sm-none align-items-center position-relative">
-              <Select
-                title={ this.state.date.title }
-                data={ this.state.date.list }
-                active={ this.state.date.active }
-                onReceive={ this.onReceiveDate }
-              />
-            </div>
-            <div className="quickBooking__booth pt-5 px-5 d-flex d-sm-none align-items-center position-relative">
-              <Select
-                title={ this.state.time.title }
-                data={ this.state.time.list }
-                active={ this.state.time.active }
-                onReceive={ this.onReceiveTime }
-              />
-            </div>
+            <div className="align-self-center border-left border-secondary pl-3">Đặt Vé Nhanh</div>
           </div>
-          {/* Menu for mobile: END */}
-        </Container>
-      </section>
+          
+          <div className="quickBooking__booth pt-5 px-3 d-flex d-sm-none align-items-center position-relative">
+            <Select 
+              title={ this.state.movie.title }
+              data={ this.state.movie.list }
+              active={ this.state.movie.active }
+              onReceive={ this.onReceiveMovie }
+            />
+          </div>
+          <div className="quickBooking__booth pt-5 px-3  d-flex d-sm-none align-items-center position-relative">
+            <Select
+              title={ this.state.cinema.title }
+              data={ this.state.cinema.list }
+              active={ this.state.cinema.active }
+              onReceive={ this.onReceiveCinema }
+            />
+          </div>
+          <div className="quickBooking__booth pt-5 px-3 d-flex d-sm-none align-items-center position-relative">
+            <Select
+              title={ this.state.date.title }
+              data={ this.state.date.list }
+              active={ this.state.date.active }
+              onReceive={ this.onReceiveDate }
+            />
+          </div>
+          <div className="quickBooking__booth pt-5 px-3 d-flex d-sm-none align-items-center position-relative">
+            <Select
+              title={ this.state.time.title }
+              data={ this.state.time.list }
+              active={ this.state.time.active }
+              onReceive={ this.onReceiveTime }
+            />
+          </div>
+        </div>
+        {/* Menu for mobile: END */}
+      </div>
     )
   }
 }

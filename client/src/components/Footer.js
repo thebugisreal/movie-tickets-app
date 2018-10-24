@@ -5,7 +5,7 @@ import { Container, Row, Col } from 'reactstrap';
 class Footer extends Component {
   render() {
     return (
-      <footer className="footer">
+      <footer id="footer" className="footer">
         <Container>
         	<Row className="pt-3 pt-sm-5 pb-2">
         		<Col lg="3" md="6" sm="12">
