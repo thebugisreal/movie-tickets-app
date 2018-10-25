@@ -1,19 +1,24 @@
 .slider {
-	background-color: #080808;
+	background-color: #101010;
 	@include transition(all .3s ease);
 
 	&__nav {
     z-index: 99;
-		top: 240px;
+		top: 60px;
+		@include bp-sm{ top: 145px }
+		@include bp-lg{ top: 205px }
+		@include bp-xl{ top: 240px }
 		
 		& .owl-prev, .owl-next {
 			@include transition(all .3s ease);
+			@include bp-sm{ font-size: 6rem }
 			color: #fff;
 			opacity: .2;
 			position: absolute;
 			background: transparent;
 			border: none;
-			font-size: 6rem;
+			font-size: 4rem;
+			// font-size: 6rem;
 			line-height: 0;
 			cursor: pointer;
 			&:hover {

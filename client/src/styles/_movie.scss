@@ -1,0 +1,47 @@
+.movie {
+  background: #080808;
+
+  &__title {
+    @include font-size(16px);
+  }
+
+  &__list {
+    height: 396px;
+    &:hover .movie__box {
+      @include bp-xl{ bottom: 0 }
+    }
+  }
+
+  &__box {
+    @include transition(all .3s ease);
+    background: rgba(0,0,0,.6);
+    bottom: -150px;
+  }
+
+  &__btn {
+    @include font-size(14px);
+    background: #e71a0f;
+    cursor: pointer;
+    padding: 3px 8px;
+    margin: 0 6px;
+    &:hover {
+      background: #c5170e;
+    }
+  }
+
+  &__nav > * {
+    @include transition(all .3s ease);
+    @include font-size(18px);
+    background: #101010;
+    border: none;
+    color: #ddd;
+    padding: 0 13px 2px;
+    margin-left: 5px;
+    border-radius: 2px;
+    cursor: pointer;
+    &:hover {
+      background: #1b1b1b;
+    }
+  }
+
+}

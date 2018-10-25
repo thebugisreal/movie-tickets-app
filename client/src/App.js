@@ -4,15 +4,16 @@ import './App.scss';
 import { Provider } from 'react-redux';
 import store from './store';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import Slider from './components/Slider';
+import Movie from './components/Movie';
 import QuickBooking from './components/QuickBooking';
+import Footer from './components/Footer';
 // font-awesome
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faUser, faSearch, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faSearch, faAngleLeft, faFilm } from '@fortawesome/free-solid-svg-icons';
 // add font icon to library
-library.add(fab, faUser, faSearch, faAngleLeft)
+library.add(fab, faUser, faSearch, faAngleLeft, faFilm)
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
         <div>
           <Header />
           <Slider />
+          <Movie />
           <div style={{height: '1000px', background: 'black'}}></div>
           <QuickBooking />
           <Footer />
