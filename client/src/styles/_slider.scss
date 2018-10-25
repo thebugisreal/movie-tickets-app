@@ -1,4 +1,56 @@
 .slider {
 	background-color: #080808;
 	@include transition(all .3s ease);
+
+	&__nav {
+    z-index: 99;
+		top: 240px;
+		
+		& .owl-prev, .owl-next {
+			@include transition(all .3s ease);
+			color: #fff;
+			opacity: .2;
+			position: absolute;
+			background: transparent;
+			border: none;
+			font-size: 6rem;
+			line-height: 0;
+			cursor: pointer;
+			&:hover {
+				opacity: 1;
+			}
+		}
+
+		& .owl-prev {
+			left: 0;
+		}
+
+		& .owl-next {
+			right: 0;
+		}
+	}
+
+	&__dot {
+		bottom: 10px;
+		z-index: 99;
+		
+		& .owl-dot {
+			@include transition(all .3s ease);
+			cursor: pointer;
+			border-radius: 50%;
+			width: 15px;
+			height: 15px;
+			border: none;
+			margin: 0 4px;
+			opacity: .3;
+			&:hover {
+				opacity: 1;
+			}
+		}
+
+		& > .active {
+			opacity: 1;
+		}
+
+	}
 }

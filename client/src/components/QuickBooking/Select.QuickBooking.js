@@ -39,7 +39,7 @@ class Select extends Component {
     if(this.props.active) {
       this.setState({
         styleName : {
-          transform: 'translate(-5px,-15px) scale(.8)',
+          transform: 'translate(-5px,-12px) scale(.8)',
           color: '#ab8000'
         },
         styleMenu: !this.state.styleMenu
@@ -57,7 +57,7 @@ class Select extends Component {
 
   render() {
     return (
-    	<div className="w-100">
+    	<div className="w-100 mt-2">
         <span
           className="quickBooking__name position-absolute"
           style={ this.state.styleName }

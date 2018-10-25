@@ -5,8 +5,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Header from './components/Header';
 import Footer from './components/Footer';
-// import Slider from './components/Slider';
-// import QuickBooking from './components/quickBooking/QuickBooking';
+import Slider from './components/Slider';
 import QuickBooking from './components/QuickBooking';
 // font-awesome
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -19,13 +18,13 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-      <div>
-        <Header />
-        <div style={{height: '1000px', background: 'black'}}></div>
-        <QuickBooking />
-        <Footer />
-        {/* <div style={{height: '500px', background: 'black'}}></div> */}
-      </div>
+        <div>
+          <Header />
+          <Slider />
+          <div style={{height: '1000px', background: 'black'}}></div>
+          <QuickBooking />
+          <Footer />
+        </div>
       </Provider>
     );
   }

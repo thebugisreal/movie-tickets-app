@@ -1,7 +1,7 @@
 .quickBooking {
   background-color: #000;
-  // box-shadow: 0 8px 12px rgba(0,0,0,.2);
-  height: 55px;
+  box-shadow: 0 5px 5px rgba(0,0,0,.2);
+  height: 50px;
 
   &:before {
     @include pseudo;
@@ -13,7 +13,7 @@
 
   &__title {
     @include bp-xl{ padding: 0 30px 0 0; }
-    height: 55px;
+    height: 50px;
     background: #131313;
     z-index: 1;
     color: #f8f9fa;
@@ -21,15 +21,15 @@
       @include bp-es{ display: none }
       @include pseudo;
       top: 0;
-      right: -39px;
-      border-top: 55px solid transparent;
-      border-left: 55px solid #131313;
+      right: -34px;
+      border-top: 50px solid transparent;
+      border-left: 50px solid #131313;
     }
   }
 
   &__booth {
     @include font-size(14px);
-    height: 55px;
+    height: 50px;
   }
 
   &__name {
@@ -54,7 +54,7 @@
   &__text {
     @include bp-sm{ width: 80% }
     width: 100%;
-    border-bottom: 1px solid #303030;
+    border-bottom: 1px solid #151515;
     height: 28px;
     padding: 5px 2px;
     color: #ddd;
