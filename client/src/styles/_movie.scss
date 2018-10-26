@@ -6,7 +6,10 @@
   }
 
   &__list {
-    height: 396px;
+    height: 100%;
+    @include bp-sm{ height: 327px }
+    @include bp-lg{ height: 330px }
+    @include bp-xl{ height: 396px }
     &:hover .movie__box {
       @include bp-xl{ bottom: 0 }
     }

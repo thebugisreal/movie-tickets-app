@@ -66,7 +66,7 @@ class Movie extends Component {
             <div className="movie__nav position-relative pt-4"></div>
           </div>
           <OwlCarousel
-            className="owl-theme pt-2 pb-4"
+            className="owl-theme pt-2 pb-3 pb-sm-4 pb-xl-5"
             loop
             margin={10}
             nav

@@ -6,6 +6,7 @@ import store from './store';
 import Header from './components/Header';
 import Slider from './components/Slider';
 import Movie from './components/Movie';
+import Banner from './components/Banner';
 import QuickBooking from './components/QuickBooking';
 import Footer from './components/Footer';
 // font-awesome
@@ -16,6 +17,13 @@ import { faUser, faSearch, faAngleLeft, faFilm, faTimes } from '@fortawesome/fre
 library.add(fab, faUser, faSearch, faAngleLeft, faFilm, faTimes)
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      url: "./static/banner/banner-cgv.jpg",
+      title: "Download Now"
+    }
+  }
   render() {
     return (
       <Provider store={store}>
@@ -23,7 +31,8 @@ class App extends Component {
           <Header />
           <Slider />
           <Movie />
-          <div style={{height: '1000px', background: 'black'}}></div>
+          <Banner url={"./static/banner/1.png"} title={"Download Now"}/>
+          <div style={{height: '1000px', background: '#080808'}}></div>
           <QuickBooking />
           <Footer />
         </div>
