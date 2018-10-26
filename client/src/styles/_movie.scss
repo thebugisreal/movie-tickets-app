@@ -44,4 +44,32 @@
     }
   }
 
+  &__trailer {
+    &--overlay {
+      bottom: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,.8);
+    }
+
+    &--box {
+      background: #0c0c0c;
+      width: 660px;
+      height: 360px;
+      padding: 10px;
+      box-sizing: border-box;
+      border-radius: 3px;
+      z-index: 99999;
+    }
+  }
+
+  &__close {
+    @include transition(all .3s ease);
+    @include font-size(20px);
+    right: 0;
+    bottom: -30px;
+    color: #5a5a5a;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
 }

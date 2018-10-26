@@ -11,15 +11,15 @@ import Footer from './components/Footer';
 // font-awesome
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faUser, faSearch, faAngleLeft, faFilm } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faSearch, faAngleLeft, faFilm, faTimes } from '@fortawesome/free-solid-svg-icons';
 // add font icon to library
-library.add(fab, faUser, faSearch, faAngleLeft, faFilm)
+library.add(fab, faUser, faSearch, faAngleLeft, faFilm, faTimes)
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div>
+        <div className="position-relative">
           <Header />
           <Slider />
           <Movie />
