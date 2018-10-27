@@ -6,13 +6,32 @@
   }
 
   &__list {
+    
     height: 100%;
+    overflow: hidden;
     @include bp-sm{ height: 327px }
     @include bp-lg{ height: 330px }
     @include bp-xl{ height: 396px }
     &:hover .movie__box {
       @include bp-xl{ bottom: 0 }
     }
+    & img {
+      @include transition(all .3s ease);
+      @include transform(scale(1))
+    }
+    &:hover img {
+      @include bp-xl{ @include transform(scale(1.1)) }
+    }
+  }
+
+  &__rating {
+    z-index: 20;
+    width: 45px;
+    height: 30px;
+    top: 15px;
+    left: 15px;
+    font-size: 0px;
+    background: url('/static/icons/bg-movie-rating.png') no-repeat scroll top left transparent;
   }
 
   &__box {

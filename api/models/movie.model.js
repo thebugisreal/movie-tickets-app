@@ -22,8 +22,10 @@ const movieSchema = new Schema({
   releaseDate: String,
   runningTime: String,
   language: String,
-  rated: String,
+  rated: Object,
   decs: String,
+  slug: String,
+  thumbnail: String,
   cinema: {
     type: Array,
     default: []

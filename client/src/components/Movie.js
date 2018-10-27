@@ -79,6 +79,12 @@ class Movie extends Component {
           >
             { this.state.data === null ? <div></div> : this.state.data.map((item, index) => (
               <div key={ index } className="movie__list position-relative">
+                <span
+                  className="movie__rating position-absolute"
+                  style={ { backgroundPosition: item.rated.position } }
+                >
+                  { item.rated.name }
+                </span>
                 <a href="https://google.com">
                   <img src={ item.thumbnail } alt={item.name} />
                 </a>

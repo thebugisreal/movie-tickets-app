@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 // routes
 const userRoute = require('./api/routes/user.route');
 const movieRoute = require('./api/routes/movie.route');
+const postRoute = require('./api/routes/post.route');
 
 // connect mongodb
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
@@ -28,6 +29,7 @@ app.use(bodyParser.json());
 // use routes
 app.use('/api/users', userRoute);
 app.use('/api/movies', movieRoute);
+app.use('/api/posts', postRoute);
 
 // to know when server starting...
 app.listen(port, () => {
