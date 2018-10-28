@@ -113,9 +113,9 @@
 
   &__mobile {
     @include transition(all .3s ease);
+    background: url('/static/menubg.png') #000 center no-repeat;
     top: 0;
     right: 0;
-    background: #000;
     height: 100%;
     z-index: 999;
 

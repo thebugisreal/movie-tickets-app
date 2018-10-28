@@ -1,0 +1,19 @@
+.news {
+  background: #080808;
+
+  &__nav > * {
+    @include transition(all .3s ease);
+    @include font-size(18px);
+    background: #101010;
+    border: none;
+    color: #ddd;
+    padding: 0 13px 2px;
+    margin-left: 5px;
+    border-radius: 2px;
+    cursor: pointer;
+    &:hover {
+      background: #1b1b1b;
+    }
+  }
+  
+}
