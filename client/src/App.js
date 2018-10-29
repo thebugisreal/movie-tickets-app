@@ -8,6 +8,7 @@ import Slider from './components/Slider';
 import Movie from './components/Movie';
 import Banner from './components/Banner';
 import News from './components/News';
+import Promotion from './components/Promotion';
 import QuickBooking from './components/QuickBooking';
 import Footer from './components/Footer';
 // font-awesome
@@ -28,6 +29,7 @@ class App extends Component {
           <Movie />
           <Banner url={"./static/banner/1.png"} title={"Download Now"}/>
           <News />
+          <Promotion />
           <QuickBooking />
           <Footer />
         </div>

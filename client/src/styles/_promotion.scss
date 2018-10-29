@@ -1,0 +1,16 @@
+.promotion {
+  background: #080808;
+
+  &__block {
+    height: 180px;
+    @include bp-lg{ height: 200px }
+    @include bp-xl{ height: 261px }
+    border-color: #737373;
+    & img {
+      height: -webkit-fill-available;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

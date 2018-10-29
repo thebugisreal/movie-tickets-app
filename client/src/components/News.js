@@ -32,7 +32,7 @@ class News extends Component {
   showOwlCarousel() {
     return (
       <OwlCarousel
-        className="owl-theme pt-2 pb-3 pb-sm-4 pb-xl-5"
+        className="owl-theme pt-2 pb-2 pb-sm-3 border-bottom news__slide"
         loop
         margin={10}
         nav
@@ -45,7 +45,9 @@ class News extends Component {
       >
         { this.state.data.map(item => (
           <div key={ item._id }>
-            <img src={ item.thumbnail } alt={item.title} />
+            <a href="https://google.com">
+              <img src={ item.thumbnail } alt={item.title} />
+            </a>
           </div>
         )) }
       </OwlCarousel>
