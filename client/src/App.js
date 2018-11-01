@@ -20,7 +20,6 @@ class App extends Component {
 
   // fetch data from API only once when app access
   componentDidMount() {
-    console.log('fetch data');
     this.props.fetchMovies();
     this.props.fetchPosts();
   }

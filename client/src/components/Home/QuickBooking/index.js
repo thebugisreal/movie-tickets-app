@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { chooseMovie, chooseCinema, chooseDate, chooseTime } from '../../../actions/movieActions';
 import { Container, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Select from './Select.QuickBooking';
@@ -8,40 +9,15 @@ class QuickBooking extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isToggle: false,
-      isSticky: true,
-      movie: {
-        title: 'Tên Phim',
-        list: [],
-        hasChosen: null, // get data: hasChosen[0].name
-        active: true
-      },
-      cinema: {
-        title: 'Tên Rạp',
-        list: [],
-        hasChosen: null, // get data: hasChosen[0].name
-        active: false
-      },
-      date: {
-        title: 'Ngày Chiếu',
-        list: [],
-        hasChosen: null, // get data: hasChosen[0].date
-        active: false
-      },
-      time: {
-        title: 'Xuất Chiếu',
-        list: [],
-        hasChosen: null, // get data: hasChosen[0].time | hasChosen[0].seat
-        active: false
-      }
+      isToggle: false
     };
 
     this.handleToggle = this.handleToggle.bind(this);
-    this.handleScroll = this.handleScroll.bind(this);
-    this.onReceiveMovie = this.onReceiveMovie.bind(this);
-    this.onReceiveCinema = this.onReceiveCinema.bind(this);
-    this.onReceiveDate = this.onReceiveDate.bind(this);
-    this.onReceiveTime = this.onReceiveTime.bind(this);
+    // this.handleScroll = this.handleScroll.bind(this);
+    // this.onReceiveMovie = this.onReceiveMovie.bind(this);
+    // this.onReceiveCinema = this.onReceiveCinema.bind(this);
+    // this.onReceiveDate = this.onReceiveDate.bind(this);
+    // this.onReceiveTime = this.onReceiveTime.bind(this);
   }
 
   // listen event scroll
@@ -51,17 +27,14 @@ class QuickBooking extends Component {
 
   // sticky quick booking
   handleScroll() {
+    const box = document.getElementById('quickBooking');
     const footer = document.getElementById('footer').scrollHeight;
     const page = document.body.scrollHeight;
     const fixed = page - footer;
     if (window.scrollY + window.innerHeight > fixed) {
-      this.setState({
-        isSticky: false
-      })
+      box.classList.remove('quickBooking__fixed')
     } else {
-      this.setState({
-        isSticky: true
-      })
+      box.classList.add('quickBooking__fixed')
     }
   }
 
@@ -73,80 +46,25 @@ class QuickBooking extends Component {
   }
 
   onReceiveMovie(data) {
-    const currentMovie = this.props.movies.filter(item => item.name === data);
-    const cinema = currentMovie[0].cinema.map(item => item.name);
-    this.setState({
-      movie: {
-        ...this.state.movie,
-        hasChosen: currentMovie
-      },
-      cinema: {
-        ...this.state.cinema,
-        list: cinema,
-        active: true
-      },
-      date: {
-        ...this.state.date,
-        active: false
-      },
-      time: {
-        ...this.state.time,
-        active: false
-      }
-    })
+    this.props.chooseMovie(data);
   }
 
   onReceiveCinema(data) {
-    const currentCinema = this.state.movie.hasChosen[0].cinema.filter(item => item.name === data);
-    const date = currentCinema[0].info.map(item => item.date);
-    this.setState({
-      cinema: {
-        ...this.state.cinema,
-        hasChosen: currentCinema
-      },
-      date: {
-        ...this.state.date,
-        list: date,
-        active: true
-      },
-      time: {
-        ...this.state.time,
-        active: false
-      }
-    })
+    this.props.chooseCinema(data);
   }
 
   onReceiveDate(data) {
-    const currentDate = this.state.cinema.hasChosen[0].info.filter(item => item.date === data);
-    const time = currentDate[0].times.map(item => item.time);
-    this.setState({
-      date: {
-        ...this.state.date,
-        hasChosen: currentDate
-      },
-      time: {
-        ...this.state.time,
-        list: time,
-        active: true
-      }
-    })
+    this.props.chooseDate(data);
   }
 
   onReceiveTime(data) {
-    const currentTime = this.state.date.hasChosen[0].times.filter(item => item.time === data);
-    this.setState({
-      time: {
-        ...this.state.time,
-        hasChosen: currentTime
-      }
-    })
-    console.log('Do something...');
+    this.props.chooseTime(data);
   }
 
   render() {
     return (
       <div>
-        <section className={"quickBooking" + ( this.state.isSticky ? ' fixed-bottom' : ' position-relative' ) }>
+        <section id="quickBooking" className="quickBooking">
           <Container>
             <Row>
               <Col lg="2" md="3" className="position-relative px-0 px-sm-3">
@@ -160,33 +78,33 @@ class QuickBooking extends Component {
               </Col>
               <Col md={{ size: 2, offset: 1 }} className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
                 <Select 
-                  title={ this.state.movie.title }
-                  data={ this.props.movies.map(item => item.name) }
-                  active={ this.state.movie.active }
+                  title={"TÊN PHIM"}
+                  data={ this.props.booking.listMovie }
+                  active={ this.props.booking.activeMovie }
                   onReceive={ this.onReceiveMovie }
                 />
               </Col>
               <Col md="2" className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
                 <Select
-                  title={ this.state.cinema.title }
-                  data={ this.state.cinema.list }
-                  active={ this.state.cinema.active }
+                  title={"TÊN RẠP"}
+                  data={ this.props.booking.listCinema }
+                  active={ this.props.booking.activeCinema }
                   onReceive={ this.onReceiveCinema }
                 />
               </Col>
               <Col md="2" className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
                 <Select
-                  title={ this.state.date.title }
-                  data={ this.state.date.list }
-                  active={ this.state.date.active }
+                  title={"NGÀY CHIẾU"}
+                  data={ this.props.booking.listDate }
+                  active={ this.props.booking.activeDate }
                   onReceive={ this.onReceiveDate }
                 />
               </Col>
               <Col md="2" className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
                 <Select
-                  title={ this.state.time.title }
-                  data={ this.state.time.list }
-                  active={ this.state.time.active }
+                  title={"XUẤT CHIẾU"}
+                  data={ this.props.booking.listTime }
+                  active={ this.props.booking.activeTime }
                   onReceive={ this.onReceiveTime }
                 />
               </Col>
@@ -210,33 +128,33 @@ class QuickBooking extends Component {
           
           <div className="quickBooking__booth pt-5 px-3 d-flex d-sm-none align-items-center position-relative">
             <Select 
-              title={ this.state.movie.title }
-              data={ this.state.movie.list }
-              active={ this.state.movie.active }
+              title={"TÊN PHIM"}
+              data={ this.props.booking.listMovie }
+              active={ this.props.booking.activeMovie }
               onReceive={ this.onReceiveMovie }
             />
           </div>
           <div className="quickBooking__booth pt-5 px-3  d-flex d-sm-none align-items-center position-relative">
             <Select
-              title={ this.state.cinema.title }
-              data={ this.state.cinema.list }
-              active={ this.state.cinema.active }
+              title={"TÊN RẠP"}
+              data={ this.props.booking.listCinema }
+              active={ this.props.booking.activeCinema }
               onReceive={ this.onReceiveCinema }
             />
           </div>
           <div className="quickBooking__booth pt-5 px-3 d-flex d-sm-none align-items-center position-relative">
             <Select
-              title={ this.state.date.title }
-              data={ this.state.date.list }
-              active={ this.state.date.active }
+              title={"NGÀY CHIẾU"}
+              data={ this.props.booking.listDate }
+              active={ this.props.booking.activeDate }
               onReceive={ this.onReceiveDate }
             />
           </div>
           <div className="quickBooking__booth pt-5 px-3 d-flex d-sm-none align-items-center position-relative">
             <Select
-              title={ this.state.time.title }
-              data={ this.state.time.list }
-              active={ this.state.time.active }
+              title={"XUẤT CHIẾU"}
+              data={ this.props.booking.listTime }
+              active={ this.props.booking.activeTime }
               onReceive={ this.onReceiveTime }
             />
           </div>
@@ -248,8 +166,9 @@ class QuickBooking extends Component {
 }
 
 const mapStateToProps = state => ({
-  movies: state.movies.items
+  movies: state.movies.items,
   //------state.[movieAction.js].[movieReducer.js]
+  booking: state.movies.booking
 });
 
-export default connect(mapStateToProps, null)(QuickBooking);
+export default connect(mapStateToProps, { chooseMovie, chooseCinema, chooseDate, chooseTime })(QuickBooking);

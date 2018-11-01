@@ -33,7 +33,6 @@ class News extends Component {
   }
 
   render() {
-    console.log('component News render')
     return (
       <section className="news">
         <Container>

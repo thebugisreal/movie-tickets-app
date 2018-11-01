@@ -4,11 +4,8 @@ class Select extends Component {
 	constructor(props) {
     super(props);
     this.state = {
-      styleName: {
-        transform: 'translate(0,0) scale(1)',
-        color: '#333'
-      },
       styleMenu: false,
+      styleName: false,
       text: ''
     };
 
@@ -16,31 +13,15 @@ class Select extends Component {
     this.onChoose = this.onChoose.bind(this);
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   this.setState({
-  //     data: nextProps.data
-  //   })
-  // }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.data !== prevProps.data) {
-      this.setState({
-        styleName: {
-          transform: 'translate(0,0) scale(1)',
-          color: '#969696'
-        },
-        text: ''
-      })
-    }
+  shouldComponentUpdate(nextProps, nextState) {
+    // compare two arrays
+    return JSON.stringify(this.props.data) !== JSON.stringify(nextProps.data) || this.state.styleMenu !== nextState.styleMenu || this.state.text !== nextState.text || this.state.styleName !== nextState.styleName;
   }
 
   showMenu() {
     if(this.props.active) {
       this.setState({
-        styleName : {
-          transform: 'translate(-5px,-12px) scale(.8)',
-          color: '#ab8000'
-        },
+        styleName: true,
         styleMenu: !this.state.styleMenu
       })
     }
@@ -54,13 +35,20 @@ class Select extends Component {
     this.props.onReceive(data);
   }
 
+  showData() {
+    return(
+      this.props.data.map((item, index) => (
+        <li key={index} onClick={ () => this.onChoose(item) } className="quickBooking__list">{item}</li>
+      ))
+    )
+  }
+
   render() {
-    // console.log('child render');
     return (
     	<div className="w-100 mt-2">
         <span
           className="quickBooking__name position-absolute"
-          style={ this.state.styleName }
+          style={ this.state.styleName ? { transform: 'translate(-5px,-12px) scale(.8)', color: '#ab8000' } : { transform: 'translate(0,0) scale(1)', color: '#333' } }
         >
           { this.props.title }
         </span>
@@ -81,9 +69,7 @@ class Select extends Component {
           style={ this.state.styleMenu === true ? { opacity: '1', display: 'block' } : { opacity: '0', display: 'none' } }
         >
           <ul>
-            { !this.props.data ? '' : this.props.data.map((item, index) => (
-                <li key={index} onClick={ () => this.onChoose(item) } className="quickBooking__list">{item}</li>
-              )) } 
+            { this.props.data.length === 0 ? '' : this.showData() } 
           </ul>
         </div>
         {/* Menu: END */}

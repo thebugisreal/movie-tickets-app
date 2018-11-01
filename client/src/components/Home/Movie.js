@@ -112,7 +112,6 @@ class Movie extends Component {
   }
 
   render() {
-    console.log('component Movie render');
     return (
       <section className="movie">
         <Container>
