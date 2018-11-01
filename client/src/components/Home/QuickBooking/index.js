@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchMovies } from '../../../actions/movieActions';
 import { Container, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Select from './Select.QuickBooking';
@@ -43,22 +42,6 @@ class QuickBooking extends Component {
     this.onReceiveCinema = this.onReceiveCinema.bind(this);
     this.onReceiveDate = this.onReceiveDate.bind(this);
     this.onReceiveTime = this.onReceiveTime.bind(this);
-  }
-
-  // fetch data from redux
-  componentWillMount() {
-    this.props.fetchMovies();
-  }
-
-  // after fetched, assign data to state
-  componentWillReceiveProps(nextProps) {
-    const data = nextProps.movies.map(item => item.name);
-    this.setState({
-      movie: {
-        ...this.state.movie,
-        list: data
-      } 
-    })
   }
 
   // listen event scroll
@@ -178,7 +161,7 @@ class QuickBooking extends Component {
               <Col md={{ size: 2, offset: 1 }} className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
                 <Select 
                   title={ this.state.movie.title }
-                  data={ this.state.movie.list }
+                  data={ this.props.movies.map(item => item.name) }
                   active={ this.state.movie.active }
                   onReceive={ this.onReceiveMovie }
                 />
@@ -266,7 +249,7 @@ class QuickBooking extends Component {
 
 const mapStateToProps = state => ({
   movies: state.movies.items
-  //------state[movieAction.js][movieReducer.js]
+  //------state.[movieAction.js].[movieReducer.js]
 });
 
-export default connect(mapStateToProps, { fetchMovies })(QuickBooking);
+export default connect(mapStateToProps, null)(QuickBooking);

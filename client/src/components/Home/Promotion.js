@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
-const Promotion = () => {
+export default () => {
   return (
     <section className="promotion py-3 py-sm-4">
       <Container>
@@ -32,5 +32,3 @@ const Promotion = () => {
     </section>
   )
 }
-
-export default Promotion;

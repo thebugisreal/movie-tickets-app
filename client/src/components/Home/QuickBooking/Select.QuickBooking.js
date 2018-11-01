@@ -4,7 +4,6 @@ class Select extends Component {
 	constructor(props) {
     super(props);
     this.state = {
-      data: null,
       styleName: {
         transform: 'translate(0,0) scale(1)',
         color: '#333'
@@ -17,11 +16,11 @@ class Select extends Component {
     this.onChoose = this.onChoose.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      data: nextProps.data
-    })
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   this.setState({
+  //     data: nextProps.data
+  //   })
+  // }
 
   componentDidUpdate(prevProps) {
     if (this.props.data !== prevProps.data) {
@@ -56,6 +55,7 @@ class Select extends Component {
   }
 
   render() {
+    // console.log('child render');
     return (
     	<div className="w-100 mt-2">
         <span
@@ -81,7 +81,7 @@ class Select extends Component {
           style={ this.state.styleMenu === true ? { opacity: '1', display: 'block' } : { opacity: '0', display: 'none' } }
         >
           <ul>
-            { this.state.data === null ? '' : this.state.data.map((item, index) => (
+            { !this.props.data ? '' : this.props.data.map((item, index) => (
                 <li key={index} onClick={ () => this.onChoose(item) } className="quickBooking__list">{item}</li>
               )) } 
           </ul>

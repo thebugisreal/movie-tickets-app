@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../../actions/postActions';
 import { Container } from 'reactstrap';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
@@ -8,28 +7,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class News extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      data: null
-    }
-
-    this.showOwlCarousel = this.showOwlCarousel.bind(this)
-  }
-
-  // fetch data from redux
-  componentWillMount() {
-    this.props.fetchPosts();
-  }
-
-  // after fetched, assign data to state
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      data: nextProps.posts
-    })
-  }
-
-  showOwlCarousel() {
+  showPosts() {
     return (
       <OwlCarousel
         className="owl-theme pt-2 pb-2 pb-sm-3 border-bottom news__slide"
@@ -43,7 +21,7 @@ class News extends Component {
         responsiveClass={true}
         responsive={{ 0: { items: 2 }, 600:{ items: 3 }, 1000:{ items: 4 }}}
       >
-        { this.state.data.map(item => (
+        { this.props.posts.map(item => (
           <div key={ item._id }>
             <a href="https://google.com">
               <img src={ item.thumbnail } alt={item.title} />
@@ -55,6 +33,7 @@ class News extends Component {
   }
 
   render() {
+    console.log('component News render')
     return (
       <section className="news">
         <Container>
@@ -65,7 +44,7 @@ class News extends Component {
             </h5>
             <div className="news__nav position-relative pt-4"></div>
           </div>
-          { this.state.data !== null ? this.showOwlCarousel() : '' }
+          { this.props.posts.length !== 0 ? this.showPosts() : '' }
         </Container>
       </section>
     )
@@ -76,4 +55,4 @@ const mapStateProps = state => ({
   posts: state.posts.items
 });
 
-export default connect(mapStateProps, { fetchPosts })(News);
+export default connect(mapStateProps, null)(News);

@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
-import { Provider } from 'react-redux';
-import store from './store';
-import { BrowserRouter as Router } from 'react-router-dom';
-
+import { connect } from 'react-redux';
+import { fetchMovies } from './actions/movieActions';
+import { fetchPosts } from './actions/postActions';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import routes from './routes';
 import Header from './components/Header';
 import Footer from './components/Footer';
-// import Slider from './components/Slider';
-// import Movie from './components/Movie';
-// import Banner from './components/Banner';
-// import News from './components/News';
-// import Promotion from './components/Promotion';
-// import QuickBooking from './components/QuickBooking';
-
 // font-awesome
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -23,24 +17,45 @@ import { faUser, faSearch, faAngleLeft, faFilm, faTimes } from '@fortawesome/fre
 library.add(fab, far, faUser, faSearch, faAngleLeft, faFilm, faTimes, far)
 
 class App extends Component {
+
+  // fetch data from API only once when app access
+  componentDidMount() {
+    console.log('fetch data');
+    this.props.fetchMovies();
+    this.props.fetchPosts();
+  }
+
   render() {
     return (
       <Router>
-        <Provider store={store}>
-          <div className="position-relative">
-            <Header />
-            {/* <Slider />
-            <Movie />
-            <Banner url={"./static/banner/1.png"} title={"Download Now"}/>
-            <News />
-            <Promotion />
-            <QuickBooking /> */}
-            <Footer />
-          </div>
-        </Provider>
+        <div className="position-relative">
+          <Header />
+          <Switch>
+            { this.showContent(routes) }
+          </Switch>
+          <Footer />
+        </div>
       </Router>
     );
   }
+
+  // map routes
+  showContent = (routes) => {
+    var result = null;
+    if (routes.length > 0) {
+      result = routes.map((route, index) => {
+        return (
+          <Route 
+            key={ index }
+            path={ route.path } 
+            exact={ route.exact }
+            component={ route.main }
+          />
+        );
+      });
+    }
+    return result;
+  }
 }
 
-export default App;
+export default connect(null, { fetchMovies, fetchPosts })(App);

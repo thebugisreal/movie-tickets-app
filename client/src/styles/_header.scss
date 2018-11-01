@@ -5,6 +5,10 @@
     box-shadow: 0 8px 12px rgba(0,0,0,.2);
   }
 
+  &__item.active > * {
+    color: #ffce26!important;
+  }
+
   &__logo {
     @include font-size(24px);
   -webkit-text-fill-color: white;

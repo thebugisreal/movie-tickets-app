@@ -1,15 +1,30 @@
 import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom';
 import {
 	Container,
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink } from 'reactstrap';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
+  return (
+    <Route path={to} exact={activeOnlyWhenExact} children={({match}) => {
+      let active = match ? 'active' : '';
+      return (
+        <NavItem className={`mr-3 header__item ${active}`}>
+          <Link to={to} className="nav-link">
+            {label}
+          </Link>
+        </NavItem>
+      )
+    }}/>
+  )
+}
 
 class Header extends Component {
 	constructor(props) {
@@ -20,26 +35,26 @@ class Header extends Component {
       isOpen: false
     };
   }
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
+
   render() {
     return (
     	<header className="header">
         <Navbar dark className="header__nav" expand="lg">
           <Container>
-            <NavbarBrand className="header__logo font-weight-bold mr-5" href="/">CGV Cinemas</NavbarBrand>
+            <Link to="/" className="header__logo font-weight-bold mr-5 navbar-brand">
+              CGV Cinemas
+            </Link>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="d-flex w-100" navbar>
-                <NavItem className="mr-3">
-                  <NavLink href="#">PHIM</NavLink>
-                </NavItem>
-                <NavItem className="mr-3">
-                  <NavLink href="#">RẠP CGV</NavLink>
-                </NavItem>
+                <MenuLink label="PHIM" to="/movies" />
+                <MenuLink label="RẠP CGV" to="/cinema" />
                 <NavItem className="mr-3">
                   <NavLink href="#">THÀNH VIÊN</NavLink>
                 </NavItem>
