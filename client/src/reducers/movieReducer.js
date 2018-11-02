@@ -1,20 +1,16 @@
-import { FETCH_MOVIES, CHOOSE_MOVIE, CHOOSE_CINEMA, CHOOSE_DATE, CHOOSE_TIME } from '../actions/types';
+import { FETCH_MOVIES, CHOOSE_MOVIE, CHOOSE_CINEMA, CHOOSE_DATE, CHOOSE_TIME, RESET_BOOKING } from '../actions/types';
 
 const initialState = {
   items: [],
   booking: {
     movie: '',
     listMovie: [],
-    activeMovie: true,
     cinema: '',
     listCinema: [],
-    activeCinema: false,
     date: '',
     listDate: [],
-    activeDate: false,
     time: '',
-    listTime: [],
-    activeTime: false
+    listTime: []
   }
 }
 
@@ -26,6 +22,7 @@ export default function(state = initialState, action) {
         items: action.payload,
         booking: {
           ...state.booking,
+          movie: '',
           listMovie
         }
       }
@@ -38,13 +35,10 @@ export default function(state = initialState, action) {
           movie: action.payload,
           cinema: '',
           listCinema,
-          activeCinema: true,
           date: '',
           listDate: [],
-          activeDate: false,
           time: '',
-          listTime: [],
-          activeTime: false,
+          listTime: []
         }
       }
     case CHOOSE_CINEMA:
@@ -57,10 +51,8 @@ export default function(state = initialState, action) {
           cinema: action.payload,
           date: '',
           listDate,
-          activeDate: true,
           time: '',
-          listTime: [],
-          activeTime: false
+          listTime: []
         }
       }
     case CHOOSE_DATE:
@@ -73,8 +65,7 @@ export default function(state = initialState, action) {
           ...state.booking,
           date: action.payload,
           time: '',
-          listTime, 
-          activeTime: true
+          listTime
         }
       }
     case CHOOSE_TIME:
@@ -83,6 +74,20 @@ export default function(state = initialState, action) {
         booking: {
           ...state.booking,
           time: action.payload
+        }
+      }
+    case RESET_BOOKING:
+      return {
+        ...state,
+        booking: {
+          ...state.booking,
+          movie: '',
+          cinema: '',
+          listCinema: [],
+          date: '',
+          listDate: [],
+          time: '',
+          listTime: []
         }
       }
     default:

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { chooseMovie, chooseCinema, chooseDate, chooseTime } from '../../../actions/movieActions';
+import { chooseMovie, chooseCinema, chooseDate, chooseTime, resetBooking } from '../../../actions/movieActions';
 import { Container, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Select from './Select.QuickBooking';
@@ -13,15 +13,15 @@ class QuickBooking extends Component {
     };
 
     this.handleToggle = this.handleToggle.bind(this);
-    // this.handleScroll = this.handleScroll.bind(this);
-    // this.onReceiveMovie = this.onReceiveMovie.bind(this);
-    // this.onReceiveCinema = this.onReceiveCinema.bind(this);
-    // this.onReceiveDate = this.onReceiveDate.bind(this);
-    // this.onReceiveTime = this.onReceiveTime.bind(this);
+    this.onReceiveMovie = this.onReceiveMovie.bind(this);
+    this.onReceiveCinema = this.onReceiveCinema.bind(this);
+    this.onReceiveDate = this.onReceiveDate.bind(this);
+    this.onReceiveTime = this.onReceiveTime.bind(this);
   }
 
   // listen event scroll
   componentDidMount() {
+    this.props.resetBooking();
     window.addEventListener('scroll', this.handleScroll);
   }
 
@@ -31,9 +31,9 @@ class QuickBooking extends Component {
     const footer = document.getElementById('footer').scrollHeight;
     const page = document.body.scrollHeight;
     const fixed = page - footer;
-    if (window.scrollY + window.innerHeight > fixed) {
+    if (window.scrollY + window.innerHeight > fixed && box !== null ) {
       box.classList.remove('quickBooking__fixed')
-    } else {
+    } else if (box !== null) {
       box.classList.add('quickBooking__fixed')
     }
   }
@@ -79,32 +79,32 @@ class QuickBooking extends Component {
               <Col md={{ size: 2, offset: 1 }} className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
                 <Select 
                   title={"TÊN PHIM"}
+                  name={ this.props.booking.movie }
                   data={ this.props.booking.listMovie }
-                  active={ this.props.booking.activeMovie }
                   onReceive={ this.onReceiveMovie }
                 />
               </Col>
               <Col md="2" className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
                 <Select
                   title={"TÊN RẠP"}
+                  name={ this.props.booking.cinema }
                   data={ this.props.booking.listCinema }
-                  active={ this.props.booking.activeCinema }
                   onReceive={ this.onReceiveCinema }
                 />
               </Col>
               <Col md="2" className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
                 <Select
                   title={"NGÀY CHIẾU"}
+                  name={ this.props.booking.date }
                   data={ this.props.booking.listDate }
-                  active={ this.props.booking.activeDate }
                   onReceive={ this.onReceiveDate }
                 />
               </Col>
               <Col md="2" className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
                 <Select
                   title={"XUẤT CHIẾU"}
+                  name={ this.props.booking.time }
                   data={ this.props.booking.listTime }
-                  active={ this.props.booking.activeTime }
                   onReceive={ this.onReceiveTime }
                 />
               </Col>
@@ -129,32 +129,32 @@ class QuickBooking extends Component {
           <div className="quickBooking__booth pt-5 px-3 d-flex d-sm-none align-items-center position-relative">
             <Select 
               title={"TÊN PHIM"}
+              name={ this.props.booking.movie }
               data={ this.props.booking.listMovie }
-              active={ this.props.booking.activeMovie }
               onReceive={ this.onReceiveMovie }
             />
           </div>
           <div className="quickBooking__booth pt-5 px-3  d-flex d-sm-none align-items-center position-relative">
             <Select
               title={"TÊN RẠP"}
+              name={ this.props.booking.cinema }
               data={ this.props.booking.listCinema }
-              active={ this.props.booking.activeCinema }
               onReceive={ this.onReceiveCinema }
             />
           </div>
           <div className="quickBooking__booth pt-5 px-3 d-flex d-sm-none align-items-center position-relative">
             <Select
               title={"NGÀY CHIẾU"}
+              name={ this.props.booking.date }
               data={ this.props.booking.listDate }
-              active={ this.props.booking.activeDate }
               onReceive={ this.onReceiveDate }
             />
           </div>
           <div className="quickBooking__booth pt-5 px-3 d-flex d-sm-none align-items-center position-relative">
             <Select
               title={"XUẤT CHIẾU"}
+              name={ this.props.booking.time }
               data={ this.props.booking.listTime }
-              active={ this.props.booking.activeTime }
               onReceive={ this.onReceiveTime }
             />
           </div>
@@ -171,4 +171,4 @@ const mapStateToProps = state => ({
   booking: state.movies.booking
 });
 
-export default connect(mapStateToProps, { chooseMovie, chooseCinema, chooseDate, chooseTime })(QuickBooking);
+export default connect(mapStateToProps, { chooseMovie, chooseCinema, chooseDate, chooseTime, resetBooking })(QuickBooking);

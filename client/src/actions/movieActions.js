@@ -1,4 +1,4 @@
-import { FETCH_MOVIES, CHOOSE_MOVIE, CHOOSE_CINEMA, CHOOSE_DATE, CHOOSE_TIME } from './types';
+import { FETCH_MOVIES, CHOOSE_MOVIE, CHOOSE_CINEMA, CHOOSE_DATE, CHOOSE_TIME, RESET_BOOKING } from './types';
 
 export const fetchMovies = () => dispatch => {
   fetch('/api/movies')
@@ -34,5 +34,11 @@ export const chooseTime = (time) => dispatch => {
   dispatch({
     type: CHOOSE_TIME,
     payload: time
+  })
+}
+
+export const resetBooking = () => dispatch => {
+  dispatch({
+    type: RESET_BOOKING
   })
 }
