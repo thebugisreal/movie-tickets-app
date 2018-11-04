@@ -1,7 +1,9 @@
 @import 'styles/mixins';
 @import 'styles/variables';
 @import 'styles/reset';
+// header
 @import 'styles/header';
+// body
 @import 'styles/slider';
 @import 'styles/movie';
 @import 'styles/banner';
@@ -9,4 +11,7 @@
 @import 'styles/promotion';
 @import 'styles/quickbooking';
 @import 'styles/notfound';
+// routes
+@import 'styles/routes/page-movies';
+// footer
 @import 'styles/footer';
