@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from './components/Home';
 import Movies from './components/Movies';
+import Posts from './components/Posts';
 import NotFound from './components/NotFound';
 
 const routes = [
@@ -13,6 +14,11 @@ const routes = [
     path: '/movies',
     exact: false,
     main: () => <Movies />
+  },
+  {
+    path: '/posts',
+    exact: false,
+    main: () => <Posts />
   },
   {
     path: '',

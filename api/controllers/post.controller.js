@@ -22,7 +22,8 @@ module.exports.addPost = async (req, res) => {
 	const newPost = new Post({
     title: req.body.title,
     body: req.body.body,
-    thumbnail: req.body.thumbnail
+		thumbnail: req.body.thumbnail,
+		timeLimit: req.body.timeLimit
   });
 	try {
     const post = await newPost.save();
