@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { chooseMovie, chooseCinema, chooseDate, chooseTime, resetBooking } from '../../../actions/movieActions';
+import { chooseMovie, chooseCinema, chooseDate, chooseTime, resetBooking } from '../../actions/movieActions';
 import { Container, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Select from './Select.QuickBooking';

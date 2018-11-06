@@ -55,7 +55,7 @@ class Header extends Component {
               <Nav className="d-flex w-100" navbar>
                 <MenuLink label="PHIM" to="/movies" />
                 <MenuLink label="RẠP CGV" to="/cinema" />
-                <MenuLink label="TIN MỚI &amp; ƯU ĐÃI" to="/posts" />
+                <MenuLink label="TIN MỚI &amp; ƯU ĐÃI" to="/news" />
                 <NavItem className="mr-3">
                   <NavLink href="#">THÀNH VIÊN</NavLink>
                 </NavItem>

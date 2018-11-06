@@ -20,25 +20,25 @@ export default () => {
           dotsContainer={'.slider__dot'}
         >
           <div className="item">
-            <img src="./static/slider/1.jpg" alt="test" />
+            <img src="./assets/sliders/1.jpg" alt="test" />
           </div>
           <div className="item">
-            <img src="./static/slider/2.jpg" alt="test" />
+            <img src="./assets/sliders/2.jpg" alt="test" />
           </div>
           <div className="item">
-            <img src="./static/slider/3.jpg" alt="test" />
+            <img src="./assets/sliders/3.jpg" alt="test" />
           </div>
           <div className="item">
-            <img src="./static/slider/980x448_41.jpg" alt="test" />
+            <img src="./assets/sliders/980x448_41.jpg" alt="test" />
           </div>
           <div className="item">
-            <img src="./static/slider/980x448_46.jpg" alt="test" />
+            <img src="./assets/sliders/980x448_46.jpg" alt="test" />
           </div>
           <div className="item">
-            <img src="./static/slider/cgv_shortfilm_app-banner_180620_2.jpg" alt="test" />
+            <img src="./assets/sliders/cgv_shortfilm_app-banner_180620_2.jpg" alt="test" />
           </div>
           <div className="item">
-            <img src="./static/slider/cine_lounge_web__980x448.jpg" alt="test" />
+            <img src="./assets/sliders/cine_lounge_web__980x448.jpg" alt="test" />
           </div>
         </OwlCarousel>
       </Container>

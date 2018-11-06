@@ -1,35 +1,35 @@
 import React from 'react';
-import Home from './components/Home';
-import Movies from './components/Movies';
-import Posts from './components/Posts';
-import Post from './components/Posts/Post';
-import NotFound from './components/NotFound';
+import HomePage from './pages/HomePage';
+import MovieListPage from './pages/MovieListPage';
+import NewsListPage from './pages/NewsListPage';
+import NewsPage from './pages/NewsPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 const routes = [
   {
     path: '/',
     exact: true,
-    main: () => <Home />
+    main: () => <HomePage />
   },
   {
     path: '/movies',
     exact: false,
-    main: () => <Movies />
+    main: () => <MovieListPage />
   },
   {
-    path: '/posts',
+    path: '/news',
     exact: true,
-    main: ({match}) => <Posts match={match} />
+    main: ({match}) => <NewsListPage match={match} />
   },
   {
-    path: '/posts/:slug',
-    exact: false,
-    main: ({match}) => <Post match={match} />
+    path: '/news/:slug',
+    exact: true,
+    main: ({match}) => <NewsPage match={match} />
   },
   {
     path: '',
     exact: false,
-    main: () => <NotFound />
+    main: () => <NotFoundPage />
   }
 ]
 

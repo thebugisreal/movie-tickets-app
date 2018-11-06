@@ -1,5 +1,5 @@
 .footer {
-	background: url('/static/footerbg.png') rgba(8,8,8,1);
+	background: url('/assets/backgrounds/footerbg.png') rgba(8,8,8,1);
 	background-size: cover;
 	color: #999;
 
@@ -27,7 +27,7 @@
 	}
 
 	&__logo {
-		background-image: url('/static/common_sprite_area.png');
+		background-image: url('/assets/icons/common_sprite_area.png');
     background-position: -145px -319px;
     height: 50px;
     width: 120px;
@@ -50,7 +50,7 @@
     height: 70px;
     position: relative;
     text-indent: -9999px;
-    background: url('/static/cong-thuong.PNG') no-repeat scroll top left transparent;
+    background: url('/assets/icons/cong-thuong.PNG') no-repeat scroll top left transparent;
 	}
 
 }

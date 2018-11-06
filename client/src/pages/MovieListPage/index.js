@@ -3,19 +3,19 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Breadcrumb } from 'reactstrap';
 
-class Movies extends Component {
+class MovieListPage extends Component {
   render() {
     return (
-      <div className="page-movies bg-custom py-4">
+      <div className="movieListPage bg-custom py-4">
         <Container>
           <Row className="mb-2">
             <Col>
             <Breadcrumb>
               <li className="breadcrumb-item">
-                <Link to="/">Home</Link>
+                <Link to="/">Trang chủ</Link>
               </li>
               <li className="active breadcrumb-item" aria-current="page">
-                Movies
+                Phim đang chiếu
               </li>
             </Breadcrumb>
             </Col>
@@ -31,10 +31,10 @@ class Movies extends Component {
               </span>
               <a href="https://google.com" title={ item.name }><img className="w-100" src={ item.thumbnail } alt={ item.name } /></a>          
               <div>
-                <h2 className="page-movies__title pt-2"><a href="https://google.com" title={ item.name }>{ item.name }</a></h2>
-                <p className="page-movies__decs mb-1"><b>Thể loại: </b>{ item.genre.join(', ') }</p>
-                <p className="page-movies__decs mb-1"><b>Thời lượng: </b>{ item.runningTime }</p>
-                <p className="page-movies__decs mb-3"><b>Khởi chiếu: </b>{ item.releaseDate }</p>
+                <h2 className="movieListPage__title pt-2"><a href="https://google.com" title={ item.name }>{ item.name }</a></h2>
+                <p className="movieListPage__decs mb-1"><b>Thể loại: </b>{ item.genre.join(', ') }</p>
+                <p className="movieListPage__decs mb-1"><b>Thời lượng: </b>{ item.runningTime }</p>
+                <p className="movieListPage__decs mb-3"><b>Khởi chiếu: </b>{ item.releaseDate }</p>
               </div>
             </Col>
           )) }
@@ -47,7 +47,6 @@ class Movies extends Component {
 
 const mapStateToProps = state => ({
   movies: state.movies.items
-  //------state.[movieAction.js].[movieReducer.js]
 });
 
-export default connect(mapStateToProps, null)(Movies);
+export default connect(mapStateToProps, null)(MovieListPage);

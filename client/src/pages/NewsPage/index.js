@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Breadcrumb } from 'reactstrap';
 
-class Post extends Component {
-
+class NewsPage extends Component {
   showContent() {
     const { match } = this.props;
     const { slug } = match.params;
@@ -15,10 +14,10 @@ class Post extends Component {
           <Col>
           <Breadcrumb>
             <li className="breadcrumb-item">
-              <Link to="/">Home</Link>
+              <Link to="/">Trang chủ</Link>
             </li>
             <li className="breadcrumb-item">
-              <Link to="/posts">Posts</Link>
+              <Link to="/news">Tin mới &amp; Ưu đãi</Link>
             </li>
             <li className="active breadcrumb-item" aria-current="page">
               { post.title }
@@ -46,5 +45,4 @@ const mapStateToProps = state => ({
   posts: state.posts.items
 })
 
-export default connect(mapStateToProps, null)(Post);
-// export default Post;
+export default connect(mapStateToProps, null)(NewsPage);

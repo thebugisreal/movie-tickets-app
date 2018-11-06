@@ -122,7 +122,7 @@
 
   &__mobile {
     @include transition(all .3s ease);
-    background: url('/static/menubg.png') #000 center no-repeat;
+    background: url('/assets/backgrounds/menubg.png') #000 center no-repeat;
     top: 0;
     right: 0;
     height: 100%;

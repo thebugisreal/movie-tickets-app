@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, Breadcrumb } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-class Posts extends Component {
-
-  showPosts() {
+class NewsListPage extends Component {
+  showContent() {
     const {match} = this.props;
     const {url} = match;
     return(
@@ -29,16 +28,16 @@ class Posts extends Component {
             <Col>
             <Breadcrumb>
               <li className="breadcrumb-item">
-                <Link to="/">Home</Link>
+                <Link to="/">Trang chủ</Link>
               </li>
               <li className="active breadcrumb-item" aria-current="page">
-                Posts
+                Tin mới &amp; Ưu đãi
               </li>
             </Breadcrumb>
             </Col>
           </Row>
           <Row>
-            { this.showPosts() }
+            { this.showContent() }
           </Row>
         </Container>
       </div>
@@ -48,7 +47,6 @@ class Posts extends Component {
 
 const mapStateToProps = state => ({
   posts: state.posts.items
-  //------state.[movieAction.js].[movieReducer.js]
 });
 
-export default connect(mapStateToProps, null)(Posts);
+export default connect(mapStateToProps, null)(NewsListPage);
