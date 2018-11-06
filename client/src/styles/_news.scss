@@ -1,6 +1,5 @@
 .news {
-  background: #080808;
-
+  
   &__nav > * {
     @include transition(all .3s ease);
     @include font-size(18px);

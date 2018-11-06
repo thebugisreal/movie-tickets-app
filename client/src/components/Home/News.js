@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Container } from 'reactstrap';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
@@ -23,9 +24,9 @@ class News extends Component {
       >
         { this.props.posts.map(item => (
           <div key={ item._id }>
-            <a href="https://google.com">
+            <Link to={`/posts/${item.slug}`} className="w-100">
               <img src={ item.thumbnail } alt={item.title} />
-            </a>
+            </Link>    
           </div>
         )) }
       </OwlCarousel>
@@ -34,7 +35,7 @@ class News extends Component {
 
   render() {
     return (
-      <section className="news">
+      <section className="news bg-custom">
         <Container>
           <div className="w-100 d-flex justify-content-between">
             <h5 className="pt-4 text-light">

@@ -15,3 +15,12 @@
 @import 'styles/routes/page-movies';
 // footer
 @import 'styles/footer';
+
+.bg-custom {
+  background: #080808;
+
+  & .breadcrumb {
+    background-color: #1b1b1b;
+  }
+  
+}

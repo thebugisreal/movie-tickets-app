@@ -113,7 +113,7 @@ class Movie extends Component {
 
   render() {
     return (
-      <section className="movie">
+      <section className="movie bg-custom">
         <Container>
           <div className="w-100 d-flex justify-content-between">
             <h5 className="pt-4 text-light">

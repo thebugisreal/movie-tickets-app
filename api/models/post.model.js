@@ -7,6 +7,7 @@ const postSchema = new Schema({
 		required: true
 	},
 	body: String,
+	slug: String,
 	thumbnail: String,
 	image: String,
 	timeLimit: String

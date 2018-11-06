@@ -5,9 +5,25 @@ import { Container, Row, Col, Breadcrumb } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Posts extends Component {
+
+  showPosts() {
+    const {match} = this.props;
+    const {url} = match;
+    return(
+       this.props.posts.map(item => (
+        <Col key={item._id} xs="6" sm="4" lg="3">
+          <Link to={`${url}/${item.slug}`} className="d-flex flex-column">
+            <img className="w-100" src={ item.thumbnail } alt={ item.title } />
+            <p className="my-3"><FontAwesomeIcon className="mr-2" icon={['far', 'calendar-alt']} /> { item.timeLimit }</p>
+          </Link>
+        </Col>
+      ))
+    )
+  }
+
   render() {
     return (
-      <div className="page-movies py-4">
+      <div className="bg-custom py-4">
         <Container>
           <Row className="mb-2">
             <Col>
@@ -22,14 +38,7 @@ class Posts extends Component {
             </Col>
           </Row>
           <Row>
-          { this.props.posts.map(item => (
-            <Col key={item._id} xs="6" sm="4" lg="3">
-              <a className="d-flex flex-column" href="https://google.com" title={ item.title }>
-                <img className="w-100" src={ item.thumbnail } alt={ item.title } />
-                <p className="my-3"><FontAwesomeIcon className="mr-2" icon={['far', 'calendar-alt']} /> { item.timeLimit }</p>
-              </a>
-            </Col>
-          )) }
+            { this.showPosts() }
           </Row>
         </Container>
       </div>

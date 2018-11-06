@@ -21,7 +21,8 @@ module.exports.getPost = async (req, res) => {
 module.exports.addPost = async (req, res) => {
 	const newPost = new Post({
     title: req.body.title,
-    body: req.body.body,
+		body: req.body.body,
+		slug: req.body.slug,
 		thumbnail: req.body.thumbnail,
 		timeLimit: req.body.timeLimit
   });
