@@ -24,7 +24,7 @@ class News extends Component {
       >
         { this.props.posts.map(item => (
           <div key={ item._id }>
-            <Link to={`/posts/${item.slug}`} className="w-100">
+            <Link to={`/news/${item.slug}`} className="w-100">
               <img src={ item.thumbnail } alt={item.title} />
             </Link>    
           </div>

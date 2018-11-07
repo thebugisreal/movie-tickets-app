@@ -11,7 +11,7 @@ export default () => {
     <div>
       <Slider />
       <Movie />
-      <Banner url={"./assets/banners/1.png"} title={"Download Now"}/>
+      <Banner url={"/news/cuoi-tuan-xem-phim-tha-ga"} img={"./assets/banners/1.png"} title={"Download Now"}/>
       <News />
       <Promotion />
       <QuickBooking />
