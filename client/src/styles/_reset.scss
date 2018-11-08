@@ -8,7 +8,7 @@ a {
 }
 
 p {
-	margin: 0;
+	margin-bottom: 5px;
 }
 
 ul, li {
@@ -18,4 +18,9 @@ ul, li {
 
 button, input {
   outline: none!important;
+}
+
+.form-control:focus {
+	box-shadow: none!important;
+	border-color: inherit!important;
 }

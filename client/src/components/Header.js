@@ -1,26 +1,18 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
-import {
-	Container,
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  Nav,
-  NavItem,
-  NavLink } from 'reactstrap';
-
+import { Row, Col, Badge } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
+const MenuLink = ({ label, to, activeOnlyWhenExact, badge = false }) => {
   return (
     <Route path={to} exact={activeOnlyWhenExact} children={({match}) => {
       let active = match ? 'active' : '';
       return (
-        <NavItem className={`mr-3 header__item ${active}`}>
-          <Link to={to} className="nav-link">
-            {label}
+        <span className="mr-2 mr-xl-3">
+          <Link to={to} className={`header__item ${active}`}>
+            {label} {badge ? <Badge className="position-relative" style={{top: '-5px'}} color="danger">New</Badge> : ''}
           </Link>
-        </NavItem>
+        </span>
       )
     }}/>
   )
@@ -44,37 +36,45 @@ class Header extends Component {
 
   render() {
     return (
-    	<header className="header">
-        <Navbar dark className="header__nav" expand="lg">
-          <Container>
-            <Link to="/" className="header__logo font-weight-bold mr-5 navbar-brand">
+    	<header className="header pt-3 pb-2 pb-md-0">
+        <Row className="d-flex m-0">
+          <Col xs="7" sm="6" lg="2" className="pt-lg-1 pb-3 pb-lg-0 d-flex justify-content-lg-end px-lg-0">
+            <Link to="/" className="header__logo pr-1 font-weight-bold">
               CGV Cinemas
             </Link>
-            <NavbarToggler onClick={this.toggle} />
-            <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav className="d-flex w-100" navbar>
-                <MenuLink label="PHIM" to="/movies" />
-                <MenuLink label="RẠP CGV" to="/cinema" />
-                <MenuLink label="TIN MỚI &amp; ƯU ĐÃI" to="/news" />
-                <NavItem className="mr-3">
-                  <NavLink href="#">THÀNH VIÊN</NavLink>
-                </NavItem>
-                <NavItem className="ml-lg-auto my-2 my-md-0 d-flex">
-                  <NavLink className="header__login mr-3 px-2 border position-relative" href="#">
-                  	<FontAwesomeIcon className="mr-2" icon="user" />
-                    ĐĂNG NHẬP
-                  </NavLink>
-                  <NavLink className="ml-4 ml-lg-3" href="#">
-                    <FontAwesomeIcon icon="search" />
-                  </NavLink>
-                </NavItem>
-              </Nav>
-            </Collapse>
-            </Container>
-        </Navbar> 
+          </Col>
+          <Col sm="12" lg="9" xl="8" className="h-100 order-3 order-lg-2 d-flex flex-column">
+            <form className="position-relative mb-2">
+              <input className="header__search w-100" type="text" placeholder="Tìm kiếm tên phim nhanh" />
+              <button className="header__submit h-100 position-absolute" type="submit"><FontAwesomeIcon icon="search" /></button>
+            </form>
+            <div className="pb-2 d-none d-md-flex justify-content-between">
+              <div>
+                <MenuLink label="Phim" to="/movies" />
+                <MenuLink label="Tin Mới - Ưu Đãi" to="/news" />
+                <MenuLink label="Rạp CGV" to="/cinema" />
+                <MenuLink label="Thành Viên" to="/members" />
+                <MenuLink badge="true" label="Cultureplex" to="/cultureplex" />
+              </div>
+              <div>
+                <Link to="/" className="header__link ml-2 ml-xl-3">Vkaao</Link>
+                <Link to="/" className="header__link ml-2 ml-xl-3">Magazine</Link>
+                <Link to="/" className="header__link ml-2 ml-xl-3">Cinemas</Link>
+                <Link to="/" className="header__link ml-2 ml-xl-3">Offers</Link>
+                <Link to="/" className="header__link ml-2 ml-xl-3">Advertise</Link>
+                <Link to="/" className="header__link ml-2 ml-xl-3">Gift Cards</Link>
+              </div>
+            </div>
+          </Col>
+          <Col xs="5" sm="6" lg="1" xl="2" className="d-flex pb-3 pb-lg-0 order-2 order-lg-3 justify-content-end justify-content-lg-start pt-xl-1 px-lg-0">
+            <div className="header__btn header__btn--login d-none d-xl-block mr-3">Sign In</div>
+            <FontAwesomeIcon className="header__btn header__btn--open" icon="bars" />
+          </Col>
+        </Row>
       </header>     
     );
   }
 }
 
 export default Header;
+

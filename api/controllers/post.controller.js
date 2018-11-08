@@ -24,6 +24,7 @@ module.exports.addPost = async (req, res) => {
 		body: req.body.body,
 		slug: req.body.slug,
 		thumbnail: req.body.thumbnail,
+		image: req.body.image,
 		timeLimit: req.body.timeLimit
   });
 	try {

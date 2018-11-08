@@ -6,15 +6,16 @@ import { fetchMovies } from './actions/movieActions';
 import { fetchPosts } from './actions/postActions';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import routes from './routes';
+import ScrollToTop from './components/ScrollToTop';
 import Header from './components/Header';
 import Footer from './components/Footer';
 // font-awesome
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
-import { faUser, faSearch, faAngleLeft, faFilm, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faSearch, faAngleLeft, faFilm, faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
 // add font icon to library
-library.add(fab, far, faUser, faSearch, faAngleLeft, faFilm, faTimes, far)
+library.add(fab, far, faUser, faSearch, faAngleLeft, faFilm, faTimes, faBars, far)
 
 class App extends Component {
 
@@ -26,14 +27,16 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <div className="position-relative">
-          <Header />
-          <Switch>
-            { this.showContent(routes) }
-          </Switch>
-          <Footer />
-        </div>
+      <Router onUpdate={() => window.scrollTo(0, 0)}>
+        <ScrollToTop>
+          <div className="position-relative">
+            <Header />
+            <Switch>
+              { this.showContent(routes) }
+            </Switch>
+            <Footer />
+          </div>
+        </ScrollToTop>
       </Router>
     );
   }

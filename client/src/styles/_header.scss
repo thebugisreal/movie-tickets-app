@@ -1,9 +1,6 @@
 .header {
-
-  &__nav {
-    background: #1b1b1b;
-    box-shadow: 0 8px 12px rgba(0,0,0,.2);
-  }
+  background: #1b1b1b;
+  box-shadow: 0 8px 12px rgba(0,0,0,.2);
 
   &__item.active > * {
     color: #ffce26!important;
@@ -11,25 +8,73 @@
 
   &__logo {
     @include font-size(24px);
-  -webkit-text-fill-color: white;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: $primary-color;
-  text-shadow: 0px 0px 25px $primary-color;
+    color: #ffce26!important;
+    line-height: 1;
+    text-shadow: 0px 0px 25px #ffce26;
   }
 
-  &__login {
+  &__search {
+    border: none;
+    border-radius: .15rem;
+    font-size: .8rem;
+    padding: .6rem 2.2rem;
+    background: hsla(0,0%,87%,.12);
+    color: #fff;
+  }
+
+  &__submit {
+    left: 0;
+    border: none;
+    background: none;
+    color: #9a9a9a;
+    padding: 0 .8rem;
+    font-size: .8rem;
+  }
+
+  &__item {
+    font-size: .8rem;
+  }
+
+  &__link {
+    color: #b3b2b2!important;
+    font-size: .7rem;
+  }
+
+  &__btn {
     @include transition(all .3s ease);
+    cursor: pointer;
     &:hover {
-      border-color: $primary-color!important;
+      opacity: .8;
     }
-    &:after {
-      @include pseudo;
-    height: 60%;
-    width: 1px;
-    right: -23px;
-    background: #6d6d6d;
-    top: 8px;
+
+    &--login {
+      color: #fff;
+      background-color: #00499c;
+      border-radius: .25rem;
+      padding: .2rem .7rem .3rem;
+      font-size: 12px;
+      height: max-content;
+    }
+    &--open {
+      @include bp-xl{ font-size: 1.1rem; color: #5f5f5f }
+      color: #ffce26;
+      font-size: 2rem;
     }
   }
+
+  // &__login {
+  //   @include transition(all .3s ease);
+  //   &:hover {
+  //     border-color: $primary-color!important;
+  //   }
+  //   &:after {
+  //     @include pseudo;
+  //   height: 60%;
+  //   width: 1px;
+  //   right: -23px;
+  //   background: #6d6d6d;
+  //   top: 8px;
+  //   }
+  // }
   
 }
