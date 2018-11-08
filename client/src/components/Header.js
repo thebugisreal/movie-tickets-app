@@ -36,7 +36,7 @@ class Header extends Component {
 
   render() {
     return (
-    	<header className="header pt-3 pb-2 pb-md-0">
+    	<header className="header pt-3 pb-1">
         <Row className="d-flex m-0">
           <Col xs="7" sm="6" lg="2" className="pt-lg-1 pb-3 pb-lg-0 d-flex justify-content-lg-end px-lg-0">
             <Link to="/" className="header__logo pr-1 font-weight-bold">

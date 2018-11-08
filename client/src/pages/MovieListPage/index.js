@@ -6,7 +6,7 @@ import { Container, Row, Col, Breadcrumb } from 'reactstrap';
 class MovieListPage extends Component {
   render() {
     return (
-      <div className="movieListPage bg-custom py-4">
+      <div className="movieListPage page py-4">
         <Container>
           <Row className="mb-2">
             <Col>

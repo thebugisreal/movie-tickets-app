@@ -1,47 +1,41 @@
 import React from 'react';
-import { Container } from 'reactstrap';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 export default () => {
   return (      
-    <section className="slider py-4">
-      <Container>
-        <div className="slider__nav position-relative"></div>
-        <OwlCarousel
-          className="owl-theme"
-          loop
-          margin={10}
-          nav
-          items={1}
-          autoplay={true}
-          navContainer={'.slider__nav'}
-          dotsContainer={'.slider__dot'}
-        >
-          <div className="item">
-            <img src="./assets/sliders/1.jpg" alt="test" />
-          </div>
-          <div className="item">
-            <img src="./assets/sliders/2.jpg" alt="test" />
-          </div>
-          <div className="item">
-            <img src="./assets/sliders/3.jpg" alt="test" />
-          </div>
-          <div className="item">
-            <img src="./assets/sliders/980x448_41.jpg" alt="test" />
-          </div>
-          <div className="item">
-            <img src="./assets/sliders/980x448_46.jpg" alt="test" />
-          </div>
-          <div className="item">
-            <img src="./assets/sliders/cgv_shortfilm_app-banner_180620_2.jpg" alt="test" />
-          </div>
-          <div className="item">
-            <img src="./assets/sliders/cine_lounge_web__980x448.jpg" alt="test" />
-          </div>
-        </OwlCarousel>
-      </Container>
+    <section className="slider">
+      <div className="slider__nav position-relative"></div>
+      <OwlCarousel
+        className="owl-theme"
+        loop
+        margin={10}
+        nav
+        items={1}
+        autoplay={true}
+        navContainer={'.slider__nav'}
+        dotsContainer={'.slider__dot'}
+      >
+        <div className="item">
+          <img src="./assets/sliders/Venom-Banner.png" alt="Venom" />
+        </div>
+        <div className="item">
+          <img src="./assets/sliders/Bloodstock-3-weeks-banner.jpg" alt="Bloodstock 3" />
+        </div>
+        <div className="item">
+          <img src="./assets/sliders/Home-Again-Movie-Banner.png" alt="Home Again" />
+        </div>
+        <div className="item">
+          <img src="./assets/sliders/Lightning-In-A-Bottle-2017-Banner.jpg" alt="Lightning in a Bottle" />
+        </div>
+        <div className="item">
+          <img src="./assets/sliders/ROTR-Sold-Out-Banner.jpg" alt="ROTR Sold Out" />
+        </div>
+        <div className="item">
+          <img src="./assets/sliders/star-wars-last-jedi-banner.jpg" alt="Start Wars" />
+        </div>
+      </OwlCarousel>
       <div className="position-relative d-flex justify-content-center">
         <div className="slider__dot position-absolute"></div>
       </div>

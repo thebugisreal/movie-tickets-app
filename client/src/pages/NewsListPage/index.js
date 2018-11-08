@@ -22,7 +22,7 @@ class NewsListPage extends Component {
 
   render() {
     return (
-      <div className="bg-custom py-4">
+      <div className="page py-4">
         <Container>
           <Row className="mb-2">
             <Col>

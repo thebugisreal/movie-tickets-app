@@ -35,7 +35,7 @@ class News extends Component {
 
   render() {
     return (
-      <section className="news bg-custom">
+      <section className="news">
         <Container>
           <div className="w-100 d-flex justify-content-between">
             <h5 className="pt-4 text-light">

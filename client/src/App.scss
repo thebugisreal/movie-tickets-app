@@ -15,8 +15,10 @@
 // footer
 @import 'styles/footer';
 
-.bg-custom {
+body {
   background: #080808;
+}
+.page {
 
   & .breadcrumb {
     background-color: #1b1b1b;

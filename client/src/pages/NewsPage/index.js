@@ -11,7 +11,7 @@ class NewsPage extends Component {
     const post = this.props.posts.filter(item => item.slug === slug)[0];
     return(
       <div>
-        <Row className="mb-2">
+        <Row className="mb-2 page">
           <Col>
             <Breadcrumb>
               <li className="breadcrumb-item">
@@ -26,7 +26,7 @@ class NewsPage extends Component {
             </Breadcrumb>
           </Col>
         </Row>
-        <div className="bg-custom__body">
+        <div className="page__body">
           <Row>
             <Col className="mb-2"><h2>{ post.title }</h2></Col>
           </Row>

@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 
 export default () => {
   return (
-    <section className="promotion bg-custom py-3 py-sm-4">
+    <section className="promotion py-3 py-sm-4">
       <Container>
         <Row>
           <Col xs="6" sm="3" className="pr-1 pr-sm-0">
