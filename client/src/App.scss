@@ -12,6 +12,7 @@
 @import 'styles/quickBooking';
 // pages
 @import 'styles/pages/movieListPage';
+@import 'styles/pages/moviePage';
 // footer
 @import 'styles/footer';
 
@@ -19,22 +20,15 @@ body {
   background: #080808;
 }
 .page {
-
-  & .breadcrumb {
-    background-color: #1b1b1b;
-  }
-
+  & .breadcrumb { background-color: #1b1b1b }
   &__body {
     background-color: #fff;
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: .25rem;
-
     h2 {
       font-size: 1.5rem;
       color: #ff3a3a;
     }
-
   }
-  
 }

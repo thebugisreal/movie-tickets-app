@@ -1,6 +1,7 @@
 import React from 'react';
 import HomePage from './pages/HomePage';
 import MovieListPage from './pages/MovieListPage';
+import MoviePage from './pages/MoviePage';
 import NewsListPage from './pages/NewsListPage';
 import NewsPage from './pages/NewsPage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -13,8 +14,13 @@ const routes = [
   },
   {
     path: '/movies',
-    exact: false,
-    main: () => <MovieListPage />
+    exact: true,
+    main: ({match}) => <MovieListPage match={match} />
+  },
+  {
+    path: '/movies/:slug',
+    exact: true,
+    main: ({match}) => <MoviePage match={match} />
   },
   {
     path: '/news',

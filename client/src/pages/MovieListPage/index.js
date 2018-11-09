@@ -4,6 +4,33 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, Breadcrumb } from 'reactstrap';
 
 class MovieListPage extends Component {
+
+  showContent() {
+    const { match } = this.props;
+    const { url } = match;
+    return(
+      this.props.movies.map(item => (
+        <Col key={item._id} xs="6" sm="4" lg="3" className="d-flex flex-column position-relative">
+          <span
+            className="movie__rating movie__rating--fix position-absolute"
+            style={ { backgroundPosition: item.rated.position } }
+          >
+            { item.rated.name }
+          </span>
+          <Link className="movieListPage__link position-relative" to={`${url}/${item.slug}`} title={ item.name }>
+            <img className="w-100" src={ item.thumbnail } alt={ item.name } />
+          </Link>          
+          <div>
+            <h2 className="movieListPage__title pt-2"><Link to={`${url}/${item.slug}`} title={ item.name }>{ item.name }</Link></h2>
+            <p className="movieListPage__decs mb-1"><b>Thể loại: </b>{ item.genre.join(', ') }</p>
+            <p className="movieListPage__decs mb-1"><b>Thời lượng: </b>{ item.runningTime }</p>
+            <p className="movieListPage__decs mb-3"><b>Khởi chiếu: </b>{ item.releaseDate }</p>
+          </div>
+        </Col>
+      ))
+    )
+  }
+
   render() {
     return (
       <div className="movieListPage page py-4">
@@ -21,23 +48,7 @@ class MovieListPage extends Component {
             </Col>
           </Row>
           <Row>
-          { this.props.movies.map(item => (
-            <Col key={item._id} xs="6" sm="4" lg="3" className="d-flex flex-column position-relative">
-              <span
-                className="movie__rating movie__rating--fix position-absolute"
-                style={ { backgroundPosition: item.rated.position } }
-              >
-                { item.rated.name }
-              </span>
-              <a href="https://google.com" title={ item.name }><img className="w-100" src={ item.thumbnail } alt={ item.name } /></a>          
-              <div>
-                <h2 className="movieListPage__title pt-2"><a href="https://google.com" title={ item.name }>{ item.name }</a></h2>
-                <p className="movieListPage__decs mb-1"><b>Thể loại: </b>{ item.genre.join(', ') }</p>
-                <p className="movieListPage__decs mb-1"><b>Thời lượng: </b>{ item.runningTime }</p>
-                <p className="movieListPage__decs mb-3"><b>Khởi chiếu: </b>{ item.releaseDate }</p>
-              </div>
-            </Col>
-          )) }
+            { this.props.movies.length !== 0 ? this.showContent() : '' }
           </Row>
         </Container>
       </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -54,16 +55,18 @@ class Movie extends Component {
             >
               { item.rated.name }
             </span>
-            <a href="https://google.com">
+            <Link to={`/movies/${item.slug}`}>
               <img src={ item.thumbnail } alt={item.name} />
-            </a>
+            </Link>
             <div className="movie__box position-absolute w-100 py-3 d-flex flex-column align-items-center">
               <h1 className="movie__title text-light px-3 pb-1">{ item.name }</h1>
               <div className="d-flex justify-content-center w-100 text-white">
-                <div className="movie__btn rounded font-weight-bold">XEM CHI TIẾT</div>
+                <div className="movie__btn rounded font-weight-bold">
+                  <Link to={`/movies/${item.slug}`}>XEM CHI TIẾT</Link>
+                </div>
                 <div 
                   className="movie__btn rounded font-weight-bold"
-                  onClick={ () => this.handleShowBox(item.slug) }
+                  onClick={ () => this.handleShowBox(item.youtube) }
                 >
                   PLAY TRAILER
                 </div>

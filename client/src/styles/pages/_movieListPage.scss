@@ -5,6 +5,19 @@
     line-height: 1.5;
   }
 
+  &__link {
+    overflow: hidden;
+
+    img {
+      @include transition(all .3s ease);
+    }
+
+    &:hover img {
+      @include transform(scale(1.1));
+    }
+
+  }
+
   &__decs {
     @include font-size(14px);
     color: #999;

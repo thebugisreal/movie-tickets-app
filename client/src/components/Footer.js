@@ -6,6 +6,11 @@ class Footer extends Component {
   render() {
     return (
       <footer id="footer" className="footer">
+				{/* <section className="service">
+					<FontAwesomeIcon icon="ticket-alt" />
+					<FontAwesomeIcon icon="user-astronaut" />
+					<FontAwesomeIcon icon="envelope" />
+				</section> */}
         <Container>
         	<Row className="pt-3 pt-sm-5 pb-2">
         		<Col lg="3" md="6" sm="12">
