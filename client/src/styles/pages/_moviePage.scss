@@ -1,0 +1,80 @@
+.moviePage {
+  overflow: hidden;
+  
+  &__overlay {
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(5px);
+    height: -webkit-fill-available;
+    max-height: 370px;
+  }
+  
+  &__container {
+    margin-top: 150px;
+  }
+
+  &__text {
+    font-size: .8rem;
+    color: #aaa;
+    font-weight: 500;
+  }
+
+  &__booking {
+    @include transition(all .3s ease);
+    cursor: pointer;
+    background: #00499c;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding: .4rem 3rem .5rem;
+    min-width: 220px;
+    &:hover {
+      background:#003d82;
+    }
+  }
+
+  &__social {
+    @include transition(all .3s ease);
+    color: #aaa;
+    width: 30px;
+    height: 30px;
+    border: 1px solid;
+    cursor: pointer;
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__tags {
+    color: #999;
+    background: #151515;
+    border-radius: 1rem;
+    padding: .1rem .6rem;
+    font-size: .8rem;
+  }
+
+  &__genre {
+    border: 1px solid #aaa;
+    border-radius: 1rem;
+    padding: .1rem .4rem .2rem;
+    font-size: .8rem;
+    color: #aaa;
+  }
+
+  .nav-link {
+    @include transition(all .3s ease);
+    cursor: pointer;
+    border-bottom: 1px solid;
+    border-color: #080808;
+    color: #aaa!important;
+    &:hover {
+      border-color: #fff;
+    }
+  }
+
+  .nav-link.active {
+    color: #fff!important;
+    border-color: #fff;
+  }
+
+}

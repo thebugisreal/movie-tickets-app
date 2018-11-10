@@ -1,0 +1,31 @@
+.bookingPage {
+
+  &__nav {
+    background: #0a0a0a;
+    color: #797979;
+    a {
+      @include transition(all .3s ease);
+      color: #797979!important;
+      &:hover {
+        color: #fff!important;
+      }
+    }
+  }
+
+  &__step {
+    @include transition(all .3s ease);
+    border-bottom: 1px solid;
+    border-color: transparent;
+    line-height: 40px;
+    cursor: pointer;
+    &:hover {
+      color: #fff;
+      border-color: $primary-color;
+    }
+    &.active {
+      color: #fff;
+      border-color: $primary-color;
+    }
+  }
+  
+}
