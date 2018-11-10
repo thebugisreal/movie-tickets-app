@@ -5,6 +5,7 @@ import MoviePage from './pages/MoviePage';
 import NewsListPage from './pages/NewsListPage';
 import NewsPage from './pages/NewsPage';
 import NotFoundPage from './pages/NotFoundPage';
+import BookingPage from './pages/BookingPage';
 
 const routes = [
   {
@@ -21,6 +22,11 @@ const routes = [
     path: '/movies/:slug',
     exact: true,
     main: ({match}) => <MoviePage match={match} />
+  },
+  {
+    path: '/movies/:slug/booking',
+    exact: true,
+    main: ({match}) => <BookingPage match={match} />
   },
   {
     path: '/news',
