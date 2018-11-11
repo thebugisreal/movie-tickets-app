@@ -40,7 +40,7 @@ const routes = [
   },
   {
     path: '',
-    exact: false,
+    exact: true,
     main: () => <NotFoundPage />
   }
 ]

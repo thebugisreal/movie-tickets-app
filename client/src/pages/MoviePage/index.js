@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import Ads from '../../components/Movie/Ads';
 import Tags from '../../components/Movie/Tags';
+import ShowTimes from '../../components/Movie/ShowTimes';
 import MovieInfo from '../../components/Movie/MovieInfo';
 import SocialMedia from '../../components/Movie/SocialMedia';
 import MovieDetails from '../../components/Movie/MovieDetails';
@@ -42,6 +43,7 @@ class MoviePage extends Component {
               <SocialMedia />
             </Col>
           </Row>
+          <ShowTimes movie={ movie } />
         </Container>
       </div>
     )

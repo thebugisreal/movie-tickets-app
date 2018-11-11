@@ -60,7 +60,6 @@ class MovieDetails extends Component {
           <TabPane tabId="2">
             <Row>
               <Col sm="12">
-                <p className="mb-3 text-white">&raquo; TRAILER PHIM:</p>
                 <div>
                   <iframe title="watching..." width="100%" height="315" src={`https://www.youtube.com/embed/${this.props.movie.youtube}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </div> 

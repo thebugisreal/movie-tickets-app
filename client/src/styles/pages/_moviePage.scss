@@ -77,4 +77,25 @@
     border-color: #fff;
   }
 
+  &__table {
+    &--title {
+      line-height: 40px;
+      background: #101010!important;
+      color: #fff;
+    }
+
+    &--list {
+      @include transition(all .3s ease);
+      border-color: #1b1b1b!important;
+      line-height: 45px;
+      cursor: pointer;
+      &:hover {
+        color: $primary-color!important;
+      }
+      &:last-child {
+        border: none!important;
+      }
+    }
+  }
+
 }

@@ -13,9 +13,9 @@ import Footer from './components/Footer';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
-import { faUser, faSearch, faAngleLeft, faFilm, faTimes, faBars, faUserTie, faGlobeAsia, faTicketAlt, faUserAstronaut, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faArrowRight, faSearch, faClock, faAngleLeft, faFilm, faTimes, faBars, faUserTie, faGlobeAsia, faTicketAlt, faUserAstronaut, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 // add font icon to library
-library.add(fab, far, faUser, faSearch, faAngleLeft, faFilm, faTimes, faBars, faUserTie, faGlobeAsia, faTicketAlt, faUserAstronaut, faEnvelope, far)
+library.add(fab, far, faUser, faArrowRight, faSearch, faClock, faAngleLeft, faFilm, faTimes, faBars, faUserTie, faGlobeAsia, faTicketAlt, faUserAstronaut, faEnvelope, far)
 
 class App extends Component {
 

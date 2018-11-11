@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, Breadcrumb } from 'reactstrap';
 
 class MovieListPage extends Component {
-
   showContent() {
     const { match } = this.props;
     const { url } = match;

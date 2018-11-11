@@ -4,6 +4,7 @@ import { chooseMovie, chooseCinema, chooseDate, chooseTime, resetBooking } from 
 import { Container, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Select from './Select.QuickBooking';
+import { withRouter } from 'react-router'
 
 class QuickBooking extends Component {
   constructor(props) {
@@ -59,6 +60,7 @@ class QuickBooking extends Component {
 
   onReceiveTime(data) {
     this.props.chooseTime(data);
+    this.props.history.push(`/movies/${this.props.slug}/booking`);
   }
 
   render() {
@@ -168,7 +170,8 @@ class QuickBooking extends Component {
 const mapStateToProps = state => ({
   movies: state.movies.items,
   //------state.[movieAction.js].[movieReducer.js]
+  slug: state.movies.slug,
   booking: state.movies.booking
 });
 
-export default connect(mapStateToProps, { chooseMovie, chooseCinema, chooseDate, chooseTime, resetBooking })(QuickBooking);
+export default withRouter(connect(mapStateToProps, { chooseMovie, chooseCinema, chooseDate, chooseTime, resetBooking })(QuickBooking));
