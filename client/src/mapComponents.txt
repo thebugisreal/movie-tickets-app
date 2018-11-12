@@ -1,30 +1,34 @@
 App
-├── Header
+├── Header [/components]
 │  
-├── HomePage
-│   └── Slider
-│   └── Movie
-│   └── Banner
-│   └── News
-│   └── Promotion
-│   └── QuickBooking
-│       └── Select.QuickBooking
+├── HomePage ─────────────────────────────────────────────────────── /pages
+│   └── Slider ───────────────────────────────────────────────────── /components/Home
+│   └── Movie ────────────────────────────────────────────────────── /components/Home
+│   └── Banner ───────────────────────────────────────────────────── /components/Home
+│   └── News ─────────────────────────────────────────────────────── /components/Home
+│   └── Promotion ────────────────────────────────────────────────── /components/Home
+│   └── QuickBooking ─────────────────────────────────────────────── /components/Home
+│       └── Select.QuickBooking ──────────────────────────────────── /components/Home
 │        
-├── MovieListPage
-│   └── MoviePage
-│       └── MovieInfo
-│       └── Tags
-│        └── MovieDetails
-│        └── Ads
-│        └── SocialMedia
-│        └── ShowTimes
-│            └── BookingPage
+├── MovieListPage ────────────────────────────────────────────────── /pages
+│   └── MoviePage ────────────────────────────────────────────────── /pages
+│       └── MovieInfo ────────────────────────────────────────────── /components/Movie
+│       └── Tags ─────────────────────────────────────────────────── /components/Movie
+│       └── MovieDetails ─────────────────────────────────────────── /components/Movie
+│       └── Ads ──────────────────────────────────────────────────── /components/Movie
+│       └── SocialMedia ──────────────────────────────────────────── /components/Movie
+│       └── ShowTimes ────────────────────────────────────────────── /components/Movie
+│           └── BookingPage ──────────────────────────────────────── /pages
+│               └── Navbar ───────────────────────────────────────── /components/Booking
+│               └── BookingInfo ──────────────────────────────────── /components/Booking
+│               └── Ticket ───────────────────────────────────────── /components/Booking
+│               └── Purchase ─────────────────────────────────────── /components/Booking
 │
-├── NewsListPage
-│   └── NewsPage
+├── NewsListPage ─────────────────────────────────────────────────── /pages
+│   └── NewsPage ─────────────────────────────────────────────────── /pages
 │
-├── ScrollToTop 
+├── ScrollToTop ──────────────────────────────────────────────────── /components
 │
-├── NotFoundPage
+├── NotFoundPage ─────────────────────────────────────────────────── /pages
 │
-└── Footer
+└── Footer ───────────────────────────────────────────────────────── /components
