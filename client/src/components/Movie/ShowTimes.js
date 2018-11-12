@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { chooseMovie, chooseCinema, chooseDate, chooseTime } from '../../actions/movieActions';
+import { chooseCinema, chooseDate, chooseTime } from '../../actions/movieActions';
 import { Row, Col } from 'reactstrap';
 
 class ShowTimes extends Component {
-
-  componentWillMount() {
-    this.props.chooseMovie(this.props.movie.name);
-  }
-
   render(){
+    const { movie, listCinema, listDate, listTime } = this.props;
     return(
       <Row className="d-none d-md-block">
         <Col xl={{ size: 10, offset: 1 }}>
@@ -37,7 +33,7 @@ class ShowTimes extends Component {
           </Row>
           <Row className="border border-secondary mx-0">
             <Col md="6">
-              { this.props.listCinema.length !== 0 && this.props.listCinema.map((item, index) =>(
+              { listCinema.length !== 0 && listCinema.map((item, index) =>(
                 <div 
                   className="moviePage__table--list text-light border-bottom" 
                   onClick={ () => this.props.chooseCinema(item) } 
@@ -48,7 +44,7 @@ class ShowTimes extends Component {
               )) }
             </Col>
             <Col md="3" className="border-left border-right border-secondary">
-              { this.props.listDate.length !== 0 && this.props.listDate.map((item, index) => (
+              { listDate.length !== 0 && listDate.map((item, index) => (
                 <div 
                   className="moviePage__table--list text-light border-bottom" 
                   onClick={ () => this.props.chooseDate(item) } 
@@ -59,13 +55,13 @@ class ShowTimes extends Component {
               )) }
             </Col>
             <Col md="3">
-              { this.props.listTime.length !== 0 && this.props.listTime.map((item, index) => (
+              { listTime.length !== 0 && listTime.map((item, index) => (
                 <div 
                   className="moviePage__table--list text-light border-bottom" 
                   onClick={ () => this.props.chooseTime(item) } 
                   key={ index }
                 >
-                  <Link to={`/movies/${this.props.movie.slug}/booking`}>{ item }</Link>
+                  <Link to={`/movies/${movie.slug}/booking`}>{ item }</Link>
                 </div>
               )) }
             </Col>
@@ -77,9 +73,10 @@ class ShowTimes extends Component {
 }
 
 const mapStateToProps = state => ({
+  movie: state.movies.booking.chooseMovie,
   listCinema: state.movies.booking.listCinema,
   listDate: state.movies.booking.listDate,
   listTime: state.movies.booking.listTime
 })
 
-export default connect(mapStateToProps, { chooseMovie, chooseCinema, chooseDate, chooseTime })(ShowTimes);
+export default connect(mapStateToProps, { chooseCinema, chooseDate, chooseTime })(ShowTimes);

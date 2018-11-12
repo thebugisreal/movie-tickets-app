@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import Ads from '../../components/Movie/Ads';
 import Tags from '../../components/Movie/Tags';
@@ -10,10 +9,14 @@ import SocialMedia from '../../components/Movie/SocialMedia';
 import MovieDetails from '../../components/Movie/MovieDetails';
 
 class MoviePage extends Component {
+  render() {
+    return(
+      <div>{ this.props.movie && this.showContent() }</div>
+    )
+  }
+
   showContent() {
-    const { match } = this.props;
-    const { slug } = match.params;
-    const movie = this.props.movies.filter(item => item.slug === slug)[0];
+    const { movie } = this.props;
     return(
       <div className="moviePage w-100 position-relative pb-5">
         <div className="moviePage__overlay position-absolute w-100" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%,rgba(8,8,8,1) 100%), url(${movie.background})` }}></div>
@@ -24,9 +27,9 @@ class MoviePage extends Component {
             </Col>
             <Col xs="12" lg="9" className="pr-lg-0 pr-xl-3">
               <div className="d-flex justify-content-between flex-column flex-md-row">
-                <MovieInfo movie={ movie }/>
+                <MovieInfo />
                 <div className="justify-content-center d-flex mt-3 align-self-md-end moviePage__booking">
-                  <Link to={`/movies/${movie.slug}/booking`}>ĐẶT VÉ NGAY</Link>
+                  ĐẶT VÉ NGAY
                 </div>
               </div>
             </Col>
@@ -36,28 +39,22 @@ class MoviePage extends Component {
               <Tags />
             </Col>
             <Col xs="12" lg="6" className="mb-3">
-              <MovieDetails movie={ movie } />
+              <MovieDetails />
             </Col>
             <Col xs="12" lg="3">
               <Ads />
               <SocialMedia />
             </Col>
           </Row>
-          <ShowTimes movie={ movie } />
+          <ShowTimes />
         </Container>
       </div>
-    )
-  }
-
-  render() {
-    return(
-      <div>{ this.props.movies.length !== 0 ? this.showContent() : '' }</div>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  movies: state.movies.items
+  movie: state.movies.booking.chooseMovie
 })
 
 export default connect(mapStateToProps, null)(MoviePage);

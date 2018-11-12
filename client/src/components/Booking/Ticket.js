@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Row, Col, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Ticket extends Component {
   render() {
+    const { movie } = this.props;
     return(
       <div>
         <Row className="mx-0 py-4">
@@ -12,7 +14,7 @@ class Ticket extends Component {
             <p className="text-white-50">(vé 2D)</p>
           </Col>
           <Col xl="4" className="d-flex justify-content-center align-items-center">
-            <p className="text-info">85.000</p>
+            <p className="text-info">{ movie.price.toLocaleString('de-DE') }</p>
           </Col>
           <Col xl="4" className="d-flex pr-0 justify-content-end align-items-center">
             <button 
@@ -61,4 +63,8 @@ class Ticket extends Component {
   }
 }
 
-export default Ticket;
+const mapStateToProps = state => ({
+  movie: state.movies.booking.chooseMovie
+})
+
+export default connect(mapStateToProps, null)(Ticket);

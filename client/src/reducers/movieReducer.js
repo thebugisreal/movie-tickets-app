@@ -2,17 +2,15 @@ import { FETCH_MOVIES, CHOOSE_MOVIE, CHOOSE_CINEMA, CHOOSE_DATE, CHOOSE_TIME, RE
 
 const initialState = {
   items: [],
-  item: null,
-  slug: '',
   booking: {
-    movie: '',
     listMovie: [],
-    cinema: '',
+    chooseMovie: null,
     listCinema: [],
-    date: '',
+    chooseCinema: null,
     listDate: [],
-    time: '',
-    listTime: []
+    chooseDate: null,
+    listTime: [],
+    chooseTime: null
   }
 }
 
@@ -25,60 +23,59 @@ export default function(state = initialState, action) {
         items: action.payload,
         booking: {
           ...state.booking,
-          movie: '',
-          listMovie
+          listMovie,
+          chooseMovie: null
         }
       }
     case CHOOSE_MOVIE:
-      const item = state.items.filter(item => item.name === action.payload)[0];
-      const slug = item.slug;
-      const listCinema = item.cinema.map(item => item.name); // [cinema name 1, cinema name 2,...]
+      const chooseMovie = state.items.filter(item => item.name === action.payload)[0];
+      const listCinema = chooseMovie.cinema.map(item => item.name); // [cinema name 1, cinema name 2,...]
       return {
         ...state,
-        item,
-        slug,
         booking: {
           ...state.booking,
-          movie: action.payload,
-          cinema: '',
+          chooseMovie,
           listCinema,
-          date: '',
+          chooseCinema: null,
           listDate: [],
-          time: '',
-          listTime: []
+          chooseDate: null,
+          listTime: [],
+          chooseTime: null
         }
       }
     case CHOOSE_CINEMA:
-      const listDate = state.item.cinema.filter(item => item.name === action.payload)[0].info.map(item => item.date); // [date 1, date 2,...]
+      const chooseCinema = state.booking.chooseMovie.cinema.filter(item => item.name === action.payload)[0]
+      const listDate = chooseCinema.info.map(item => item.date); // [date 1, date 2,...]
       return {
         ...state,
         booking: {
           ...state.booking,
-          cinema: action.payload,
-          date: '',
+          chooseCinema,
           listDate,
-          time: '',
-          listTime: []
+          chooseDate: null,
+          listTime: [],
+          chooseTime: null
         }
       }
     case CHOOSE_DATE:
-      const filterCinema = state.item.cinema.filter(item => item.name === state.booking.cinema)[0];
-      const listTime = filterCinema.info.filter(item => item.date === action.payload)[0].times.map(item => item.time); // [time 1, time 2,...]
+      const chooseDate = state.booking.chooseCinema.info.filter(item => item.date === action.payload)[0];
+      const listTime = chooseDate.ticket.map(item => item.time); // [time 1, time 2,...]
       return {
         ...state,
         booking: {
           ...state.booking,
-          date: action.payload,
-          time: '',
-          listTime
+          chooseDate,
+          listTime,
+          time: null
         }
       }
     case CHOOSE_TIME:
+      const chooseTime = state.booking.chooseDate.ticket.filter(item => item.time === action.payload)[0];
       return {
         ...state,
         booking: {
           ...state.booking,
-          time: action.payload
+          chooseTime
         }
       }
     case RESET_BOOKING:
@@ -86,13 +83,13 @@ export default function(state = initialState, action) {
         ...state,
         booking: {
           ...state.booking,
-          movie: '',
-          cinema: '',
+          chooseMovie: null,
           listCinema: [],
-          date: '',
+          chooseCinema: null,
           listDate: [],
-          time: '',
-          listTime: []
+          chooseDate: null,
+          listTime: [],
+          chooseTime: null
         }
       }
     default:

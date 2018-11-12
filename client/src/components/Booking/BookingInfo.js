@@ -5,26 +5,27 @@ import { Row, Col } from 'reactstrap';
 
 class BookingInfo extends Component {
   render() {
+    const { movie, cinema, date, time } = this.props;
     return(
       <div>
         <div className="d-flex mb-3 align-items-center">
-          <h3 className="mr-4">{ this.props.movie }</h3>
+          <h3 className="mr-4">{ movie.name }</h3>
           <FontAwesomeIcon className="mr-2 text-white-50" icon="clock" />
-          <span>{ this.props.item.runningTime }</span>
+          <span>{ movie.runningTime }</span>
         </div>
-        <p className="text-white-50">{ this.props.item.decs }</p>
+        <p className="text-white-50">{ movie.decs }</p>
         <Row className="mx-0 py-4 border-bottom border-secondary">
           <Col xl="5" className="pl-0">
             <p className="text-white-50">Tên rạp</p>
-            <p>{ this.props.cinema }</p>
+            <p>{ cinema.name }</p>
           </Col>
           <Col xl="3">
             <p className="text-white-50">Ngày chiếu</p>
-            <p>{ this.props.date }</p>
+            <p>{ date.date }</p>
           </Col>
           <Col xl="3">
             <p className="text-white-50">Suất</p>
-            <p>{ this.props.time }</p>
+            <p>{ time.time }</p>
           </Col>
         </Row>
       </div>
@@ -33,11 +34,10 @@ class BookingInfo extends Component {
 }
 
 const mapStateToProps = state => ({
-  item: state.movies.item,
-  movie: state.movies.booking.movie,
-  cinema: state.movies.booking.cinema,
-  date: state.movies.booking.date,
-  time: state.movies.booking.time
+  movie: state.movies.booking.chooseMovie,
+  cinema: state.movies.booking.chooseCinema,
+  date: state.movies.booking.chooseDate,
+  time: state.movies.booking.chooseTime
 })
 
 export default connect(mapStateToProps, null)(BookingInfo);

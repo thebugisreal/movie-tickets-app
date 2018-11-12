@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { chooseMovie } from '../../actions/movieActions';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Breadcrumb } from 'reactstrap';
 
 class MovieListPage extends Component {
   showContent() {
-    const { match } = this.props;
+    const { movies, match } = this.props;
     const { url } = match;
     return(
-      this.props.movies.map(item => (
+      movies.map(item => (
         <Col key={item._id} xs="6" sm="4" lg="3" className="d-flex flex-column position-relative">
           <span
             className="movie__rating movie__rating--fix position-absolute"
@@ -16,14 +17,33 @@ class MovieListPage extends Component {
           >
             { item.rated.name }
           </span>
-          <Link className="movieListPage__link position-relative" to={`${url}/${item.slug}`} title={ item.name }>
+          <Link 
+            onClick={ () => this.props.chooseMovie(item.name) } 
+            className="movieListPage__link position-relative" 
+            to={`${url}/${item.slug}`} 
+            title={ item.name }
+          >
             <img className="w-100" src={ item.thumbnail } alt={ item.name } />
           </Link>          
           <div>
-            <h2 className="movieListPage__title pt-2"><Link to={`${url}/${item.slug}`} title={ item.name }>{ item.name }</Link></h2>
-            <p className="movieListPage__decs mb-1"><b>Thể loại: </b>{ item.genre.join(', ') }</p>
-            <p className="movieListPage__decs mb-1"><b>Thời lượng: </b>{ item.runningTime }</p>
-            <p className="movieListPage__decs mb-3"><b>Khởi chiếu: </b>{ item.releaseDate }</p>
+            <h2 className="movieListPage__title pt-2">
+              <Link 
+                onClick={ () => this.props.chooseMovie(item.name) }
+                to={`${url}/${item.slug}`} 
+                title={ item.name }
+              >
+                { item.name }
+              </Link>
+            </h2>
+            <p className="movieListPage__decs mb-1">
+              <b>Thể loại: </b>{ item.genre.join(', ') }
+            </p>
+            <p className="movieListPage__decs mb-1">
+              <b>Thời lượng: </b>{ item.runningTime }
+            </p>
+            <p className="movieListPage__decs mb-3">
+              <b>Khởi chiếu: </b>{ item.releaseDate }
+            </p>
           </div>
         </Col>
       ))
@@ -59,4 +79,4 @@ const mapStateToProps = state => ({
   movies: state.movies.items
 });
 
-export default connect(mapStateToProps, null)(MovieListPage);
+export default connect(mapStateToProps, { chooseMovie })(MovieListPage);

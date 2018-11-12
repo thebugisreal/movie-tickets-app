@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 
@@ -21,6 +22,7 @@ class MovieDetails extends Component {
   }
 
   render() {
+    const { movie } = this.props;
     return(
       <div>
         <Nav className="d-flex mb-3">
@@ -53,7 +55,7 @@ class MovieDetails extends Component {
           <TabPane tabId="1">
             <Row>
               <Col sm="12" className="text-white">
-                <p className="mb-4">{ this.props.movie.decs }</p>
+                <p className="mb-4">{ movie.decs }</p>
               </Col>
             </Row>
           </TabPane>
@@ -61,7 +63,7 @@ class MovieDetails extends Component {
             <Row>
               <Col sm="12">
                 <div>
-                  <iframe title="watching..." width="100%" height="315" src={`https://www.youtube.com/embed/${this.props.movie.youtube}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                  <iframe title="watching..." width="100%" height="315" src={`https://www.youtube.com/embed/${movie.youtube}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </div> 
               </Col>
             </Row>
@@ -79,4 +81,8 @@ class MovieDetails extends Component {
   }
 }
 
-export default MovieDetails;
+const mapStateToProps = state => ({
+  movie: state.movies.booking.chooseMovie
+})
+
+export default connect(mapStateToProps, null)(MovieDetails);

@@ -4,9 +4,10 @@ import { Row, Col, Button } from 'reactstrap';
 
 class Purchase extends Component {
   render() {
+    const { movie } = this.props;
     return(
       <div>
-        <img className="mb-3 w-100" src={ this.props.item.image } alt={ this.props.movie } />
+        <img className="mb-3 w-100" src={ movie.image } alt={ movie.name } />
         <Row className="mx-0 my-2">
           <Col xl="6" className="text-white-50 pl-0 d-flex align-items-center">
             Số lượng vé
@@ -44,8 +45,7 @@ class Purchase extends Component {
 }
 
 const mapStateToProps = state => ({
-  item: state.movies.item,
-  movie: state.movies.booking.movie
+  movie: state.movies.booking.chooseMovie
 })
 
 export default connect(mapStateToProps, null)(Purchase);

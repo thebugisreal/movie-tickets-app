@@ -30,5 +30,6 @@ class BookingPage extends Component {
 }
 
 // a.toLocaleString('de-DE');
+// Object.keys(obj).length;
 
 export default BookingPage;

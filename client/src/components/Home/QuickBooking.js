@@ -60,10 +60,12 @@ class QuickBooking extends Component {
 
   onReceiveTime(data) {
     this.props.chooseTime(data);
-    this.props.history.push(`/movies/${this.props.slug}/booking`);
+    this.props.history.push(`/movies/${this.props.booking.chooseMovie.slug}/booking`);
   }
 
   render() {
+    const { booking } = this.props;
+    console.log(booking);
     return (
       <div>
         <section id="quickBooking" className="quickBooking">
@@ -81,32 +83,32 @@ class QuickBooking extends Component {
               <Col md={{ size: 2, offset: 1 }} className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
                 <Select 
                   title={"TÊN PHIM"}
-                  name={ this.props.booking.movie }
-                  data={ this.props.booking.listMovie }
+                  name={ booking.chooseMovie ? booking.chooseMovie.name : '' }
+                  data={ booking.listMovie }
                   onReceive={ this.onReceiveMovie }
                 />
               </Col>
               <Col md="2" className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
                 <Select
                   title={"TÊN RẠP"}
-                  name={ this.props.booking.cinema }
-                  data={ this.props.booking.listCinema }
+                  name={ booking.chooseCinema ? booking.chooseCinema.name : '' }
+                  data={ booking.listCinema }
                   onReceive={ this.onReceiveCinema }
                 />
               </Col>
               <Col md="2" className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
                 <Select
                   title={"NGÀY CHIẾU"}
-                  name={ this.props.booking.date }
-                  data={ this.props.booking.listDate }
+                  name={ booking.chooseDate ? booking.chooseDate.date : '' }
+                  data={ booking.listDate }
                   onReceive={ this.onReceiveDate }
                 />
               </Col>
               <Col md="2" className="quickBooking__booth d-none d-sm-flex align-items-center position-relative">
                 <Select
                   title={"XUẤT CHIẾU"}
-                  name={ this.props.booking.time }
-                  data={ this.props.booking.listTime }
+                  name={ booking.chooseTime ? booking.chooseTime.time : '' }
+                  data={ booking.listTime }
                   onReceive={ this.onReceiveTime }
                 />
               </Col>
@@ -131,32 +133,32 @@ class QuickBooking extends Component {
           <div className="quickBooking__booth pt-5 px-3 d-flex d-sm-none align-items-center position-relative">
             <Select 
               title={"TÊN PHIM"}
-              name={ this.props.booking.movie }
-              data={ this.props.booking.listMovie }
+              name={ booking.chooseMovie ? booking.chooseMovie.name : '' }
+              data={ booking.listMovie }
               onReceive={ this.onReceiveMovie }
             />
           </div>
           <div className="quickBooking__booth pt-5 px-3  d-flex d-sm-none align-items-center position-relative">
             <Select
               title={"TÊN RẠP"}
-              name={ this.props.booking.cinema }
-              data={ this.props.booking.listCinema }
+              name={ booking.chooseCinema ? booking.chooseCinema.name : '' }
+              data={ booking.listCinema }
               onReceive={ this.onReceiveCinema }
             />
           </div>
           <div className="quickBooking__booth pt-5 px-3 d-flex d-sm-none align-items-center position-relative">
             <Select
               title={"NGÀY CHIẾU"}
-              name={ this.props.booking.date }
-              data={ this.props.booking.listDate }
+              name={ booking.chooseDate ? booking.chooseDate.date : '' }
+              data={ booking.listDate }
               onReceive={ this.onReceiveDate }
             />
           </div>
           <div className="quickBooking__booth pt-5 px-3 d-flex d-sm-none align-items-center position-relative">
             <Select
               title={"XUẤT CHIẾU"}
-              name={ this.props.booking.time }
-              data={ this.props.booking.listTime }
+              name={ booking.chooseTime ? booking.chooseTime.time : '' }
+              data={ booking.listTime }
               onReceive={ this.onReceiveTime }
             />
           </div>
@@ -168,9 +170,6 @@ class QuickBooking extends Component {
 }
 
 const mapStateToProps = state => ({
-  movies: state.movies.items,
-  //------state.[movieAction.js].[movieReducer.js]
-  slug: state.movies.slug,
   booking: state.movies.booking
 });
 
