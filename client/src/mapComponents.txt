@@ -1,0 +1,30 @@
+App
+├── Header
+│  
+├── HomePage
+│   └── Slider
+│   └── Movie
+│   └── Banner
+│   └── News
+│   └── Promotion
+│   └── QuickBooking
+│       └── Select.QuickBooking
+│        
+├── MovieListPage
+│   └── MoviePage
+│       └── MovieInfo
+│       └── Tags
+│        └── MovieDetails
+│        └── Ads
+│        └── SocialMedia
+│        └── ShowTimes
+│            └── BookingPage
+│
+├── NewsListPage
+│   └── NewsPage
+│
+├── ScrollToTop 
+│
+├── NotFoundPage
+│
+└── Footer
