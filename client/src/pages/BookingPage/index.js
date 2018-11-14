@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
 import Navbar from '../../components/Booking/Navbar';
 import BookingInfo from '../../components/Booking/BookingInfo';
-import Ticket from '../../components/Booking/Ticket';
 import Purchase from '../../components/Booking/Purchase';
+import Ticket from '../../components/Booking/Ticket';
+import Seat from '../../components/Booking/Seat';
+import Payment from '../../components/Booking/Payment';
 
 class BookingPage extends Component {
   render() {
-    const { match } = this.props;
+    const { match, showTicket, showPayment, showSeat } = this.props;
     const { slug } = match.params;
     return(
       <div>
@@ -17,7 +20,9 @@ class BookingPage extends Component {
             <Col xl="7" className="pl-0">
               <BookingInfo />
               {/* custom */}
-              <Ticket />
+              { showTicket && <Ticket /> }
+              { showSeat && <Seat />}
+              { showPayment && <Payment />}
             </Col>
             <Col xl={{ size: 4, offset: 1}} className="d-flex flex-column">
               <Purchase />
@@ -29,7 +34,12 @@ class BookingPage extends Component {
   }
 }
 
-// a.toLocaleString('de-DE');
 // Object.keys(obj).length;
 
-export default BookingPage;
+const mapStateToProps = state => ({
+  showTicket: state.movies.booking.isShowTicket,
+  showSeat: state.movies.booking.isShowSeat,
+  showPayment: state.movies.booking.isShowPayment
+})
+
+export default connect(mapStateToProps, null)(BookingPage);

@@ -40,9 +40,26 @@
     }
   }
 
-  &__input {
+  &__count {
     width: 40px;
     height: 40px;
+  }
+
+  &__seat {
+    @include transition(all .3s ease);
+    background: #333;
+    padding: .3rem;
+    line-height: 2;
+    font-size: .9rem;
+    cursor: pointer;
+    &:hover {
+      background: #222;
+    }
+    &.deactive {
+      background: #1b1b1b!important;
+      color: #aaa!important;
+      cursor: not-allowed!important;
+    }
   }
   
 }

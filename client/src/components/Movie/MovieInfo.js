@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class MovieInfo extends Component {
@@ -41,8 +40,4 @@ class MovieInfo extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  movie: state.movies.booking.chooseMovie
-})
-
-export default connect(mapStateToProps, null)(MovieInfo);
+export default (MovieInfo);

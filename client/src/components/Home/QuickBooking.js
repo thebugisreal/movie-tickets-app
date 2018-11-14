@@ -65,7 +65,6 @@ class QuickBooking extends Component {
 
   render() {
     const { booking } = this.props;
-    console.log(booking);
     return (
       <div>
         <section id="quickBooking" className="quickBooking">

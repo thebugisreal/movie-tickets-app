@@ -1,8 +1,29 @@
-import { FETCH_MOVIES, CHOOSE_MOVIE, CHOOSE_CINEMA, CHOOSE_DATE, CHOOSE_TIME, RESET_BOOKING } from '../actions/types';
+import { 
+  FETCH_MOVIES, 
+  CHOOSE_MOVIE, 
+  CHOOSE_CINEMA, 
+  CHOOSE_DATE, 
+  CHOOSE_TIME, 
+  RESET_BOOKING,
+  ADD_TICKET,
+  SUBTRACT_TICKET,
+  ADD_COMBO,
+  SUBTRACT_COMBO,
+  SHOW_TICKET,
+  SHOW_SEAT,
+  SHOW_PAYMENT 
+} from '../actions/types';
 
 const initialState = {
   items: [],
   booking: {
+    tickets: 1,
+    combo: 0,
+    amount: 0,
+    seat: null,
+    isShowTicket: true,
+    isShowSeat: false,
+    isShowPayment: false,
     listMovie: [],
     chooseMovie: null,
     listCinema: [],
@@ -75,7 +96,78 @@ export default function(state = initialState, action) {
         ...state,
         booking: {
           ...state.booking,
-          chooseTime
+          chooseTime,
+          seat: chooseTime.seat
+        }
+      }
+    case ADD_TICKET:
+      let addTickets = state.booking.tickets;
+      if (addTickets < 4) { addTickets++ }
+      return {
+        ...state,
+        booking: {
+          ...state.booking,
+          tickets: addTickets
+        }
+      }
+    case SUBTRACT_TICKET:
+      let subTickets = state.booking.tickets;
+      if (subTickets > 1) { subTickets-- }
+      return {
+        ...state,
+        booking: {
+          ...state.booking,
+          tickets: subTickets
+        }
+      }
+    case ADD_COMBO:
+      let addCombo = state.booking.combo;
+      if (addCombo < 10) { addCombo++ }
+      return {
+        ...state,
+        booking: {
+          ...state.booking,
+          combo: addCombo
+        }
+      }
+    case SUBTRACT_COMBO:
+      let subCombo = state.booking.combo;
+      if (subCombo > 0) { subCombo-- }
+      return {
+        ...state,
+        booking: {
+          ...state.booking,
+          combo: subCombo
+        }
+      }
+    case SHOW_TICKET:
+      return {
+        ...state,
+        booking: {
+          ...state.booking,
+          isShowTicket: true,
+          isShowSeat: false,
+          isShowPayment: false
+        }
+      }
+    case SHOW_SEAT:
+      return {
+        ...state,
+        booking: {
+          ...state.booking,
+          isShowSeat: true,
+          isShowTicket: false,
+          isShowPayment: false
+        }
+      }
+    case SHOW_PAYMENT:
+      return {
+        ...state,
+        booking: {
+          ...state.booking,
+          isShowPayment: true,
+          isShowTicket: false,
+          isshowSeat: false
         }
       }
     case RESET_BOOKING:
@@ -83,6 +175,13 @@ export default function(state = initialState, action) {
         ...state,
         booking: {
           ...state.booking,
+          tickets: 1,
+          combo: 0,
+          amount: 0,
+          seat: null,
+          isShowTicket: true,
+          isShowSeat: false,
+          isShowPayment: false,
           chooseMovie: null,
           listCinema: [],
           chooseCinema: null,

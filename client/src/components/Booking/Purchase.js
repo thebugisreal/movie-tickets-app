@@ -4,7 +4,7 @@ import { Row, Col, Button } from 'reactstrap';
 
 class Purchase extends Component {
   render() {
-    const { movie } = this.props;
+    const { movie, tickets, combo } = this.props;
     return(
       <div>
         <img className="mb-3 w-100" src={ movie.image } alt={ movie.name } />
@@ -13,10 +13,10 @@ class Purchase extends Component {
             Số lượng vé
           </Col>
           <Col xl="2" className="text-light d-flex justify-content-center align-items-center">
-            1
+            { tickets }
           </Col>
           <Col xl="4" className="text-light pr-0 d-flex justify-content-end align-items-center">
-            85.000
+            { movie.price*tickets }
           </Col>
         </Row>
         <Row className="mx-0 my-2">
@@ -24,10 +24,10 @@ class Purchase extends Component {
             Số lượng combo
           </Col>
           <Col xl="2" className="text-light d-flex justify-content-center align-items-center">
-            0
+            { combo }
           </Col>
           <Col xl="4" className="text-light pr-0 d-flex justify-content-end align-items-center">
-            0
+            { combo*40000 }
           </Col>
         </Row>
         <Row className="mx-0 my-2">
@@ -36,7 +36,9 @@ class Purchase extends Component {
         </Row>
         <Row className="mx-0 my-2 py-3">
           <Col xl="6" className="text-danger pl-0">Tổng cộng</Col>
-          <Col xl="6" className="text-light pr-0 d-flex justify-content-end">85.000</Col>
+          <Col xl="6" className="text-light pr-0 d-flex justify-content-end">
+            { tickets*movie.price + combo*40000 }
+          </Col>
         </Row>
         <Button className="w-100" color="danger">THANH TOÁN</Button>
       </div>
@@ -45,7 +47,9 @@ class Purchase extends Component {
 }
 
 const mapStateToProps = state => ({
-  movie: state.movies.booking.chooseMovie
+  movie: state.movies.booking.chooseMovie,
+  tickets: state.movies.booking.tickets,
+  combo: state.movies.booking.combo
 })
 
 export default connect(mapStateToProps, null)(Purchase);

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 
@@ -81,8 +80,4 @@ class MovieDetails extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  movie: state.movies.booking.chooseMovie
-})
-
-export default connect(mapStateToProps, null)(MovieDetails);
+export default (MovieDetails);

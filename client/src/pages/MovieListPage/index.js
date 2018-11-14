@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { chooseMovie } from '../../actions/movieActions';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Breadcrumb } from 'reactstrap';
 
@@ -18,7 +17,6 @@ class MovieListPage extends Component {
             { item.rated.name }
           </span>
           <Link 
-            onClick={ () => this.props.chooseMovie(item.name) } 
             className="movieListPage__link position-relative" 
             to={`${url}/${item.slug}`} 
             title={ item.name }
@@ -28,7 +26,6 @@ class MovieListPage extends Component {
           <div>
             <h2 className="movieListPage__title pt-2">
               <Link 
-                onClick={ () => this.props.chooseMovie(item.name) }
                 to={`${url}/${item.slug}`} 
                 title={ item.name }
               >
@@ -79,4 +76,4 @@ const mapStateToProps = state => ({
   movies: state.movies.items
 });
 
-export default connect(mapStateToProps, { chooseMovie })(MovieListPage);
+export default connect(mapStateToProps, null)(MovieListPage);

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
 import { connect } from 'react-redux';
-import { chooseMovie } from '../../actions/movieActions';
 import { Link } from 'react-router-dom';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
@@ -57,7 +56,6 @@ class Movie extends Component {
               { item.rated.name }
             </span>
             <Link 
-              onClick={ () => this.props.chooseMovie(item.name) } 
               to={`/movies/${item.slug}`}
             >
               <img src={ item.thumbnail } alt={item.name} />
@@ -67,7 +65,6 @@ class Movie extends Component {
               <div className="d-flex justify-content-center w-100 text-white">
                 <div className="movie__btn rounded font-weight-bold">
                   <Link 
-                    onClick={ () => this.props.chooseMovie(item.name) } 
                     to={`/movies/${item.slug}`}
                   >
                     XEM CHI TIẾT
@@ -147,4 +144,4 @@ const mapStateToProps = state => ({
   //------state.[movieAction.js].[movieReducer.js]
 });
 
-export default connect(mapStateToProps, { chooseMovie })(Movie);
+export default connect(mapStateToProps, null)(Movie);

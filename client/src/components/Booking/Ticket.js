@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { addTicket, addCombo, subtractTicket, subtractCombo, showSeat } from '../../actions/movieActions';
 import { Row, Col, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Ticket extends Component {
   render() {
-    const { movie } = this.props;
+    const { movie, tickets, combo } = this.props;
     return(
       <div>
         <Row className="mx-0 py-4">
@@ -18,12 +19,16 @@ class Ticket extends Component {
           </Col>
           <Col xl="4" className="d-flex pr-0 justify-content-end align-items-center">
             <button 
+              onClick={ () => this.props.subtractTicket() }
               className="bookingPage__btn border-0 position-relative font-weight-bold"
             >
               -
             </button>
-            <input className="bookingPage__input text-center" type="text" />
+            <div className="bookingPage__count bg-white text-dark d-flex justify-content-center align-items-center">
+              { tickets }
+            </div>
             <button 
+              onClick={ () => this.props.addTicket() }
               className="bookingPage__btn pr-0 border-0 position-relative font-weight-bold"
             >
               +
@@ -40,12 +45,16 @@ class Ticket extends Component {
           </Col>
           <Col xl="4" className="d-flex pr-0 justify-content-end align-items-center">
             <button 
+              onClick={ () => this.props.subtractCombo() }
               className="bookingPage__btn border-0 position-relative font-weight-bold"
             >
               -
             </button>
-            <input className="bookingPage__input text-center" type="text" />
+            <div className="bookingPage__count bg-white text-dark d-flex justify-content-center align-items-center">
+              { combo }
+            </div>
             <button 
+              onClick={ () => this.props.addCombo() }
               className="bookingPage__btn pr-0 border-0 position-relative font-weight-bold"
             >
               +
@@ -53,7 +62,7 @@ class Ticket extends Component {
           </Col>
         </Row>
         <div className="py-4 border-bottom border-secondary">
-          <Button color="danger">
+          <Button onClick={ () => this.props.showSeat() } color="danger">
             <span className="mr-2">Chọn Ghế</span>
             <FontAwesomeIcon icon="arrow-right" />
           </Button>
@@ -64,7 +73,9 @@ class Ticket extends Component {
 }
 
 const mapStateToProps = state => ({
-  movie: state.movies.booking.chooseMovie
+  movie: state.movies.booking.chooseMovie,
+  tickets: state.movies.booking.tickets,
+  combo: state.movies.booking.combo
 })
 
-export default connect(mapStateToProps, null)(Ticket);
+export default connect(mapStateToProps, { addTicket, addCombo, subtractTicket, subtractCombo, showSeat })(Ticket);
