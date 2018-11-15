@@ -4,7 +4,7 @@ import { Row, Col, Button } from 'reactstrap';
 
 class Purchase extends Component {
   render() {
-    const { movie, tickets, combo } = this.props;
+    const { movie, tickets, combo, getSeat } = this.props;
     return(
       <div>
         <img className="mb-3 w-100" src={ movie.image } alt={ movie.name } />
@@ -32,7 +32,9 @@ class Purchase extends Component {
         </Row>
         <Row className="mx-0 my-2">
           <Col xl="6" className="text-white-50 pl-0">Ghế ngồi</Col>
-          <Col xl="6" className="text-light pr-0 d-flex justify-content-end">Chưa chọn</Col>
+          <Col xl="6" className="text-light pr-0 d-flex justify-content-end">
+            { getSeat.length === 0 ? 'Chưa chọn' : getSeat.join(', ') }
+          </Col>
         </Row>
         <Row className="mx-0 my-2 py-3">
           <Col xl="6" className="text-danger pl-0">Tổng cộng</Col>
@@ -49,7 +51,8 @@ class Purchase extends Component {
 const mapStateToProps = state => ({
   movie: state.movies.booking.chooseMovie,
   tickets: state.movies.booking.tickets,
-  combo: state.movies.booking.combo
+  combo: state.movies.booking.combo,
+  getSeat: state.movies.booking.chooseSeat
 })
 
 export default connect(mapStateToProps, null)(Purchase);

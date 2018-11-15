@@ -11,7 +11,8 @@ import {
   SUBTRACT_COMBO,
   SHOW_TICKET,
   SHOW_SEAT,
-  SHOW_PAYMENT
+  SHOW_PAYMENT,
+  CHOOSE_SEAT
 } from './types';
 
 export const fetchMovies = () => dispatch => {
@@ -96,5 +97,12 @@ export const showSeat = () => dispatch => {
 export const showPayment = () => dispatch => {
   dispatch({
     type: SHOW_PAYMENT
+  })
+}
+
+export const chooseSeat = (seat) => dispatch => {
+  dispatch({
+    type: CHOOSE_SEAT,
+    payload: seat
   })
 }

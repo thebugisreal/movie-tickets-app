@@ -55,6 +55,9 @@
     &:hover {
       background: #222;
     }
+    &.active {
+      background: #dc3545!important;
+    }
     &.deactive {
       background: #1b1b1b!important;
       color: #aaa!important;

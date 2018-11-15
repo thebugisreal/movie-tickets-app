@@ -11,7 +11,8 @@ import {
   SUBTRACT_COMBO,
   SHOW_TICKET,
   SHOW_SEAT,
-  SHOW_PAYMENT 
+  SHOW_PAYMENT,
+  CHOOSE_SEAT
 } from '../actions/types';
 
 const initialState = {
@@ -21,6 +22,7 @@ const initialState = {
     combo: 0,
     amount: 0,
     seat: null,
+    chooseSeat: [],
     isShowTicket: true,
     isShowSeat: false,
     isShowPayment: false,
@@ -168,6 +170,21 @@ export default function(state = initialState, action) {
           isShowPayment: true,
           isShowTicket: false,
           isshowSeat: false
+        }
+      }
+    case CHOOSE_SEAT:
+      const getSeat = [...state.booking.chooseSeat];
+      if(!getSeat.includes(action.payload) && getSeat.length < state.booking.tickets) {
+        getSeat.push(action.payload)
+      } else if(getSeat.includes(action.payload)) {
+        const index = getSeat.indexOf(action.payload);
+        getSeat.splice(index, 1);
+      }
+      return {
+        ...state,
+        booking: {
+          ...state.booking,
+          chooseSeat: getSeat
         }
       }
     case RESET_BOOKING:

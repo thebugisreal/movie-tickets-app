@@ -12,5 +12,6 @@ export const SUBTRACT_COMBO = 'SUBTRACT_COMBO';
 export const SHOW_TICKET = 'SHOW_TICKET';
 export const SHOW_SEAT = 'SHOW_SEAT';
 export const SHOW_PAYMENT = 'SHOW_PAYMENT';
+export const CHOOSE_SEAT = 'CHOOSE_SEAT';
 // for posts
 export const FETCH_POSTS = 'FETCH_POSTS';
