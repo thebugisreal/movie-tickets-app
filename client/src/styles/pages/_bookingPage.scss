@@ -16,7 +16,9 @@
     @include transition(all .3s ease);
     border-bottom: 1px solid;
     border-color: transparent;
-    line-height: 40px;
+    padding: 20px 0;
+    text-align: center;
+    @include bp-es{ font-size: .6rem }
     cursor: pointer;
     &:hover {
       color: #fff;
@@ -50,7 +52,8 @@
     background: #333;
     padding: .3rem;
     line-height: 2;
-    font-size: .9rem;
+    font-size: .7rem;
+    @include bp-xl{ font-size: .9rem }
     cursor: pointer;
     &:hover {
       background: #222;
@@ -63,6 +66,14 @@
       color: #aaa!important;
       cursor: not-allowed!important;
     }
+  }
+
+  &__container {
+    margin: 0 -5px;
+  }
+
+  &__col {
+    width: 10%;
   }
   
 }

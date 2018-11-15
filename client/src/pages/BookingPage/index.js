@@ -17,14 +17,14 @@ class BookingPage extends Component {
         <Navbar slug={slug} />
         <Container className="my-5 text-light">
           <Row className="mx-0">
-            <Col xl="7" className="pl-0">
+            <Col xs="12" lg="7" className="px-0">
               <BookingInfo />
               {/* custom */}
               { showTicket && <Ticket /> }
               { showSeat && <Seat />}
               { showPayment && <Payment />}
             </Col>
-            <Col xl={{ size: 4, offset: 1}} className="d-flex flex-column">
+            <Col xs="12" lg={{ size: 4, offset: 1}} className="d-flex flex-column">
               <Purchase />
             </Col>
           </Row>

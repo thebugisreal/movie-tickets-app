@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { chooseSeat } from '../../actions/movieActions';
-import { Row, Col } from 'reactstrap';
+// import { Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 
 class Seat extends Component {
@@ -22,18 +22,21 @@ class Seat extends Component {
   render() {
     const { seat } = this.props;
     return(
-      <Row className="px-2 py-4">
+      <div className="py-4 bookingPage__container">
         { seat.map((item, index) => (
-          <Col xl="1" key={ index } className="py-2 px-2">
+          <div 
+            key={ index } 
+            className="bookingPage__col py-1 px-1 d-inline-block py-md-2 px-md-2"
+            >
             <div 
               onClick={ () => this.handleClick(item.name) }
               className={`${classnames({ deactive: item.status === true, active: this.checkActive(item.name) })} bookingPage__seat d-flex justify-content-center align-items-center rounded`}
             >
               { item.name }
             </div>
-          </Col>
+          </div>
         )) }
-      </Row>
+      </div>
     )
   }
 }

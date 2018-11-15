@@ -79,7 +79,8 @@
 
   &__table {
     &--title {
-      line-height: 40px;
+      @include bp-es{ font-size: .9rem }
+      padding: 1.2rem 0;
       background: #101010!important;
       color: #fff;
     }
@@ -87,7 +88,7 @@
     &--list {
       @include transition(all .3s ease);
       border-color: #1b1b1b!important;
-      line-height: 45px;
+      padding: 1.2rem 0;
       cursor: pointer;
       &:hover {
         color: $primary-color!important;

@@ -5,7 +5,7 @@ export default () => {
   return(
     <div>
       <div className="text-white mb-2 d-inline-block">SOCIAL MEDIA</div>
-      <ul className="mt-1">
+      <ul className="mt-1 mb-4">
         <li className="moviePage__social d-inline-flex justify-content-center align-items-center rounded-circle mr-2">
           <FontAwesomeIcon icon={['fab', 'facebook-f']} />
         </li>

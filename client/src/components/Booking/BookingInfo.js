@@ -15,15 +15,15 @@ class BookingInfo extends Component {
         </div>
         <p className="text-white-50">{ movie.decs }</p>
         <Row className="mx-0 py-4 border-bottom border-secondary">
-          <Col xl="5" className="pl-0">
+          <Col xs="12" md="5" className="pl-0 mb-3 mb-md-0">
             <p className="text-white-50">Tên rạp</p>
             <p>{ cinema.name }</p>
           </Col>
-          <Col xl="3">
+          <Col xs="6" md="4" className="pl-0">
             <p className="text-white-50">Ngày chiếu</p>
             <p>{ date.date }</p>
           </Col>
-          <Col xl="3">
+          <Col xs="6" md="3">
             <p className="text-white-50">Suất</p>
             <p>{ time.time }</p>
           </Col>

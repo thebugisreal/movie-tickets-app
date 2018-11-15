@@ -8,16 +8,16 @@ class Ticket extends Component {
   render() {
     const { movie, tickets, combo } = this.props;
     return(
-      <div>
+      <div className="mb-4">
         <Row className="mx-0 py-4">
-          <Col xl="4" className="pl-0 d-flex flex-column justify-content-center">
+          <Col xs="4" md="5" xl="4" className="pl-0 d-flex flex-column justify-content-center">
             <p>Vé người lớn</p>
             <p className="text-white-50">(vé 2D)</p>
           </Col>
-          <Col xl="4" className="d-flex justify-content-center align-items-center">
+          <Col xs="3" md="2" xl="4" className="d-flex justify-content-center align-items-center">
             <p className="text-info">{ movie.price.toLocaleString('de-DE') }</p>
           </Col>
-          <Col xl="4" className="d-flex pr-0 justify-content-end align-items-center">
+          <Col xs="5" md="5" xl="4" className="d-flex pr-0 justify-content-end align-items-center">
             <button 
               onClick={ () => this.props.subtractTicket() }
               className="bookingPage__btn border-0 position-relative font-weight-bold"
@@ -36,14 +36,14 @@ class Ticket extends Component {
           </Col>
         </Row>
         <Row className="mx-0 py-4">
-          <Col xl="4" className="pl-0 d-flex flex-column justify-content-center">
+          <Col xs="4" md="5" xl="4" className="pl-0 d-flex flex-column justify-content-center">
             <p>Combo 1</p>
             <p className="text-white-50">(1 Bắp + 1 Nước)</p>
           </Col>
-          <Col xl="4" className="d-flex justify-content-center align-items-center">
+          <Col xs="3" md="2" xl="4" className="d-flex justify-content-center align-items-center">
             <p className="text-info">40.000</p>
           </Col>
-          <Col xl="4" className="d-flex pr-0 justify-content-end align-items-center">
+          <Col xs="5" md="5" xl="4" className="d-flex pr-0 justify-content-end align-items-center">
             <button 
               onClick={ () => this.props.subtractCombo() }
               className="bookingPage__btn border-0 position-relative font-weight-bold"

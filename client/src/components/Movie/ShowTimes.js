@@ -8,31 +8,33 @@ class ShowTimes extends Component {
   render(){
     const { movie, listCinema, listDate, listTime } = this.props;
     return(
-      <Row className="d-none d-md-block">
-        <Col xl={{ size: 10, offset: 1 }}>
+      <Row>
+        <Col xs="12" xl={{ size: 10, offset: 1 }}>
           <h4 className="text-light mb-4 border-left pl-3 d-flex align-items-center pb-1">LỊCH CHIẾU PHIM</h4>
           <Row className="border-top border-right border-left border-secondary mx-0">
             <Col 
+              xs="5"
               md="6" 
               className="moviePage__table--title d-flex justify-content-center"
             >
-              CHỌN RẠP CHIẾU
+              RẠP CHIẾU
             </Col>
             <Col 
+              xs="4"
               md="3" 
               className="moviePage__table--title d-flex justify-content-center"
             >
-              CHỌN NGÀY CHIẾU
+              NGÀY CHIẾU
             </Col>
             <Col 
-              md="3" 
+              xs="3" 
               className="moviePage__table--title d-flex justify-content-center"
             >
-              CHỌN XUẤT CHIẾU
+              XUẤT CHIẾU
             </Col>
           </Row>
           <Row className="border border-secondary mx-0">
-            <Col md="6">
+            <Col xs="5" md="6">
               { listCinema.length !== 0 && listCinema.map((item, index) =>(
                 <div 
                   className="moviePage__table--list text-light border-bottom" 
@@ -43,7 +45,7 @@ class ShowTimes extends Component {
                 </div>
               )) }
             </Col>
-            <Col md="3" className="border-left border-right border-secondary">
+            <Col xs="4" md="3" className="border-left border-right border-secondary">
               { listDate.length !== 0 && listDate.map((item, index) => (
                 <div 
                   className="moviePage__table--list text-light border-bottom" 
@@ -54,7 +56,7 @@ class ShowTimes extends Component {
                 </div>
               )) }
             </Col>
-            <Col md="3">
+            <Col xs="3">
               { listTime.length !== 0 && listTime.map((item, index) => (
                 <div 
                   className="moviePage__table--list text-light border-bottom" 
