@@ -1,15 +1,15 @@
-import { FETCH_POSTS } from '../constants/postTypes';
+import { TOGGLE_NAV_MENU } from '../constants/navTypes';
 
 const initialState = {
-  items: []
+  navMenu: false
 }
 
 export default function(state = initialState, action) {
   switch(action.type) {
-    case FETCH_POSTS:
+    case TOGGLE_NAV_MENU:
       return {
         ...state,
-        items: action.payload
+        navMenu: !navMenu
       }
     default:
       return state;

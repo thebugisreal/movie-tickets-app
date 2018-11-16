@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { toggleNavMenu } from '../actions/navAction';
+import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
 import { Row, Col, Badge } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Search from './Search';
 
 const MenuLink = ({ label, to, activeOnlyWhenExact, badge = false }) => {
   return (
@@ -44,10 +47,7 @@ class Header extends Component {
             </Link>
           </Col>
           <Col sm="12" lg="9" xl="8" className="h-100 order-3 order-lg-2 d-flex flex-column">
-            <form className="position-relative mb-2">
-              <input className="header__search w-100" type="text" placeholder="Tìm kiếm tên phim nhanh" />
-              <button className="header__submit h-100 position-absolute" type="submit"><FontAwesomeIcon icon="search" /></button>
-            </form>
+            <Search />
             <div className="pb-2 d-none d-md-flex justify-content-between">
               <div>
                 <MenuLink label="Phim" to="/movies" />
@@ -68,7 +68,10 @@ class Header extends Component {
           </Col>
           <Col xs="5" sm="6" lg="1" xl="2" className="d-flex pb-3 pb-lg-0 order-2 order-lg-3 justify-content-end justify-content-lg-start pt-xl-1 px-lg-0">
             <div className="header__btn header__btn--login d-none d-xl-block mr-3">Sign In</div>
-            <FontAwesomeIcon className="header__btn header__btn--open" icon="bars" />
+            <FontAwesomeIcon
+              onClick={ () => this.props.toggleNavMenu() }
+              className="header__btn header__btn--open" 
+              icon="bars" />
           </Col>
         </Row>
       </header>     
@@ -76,5 +79,5 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default connect(null, { toggleNavMenu })(Header);
 

@@ -13,7 +13,7 @@ import {
   SHOW_SEAT,
   SHOW_PAYMENT,
   CHOOSE_SEAT
-} from './types';
+} from '../constants/movieTypes';
 
 export const fetchMovies = () => dispatch => {
   fetch('/api/movies')

@@ -1,4 +1,4 @@
-import { FETCH_POSTS } from './types';
+import { FETCH_POSTS } from '../constants/postTypes';
 
 export const fetchPosts = () => dispatch => {
   fetch('/api/posts')

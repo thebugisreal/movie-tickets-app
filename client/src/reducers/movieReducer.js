@@ -13,7 +13,7 @@ import {
   SHOW_SEAT,
   SHOW_PAYMENT,
   CHOOSE_SEAT
-} from '../actions/types';
+} from '../constants/movieTypes';
 
 const initialState = {
   items: [],
