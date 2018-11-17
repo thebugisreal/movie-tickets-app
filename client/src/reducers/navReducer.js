@@ -9,7 +9,7 @@ export default function(state = initialState, action) {
     case TOGGLE_NAV_MENU:
       return {
         ...state,
-        navMenu: !navMenu
+        navMenu: !state.navMenu
       }
     default:
       return state;

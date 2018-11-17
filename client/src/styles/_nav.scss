@@ -1,0 +1,59 @@
+.customNav {
+  @include transition(all 0.5s ease);
+  @include bp-es{ max-width: 100%; }
+  right: -450px;
+  width: 100%;
+  z-index: 9999999;
+  max-width: 350px;
+  background: #1a1a1a;
+  &.active {
+    right: 0;
+  }
+
+  &__overlay {
+    @include transition(all 1s ease);
+    z-index: 99;
+    background: rgba(0,0,0,.8);
+    opacity: 0;
+    display: none;
+    &.active {
+      display: block;
+      opacity: 1;
+    }
+  }
+
+  &__back {
+    top: 10px;
+    color: $primary-color;
+    font-size: 2rem;
+    left: -35px;
+    cursor: pointer;
+  }
+
+  &__link {
+    @include transition(all .3s ease);
+    color: #555;
+    cursor: pointer;
+    padding-bottom: 5px;
+    border-bottom: 1px solid transparent;
+    &:hover {
+      color: #bbb;
+    }
+    &.active {
+      color: #fff;
+      border-color: #fff;
+    }
+  }
+
+  &__line {
+    width: 90%;
+    height: 1px;
+    background: #fff;
+  }
+
+  &__or {
+    background: #1a1a1a;
+    z-index: 9;
+    padding: 0 1rem;
+  }
+}

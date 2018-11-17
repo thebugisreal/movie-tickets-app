@@ -67,7 +67,12 @@ class Header extends Component {
             </div>
           </Col>
           <Col xs="5" sm="6" lg="1" xl="2" className="d-flex pb-3 pb-lg-0 order-2 order-lg-3 justify-content-end justify-content-lg-start pt-xl-1 px-lg-0">
-            <div className="header__btn header__btn--login d-none d-xl-block mr-3">Sign In</div>
+            <div 
+              onClick={ () => this.props.toggleNavMenu() }
+              className="header__btn header__btn--login d-none d-xl-block mr-3"
+            >
+              Sign In
+            </div>
             <FontAwesomeIcon
               onClick={ () => this.props.toggleNavMenu() }
               className="header__btn header__btn--open" 
