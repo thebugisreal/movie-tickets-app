@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 import movieReducer from './movieReducer';
 import postReducer from './postReducer';
-import navReducer from './navReducer';
+import userReducer from './userReducer';
+import messageReducer from './messageReducer';
 
 export default combineReducers({
   movies: movieReducer,
   posts: postReducer,
-  nav: navReducer
+  users: userReducer,
+  message: messageReducer
 });

@@ -34,3 +34,11 @@ body {
     }
   }
 }
+
+.customAlert {
+  left: 50%;
+  transform: translateX(-50%);
+  top: 35px;
+  z-index: 9999;
+  width: max-content;
+}

@@ -10,6 +10,7 @@ import ScrollToTop from './components/ScrollToTop';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Auth from './components/Auth';
+import AlertComponent from './components/Alert';
 // font-awesome
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -32,6 +33,7 @@ class App extends Component {
         <ScrollToTop>
           <div className="position-relative">
             <Auth />
+            <AlertComponent />
             <Header />
             <Switch>
               { this.showContent(routes) }

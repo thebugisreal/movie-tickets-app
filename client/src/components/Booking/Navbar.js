@@ -1,12 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'reactstrap';
-import { showTicket, showSeat } from '../../actions/movieActions';
+import { showTicket, showSeat, showPayment } from '../../actions/movieActions';
+import { toggleNavMenu } from '../../actions/userActions';
+import { errorMessage } from '../../actions/messageActions';
+import ERR_CHOOSE_SEAT from '../../constants/message';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
 class Navbar extends Component {
+  constructor() {
+    super()
+
+    this.checkShowPayment = this.checkShowPayment.bind(this);
+  }
+
+  checkShowPayment() {
+    if(this.props.tickets !== this.props.chooseSeat.length) return this.props.errorMessage(ERR_CHOOSE_SEAT);
+    if(!this.props.isLogin) return this.props.toggleNavMenu();
+    return this.props.showPayment();
+  }
+
   render() {
     const { isShowTicket, isShowSeat, isShowPayment } = this.props;
     return(
@@ -33,6 +48,7 @@ class Navbar extends Component {
         <Col 
           xs="3"
           xl="2"
+          onClick={ this.checkShowPayment }
           className={`${classnames({ active: isShowPayment === true })} bookingPage__step px-2`}
         >
           3. THANH TOÁN
@@ -45,7 +61,10 @@ class Navbar extends Component {
 const mapStateToProps = state => ({
   isShowTicket: state.movies.booking.isShowTicket,
   isShowSeat: state.movies.booking.isShowSeat,
-  isShowPayment: state.movies.booking.isShowPayment
+  isShowPayment: state.movies.booking.isShowPayment,
+  isLogin: state.users.isLogin,
+  tickets: state.movies.booking.tickets,
+  chooseSeat: state.movies.booking.chooseSeat
 })
 
-export default connect(mapStateToProps, { showTicket, showSeat })(Navbar);
+export default connect(mapStateToProps, { showTicket, showSeat, showPayment, toggleNavMenu, errorMessage })(Navbar);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { toggleNavMenu } from '../actions/navAction';
+import { userLogin, toggleNavMenu } from '../actions/userActions';
 import { Container, Form, Button, FormGroup, Label, Input, TabContent, TabPane, Nav, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classnames from 'classnames';
@@ -8,11 +8,15 @@ import classnames from 'classnames';
 class Auth extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      activeTab: '1',
+      username: '',
+      password: ''
+    };
 
     this.toggle = this.toggle.bind(this);
-    this.state = {
-      activeTab: '1'
-    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   toggle(tab) {
@@ -21,6 +25,24 @@ class Auth extends Component {
         activeTab: tab
       });
     }
+  }
+
+  handleChange(e) {
+    const { name } = e.target;
+    const { value } = e.target;
+    this.setState({
+      ...this.state,
+      [name]: value
+    })
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const data = {
+      userName: this.state.username,
+      password: this.state.password
+    }
+    this.props.userLogin(data)
   }
 
   render() {
@@ -69,7 +91,7 @@ class Auth extends Component {
                 <TabPane tabId="1">
                   <Row>
                     <Col sm="12">
-                      <Form className="pt-4">
+                      <Form onSubmit={ this.handleSubmit } className="pt-4">
                         <FormGroup>
                           <Label 
                             className="text-light" 
@@ -77,7 +99,7 @@ class Auth extends Component {
                           >
                             Tên Đăng Nhập
                           </Label>
-                          <Input name="username" id="inputUsername"/>
+                          <Input value={this.state.username} onChange={this.handleChange} name="username" id="inputUsername"/>
                         </FormGroup>
                         <FormGroup>
                           <Label 
@@ -86,7 +108,7 @@ class Auth extends Component {
                           >
                             Mật Khẩu
                           </Label>
-                          <Input type="password" name="password" id="inputPassword"/>
+                          <Input value={this.state.password} onChange={this.handleChange} type="password" name="password" id="inputPassword"/>
                         </FormGroup>
                         <Button className="w-100 mt-2" color="danger">Đăng Nhập Ngay</Button>
                       </Form>
@@ -130,7 +152,7 @@ class Auth extends Component {
 }
 
 const mapStateToProps = state => ({
-  navMenu: state.nav.navMenu
+  navMenu: state.users.navMenu
 })
 
-export default connect(mapStateToProps, { toggleNavMenu })(Auth);
+export default connect(mapStateToProps, { toggleNavMenu, userLogin })(Auth);

@@ -169,7 +169,7 @@ export default function(state = initialState, action) {
           ...state.booking,
           isShowPayment: true,
           isShowTicket: false,
-          isshowSeat: false
+          isShowSeat: false
         }
       }
     case CHOOSE_SEAT:

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { toggleNavMenu } from '../actions/navAction';
+import { toggleNavMenu } from '../actions/userActions';
 import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
 import { Row, Col, Badge } from 'reactstrap';
@@ -38,6 +38,7 @@ class Header extends Component {
   }
 
   render() {
+    const { isLogin } = this.props;
     return (
     	<header className="header pt-3 pb-1">
         <Row className="d-flex m-0">
@@ -66,7 +67,9 @@ class Header extends Component {
               </div>
             </div>
           </Col>
-          <Col xs="5" sm="6" lg="1" xl="2" className="d-flex pb-3 pb-lg-0 order-2 order-lg-3 justify-content-end justify-content-lg-start pt-xl-1 px-lg-0">
+          <Col xs="5" sm="6" lg="1" xl="2" className="d-flex text-light pb-3 pb-lg-0 order-2 order-lg-3 justify-content-end justify-content-lg-start pt-xl-1 px-lg-0">
+            { isLogin ? <span style={{color: '#b3b2b2', fontSize: '.8rem'}}>Welcome back, Admin</span> :
+            <div className="d-flex">
             <div 
               onClick={ () => this.props.toggleNavMenu() }
               className="header__btn header__btn--login d-none d-xl-block mr-3"
@@ -77,6 +80,8 @@ class Header extends Component {
               onClick={ () => this.props.toggleNavMenu() }
               className="header__btn header__btn--open" 
               icon="bars" />
+            </div> 
+            }
           </Col>
         </Row>
       </header>     
@@ -84,5 +89,9 @@ class Header extends Component {
   }
 }
 
-export default connect(null, { toggleNavMenu })(Header);
+const mapStateToProps = state => ({
+  isLogin: state.users.isLogin
+})
+
+export default connect(mapStateToProps, { toggleNavMenu })(Header);
 
