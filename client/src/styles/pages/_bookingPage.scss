@@ -76,4 +76,25 @@
     width: 10%;
   }
   
+  &__input {
+    display: block;
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #383838;
+    margin-bottom: 30px;
+    color: #fff;
+    transition: all .3s ease;
+    &:focus {
+      border-color: #dc3545;
+    }
+  }
+
+  &__label {
+    font-size: .8rem;
+    display: block;
+    margin-bottom: 0;
+    color: #0084cb;
+  }
+
 }

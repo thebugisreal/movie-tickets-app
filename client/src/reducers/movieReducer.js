@@ -196,6 +196,7 @@ export default function(state = initialState, action) {
           combo: 0,
           amount: 0,
           seat: null,
+          chooseSeat: [],
           isShowTicket: true,
           isShowSeat: false,
           isShowPayment: false,
