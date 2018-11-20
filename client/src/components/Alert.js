@@ -3,7 +3,7 @@ import { Alert } from 'reactstrap';
 import { connect } from 'react-redux';
 import { closeMessage } from '../actions/messageActions';
 
-class AlertComponent extends React.Component {
+class ShowAlert extends React.Component {
   render() {
     const { errorMessage, isShowError } = this.props;
     return (
@@ -19,4 +19,4 @@ const mapStateToProps = state => ({
   isShowError: state.message.isShowError
 })
 
-export default connect(mapStateToProps, { closeMessage })(AlertComponent);
+export default connect(mapStateToProps, { closeMessage })(ShowAlert);

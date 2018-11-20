@@ -3,11 +3,7 @@ const Schema = mongoose.Schema;
 
 // create new schema
 const userSchema = new Schema({
-	firstName: {
-		type: String,
-		required: true
-	},
-	lastName: {
+	userName: {
 		type: String,
 		required: true
 	},
@@ -18,18 +14,6 @@ const userSchema = new Schema({
 	password: {
 		type: String,
 		required: true
-	},
-	birthday: {
-		type: String,
-		required: true
-	},
-	phone: {
-		type: String,
-		required: true
-	},
-	tickets: {
-		type: Array,
-		default: []
 	}
 });
 
