@@ -8,20 +8,36 @@ const controller = require('../controllers/post.controller');
 // @access  Public
 router.get('/', controller.getPosts);
 
-// @route   GET api/posts/:id
-// @desc    Get post by id
-// @access  Public
-router.get('/:id', controller.getPost);
-
 // @route   POST api/posts
 // @desc    Add new post
 // @access  Public
 router.post('/', controller.addPost);
 
+// export router to use on server.js *important!
+module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// @route   GET api/posts/:id
+// @desc    Get post by id
+// @access  Public
+// router.get('/:id', controller.getPost);
+
 // @route   DELETE api/posts/:id
 // @desc    Delete a post
 // @access  Public
-router.delete('/:id', controller.deletePost);
+// router.delete('/:id', controller.deletePost);
 
-// export router to use on server.js *important!
-module.exports = router;

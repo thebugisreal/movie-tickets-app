@@ -7,16 +7,6 @@ module.exports.getMovies = async (req, res) => {
 	res.json(movies);
 };
 
-// Get movie by id
-module.exports.getMovie = async (req, res) => {
-	try {
-		const movie = await Movie.findById(req.params.id);
-		res.json(movie);
-	} catch(err) {
-		res.json(err);
-	}
-};
-
 // Add new movie
 module.exports.addMovie = async (req, res) => {
 	const newMovie = new Movie({
@@ -39,6 +29,31 @@ module.exports.addMovie = async (req, res) => {
 	}
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Get movie by id
+// module.exports.getMovie = async (req, res) => {
+// 	try {
+// 		const movie = await Movie.findById(req.params.id);
+// 		res.json(movie);
+// 	} catch(err) {
+// 		res.json(err);
+// 	}
+// };
+
 // Update user info, import into an Object with key are: update
 // module.exports.updateUser = async (req, res) => {
 // 	try {
@@ -52,11 +67,11 @@ module.exports.addMovie = async (req, res) => {
 // };
 
 // Delete a movie
-module.exports.deleteMovie = async (req, res) => {
-	try {
-		const movie = await Movie.findById(req.params.id);
-		movie.remove().then(() => res.json({success: true}));
-	} catch(err) {
-		res.status(404).json({success: false, error: err.message});
-	}
-};
+// module.exports.deleteMovie = async (req, res) => {
+// 	try {
+// 		const movie = await Movie.findById(req.params.id);
+// 		movie.remove().then(() => res.json({success: true}));
+// 	} catch(err) {
+// 		res.status(404).json({success: false, error: err.message});
+// 	}
+// };

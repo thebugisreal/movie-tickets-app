@@ -7,16 +7,6 @@ module.exports.getPosts = async (req, res) => {
 	res.json(posts);
 };
 
-// Get post by id
-module.exports.getPost = async (req, res) => {
-	try {
-		const post = await Post.findById(req.params.id);
-		res.json(post);
-	} catch(err) {
-		res.json(err);
-	}
-};
-
 // Add new post
 module.exports.addPost = async (req, res) => {
 	const newPost = new Post({
@@ -35,12 +25,32 @@ module.exports.addPost = async (req, res) => {
 	}
 };
 
+
+
+
+
+
+
+
+
+
+
+// Get post by id
+// module.exports.getPost = async (req, res) => {
+// 	try {
+// 		const post = await Post.findById(req.params.id);
+// 		res.json(post);
+// 	} catch(err) {
+// 		res.json(err);
+// 	}
+// };
+
 // Delete a post
-module.exports.deletePost = async (req, res) => {
-	try {
-		const post = await Post.findById(req.params.id);
-		post.remove().then(() => res.json({success: true}));
-	} catch(err) {
-		res.status(404).json({success: false, error: err.message});
-	}
-};
+// module.exports.deletePost = async (req, res) => {
+// 	try {
+// 		const post = await Post.findById(req.params.id);
+// 		post.remove().then(() => res.json({success: true}));
+// 	} catch(err) {
+// 		res.status(404).json({success: false, error: err.message});
+// 	}
+// };

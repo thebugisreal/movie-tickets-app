@@ -1,22 +1,6 @@
 // User Model
 const User = require('../models/user.model.js');
 
-// Get all users
-module.exports.getAllUser = async (req, res) => {
-	const users = await User.find();
-	res.json(users);
-};
-
-// Get user by id
-module.exports.getUser = async (req, res) => {
-	try {
-		const user = await User.findById(req.params.id);
-		res.json(user);
-	} catch(err) {
-		res.json(err);
-	}
-};
-
 // Create new user
 module.exports.createUser = async (req, res) => {
 	const newUser = new User({
@@ -33,14 +17,45 @@ module.exports.createUser = async (req, res) => {
 };
 
 // Update user info, import into an Object with key are: update
-// module.exports.updateUser = async (req, res) => {
+module.exports.updateUser = async (req, res) => {
+	try {
+		const user = await User.findOneAndUpdate(
+			{ '_id': req.params.id }, { $set: req.body.update }, { new: true }
+		)
+		res.json({user: user});
+	} catch(err) {
+		res.status(404).json({success: false, error: err.message});
+	}
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Get all users
+// module.exports.getAllUser = async (req, res) => {
+// 	const users = await User.find();
+// 	res.json(users);
+// };
+
+// Get user by id
+// module.exports.getUser = async (req, res) => {
 // 	try {
-// 		const user = await User.findOneAndUpdate(
-// 			{ '_id': req.params.id }, { $set: req.body.update }, { new: true }
-// 		)
-// 		res.json({user: user});
+// 		const user = await User.findById(req.params.id);
+// 		res.json(user);
 // 	} catch(err) {
-// 		res.status(404).json({success: false, error: err.message});
+// 		res.json(err);
 // 	}
 // };
 

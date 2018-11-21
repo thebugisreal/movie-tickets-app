@@ -8,15 +8,25 @@ const controller = require('../controllers/movie.controller');
 // @access  Public
 router.get('/', controller.getMovies);
 
-// @route   GET api/movies/:id
-// @desc    Get movie by id
-// @access  Public
-router.get('/:id', controller.getMovie);
-
 // @route   POST api/movies
 // @desc    Add new movie
 // @access  Public
 router.post('/', controller.addMovie);
+
+// export router to use on server.js *important!
+module.exports = router;
+
+
+
+
+
+
+
+
+// @route   GET api/movies/:id
+// @desc    Get movie by id
+// @access  Public
+// router.get('/:id', controller.getMovie);
 
 // @route   PATCH api/movies/:id
 // @desc    Update movie info
@@ -26,7 +36,5 @@ router.post('/', controller.addMovie);
 // @route   DELETE api/movies/:id
 // @desc    Delete a movie
 // @access  Public
-router.delete('/:id', controller.deleteMovie);
+// router.delete('/:id', controller.deleteMovie);
 
-// export router to use on server.js *important!
-module.exports = router;

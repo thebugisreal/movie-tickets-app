@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { chooseSeat } from '../../actions/movieActions';
-// import { Row, Col } from 'reactstrap';
 import classnames from 'classnames';
+
+import { chooseSeat } from '../../actions/movieActions';
 
 class Seat extends Component {
   constructor() {

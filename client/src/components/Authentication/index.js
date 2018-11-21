@@ -6,6 +6,7 @@ import classnames from 'classnames';
 
 import { toggleNavMenu } from '../../actions/userActions';
 import Login from './Login';
+import SignUp from './SignUp';
 
 class Auth extends Component {
   constructor(props) {
@@ -98,7 +99,7 @@ class Auth extends Component {
                 <TabPane tabId="2">
                   <Row>
                     <Col sm="12">
-                      content resignter
+                      <SignUp />
                     </Col>
                   </Row>
                 </TabPane>

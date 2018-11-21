@@ -1,10 +1,27 @@
-import { USR_LOGIN, TOGGLE_NAV_MENU } from '../constants/userTypes';
+import { LOGIN, SIGNUP, TOGGLE_NAV_MENU } from '../constants/userTypes';
 
-export const userLogin = data => dispatch => {
+export const login = data => dispatch => {
   dispatch({
-    type: USR_LOGIN,
+    type: LOGIN,
     payload: data
   })
+}
+
+export const signup = data => dispatch => {
+  console.log(data);
+  fetch('/api/users/sign-up', {
+    method: 'POST',
+    headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+    body: data
+  })
+    .then(res => res.json())
+    .then(result => dispatch({
+      type: SIGNUP,
+      payload: result
+    }));
 }
 
 export const toggleNavMenu = () => dispatch => {

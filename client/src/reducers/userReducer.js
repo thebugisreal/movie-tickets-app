@@ -1,16 +1,10 @@
-import { USR_LOGIN, TOGGLE_NAV_MENU } from '../constants/userTypes';
+import { LOGIN, SIGNUP, TOGGLE_NAV_MENU } from '../constants/userTypes';
 
 const initialState = {
   navMenu: false,
   isLogin: false,
   errorMessage: '',
-  user: [
-    {
-      id: 1,
-      userName: 'admin',
-      password: 'admin'
-    }
-  ]
+  user: null
 }
 
 export default function(state = initialState, action) {
@@ -20,7 +14,13 @@ export default function(state = initialState, action) {
         ...state,
         navMenu: !state.navMenu
       }
-    case USR_LOGIN:
+    case SIGNUP:
+      console.log(action.payload)
+      return {
+        ...state,
+        user: action.payload.user
+      }
+    case LOGIN:
       const userList = state.user;
       const data = action.payload;
       const checkUserName = userList.filter(item => {

@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Form, Button, FormGroup, Label, Input } from 'reactstrap';
 
-import { login } from '../../actions/userActions';
+import { signup } from '../../actions/userActions';
 
-class Login extends Component {
+class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: '',
+      email: '',
       password: ''
     };
 
@@ -29,9 +30,10 @@ class Login extends Component {
     e.preventDefault();
     const data = {
       userName: this.state.username,
+      email: this.state.email,
       password: this.state.password
     }
-    this.props.login(data)
+    this.props.signup(JSON.stringify(data))
   }
 
   render() {
@@ -40,36 +42,51 @@ class Login extends Component {
         <FormGroup>
           <Label 
             className="text-light" 
-            for="inputUsername"
+            for="txtUsername"
           >
-            User Name
+            User Name:
           </Label>
           <Input 
             value={ this.state.username } 
             onChange={ this.handleChange } 
             name="username" 
-            id="inputUsername"
+            id="txtUsername"
           />
         </FormGroup>
         <FormGroup>
           <Label 
             className="text-light" 
-            for="inputPassword"
+            for="txtEmail"
           >
-            Mật Khẩu
+            Email:
+          </Label>
+          <Input 
+            value={ this.state.email } 
+            onChange={ this.handleChange }
+            type="email"
+            name="email" 
+            id="txtEmail"
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label 
+            className="text-light" 
+            for="txtPassword"
+          >
+            Mật Khẩu:
           </Label>
           <Input 
             value={ this.state.password } 
             onChange={ this.handleChange } 
             type="password" 
             name="password" 
-            id="inputPassword"
+            id="txtPassword"
           />
         </FormGroup>
-        <Button className="w-100 mt-2" color="danger">Đăng Nhập Ngay</Button>
+        <Button className="w-100 mt-2" color="danger">Đăng Ký</Button>
       </Form>
     )
   }
 }
 
-export default connect(null, { login })(Login);
+export default connect(null, { signup })(SignUp);

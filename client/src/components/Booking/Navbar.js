@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'reactstrap';
-import { showTicket, showSeat, showPayment } from '../../actions/movieActions';
-import { toggleNavMenu } from '../../actions/userActions';
-import { errorMessage } from '../../actions/messageActions';
-import ERR_CHOOSE_SEAT from '../../constants/message';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
+
+import { showTicket, showSeat, showPayment } from '../../actions/movieActions';
+import { toggleNavMenu } from '../../actions/userActions';
+import { errorMessage } from '../../actions/messageActions';
+import { ERR_CHOOSE_SEAT } from '../../constants/messageTypes';
 
 class Navbar extends Component {
   constructor() {
