@@ -18,9 +18,10 @@ export default function(state = initialState, action) {
       console.log(action.payload)
       return {
         ...state,
-        user: action.payload.user
+        user: action.payload
       }
     case LOGIN:
+      console.log(action.payload);
       const userList = state.user;
       const data = action.payload;
       const checkUserName = userList.filter(item => {

@@ -20,6 +20,7 @@ const db = mongoose.connection;
 	  console.log('MongoDB Connected...')
 });
 
+const cors = require('cors')
 const app = express();
 const port = process.env.PORT;
 
@@ -27,7 +28,7 @@ const port = process.env.PORT;
 app.use(bodyParser.json());
 
 // use routes
-app.use('/api/users', userRoute);
+app.use('/api/users', cors(), userRoute);
 app.use('/api/movies', movieRoute);
 app.use('/api/posts', postRoute);
 

@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Form, Button, FormGroup, Label, Input } from 'reactstrap';
+import { Row, Col, Form, Button, FormGroup, Label, Input } from 'reactstrap';
 
 import { login } from '../../actions/userActions';
+import Social from './Social';
 
 class Login extends Component {
   constructor(props) {
@@ -31,43 +32,50 @@ class Login extends Component {
       userName: this.state.username,
       password: this.state.password
     }
-    this.props.login(data)
+    this.props.login(JSON.stringify(data))
   }
 
   render() {
     return (
-      <Form onSubmit={ this.handleSubmit } className="pt-4">
-        <FormGroup>
-          <Label 
-            className="text-light" 
-            for="inputUsername"
-          >
-            User Name
-          </Label>
-          <Input 
-            value={ this.state.username } 
-            onChange={ this.handleChange } 
-            name="username" 
-            id="inputUsername"
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label 
-            className="text-light" 
-            for="inputPassword"
-          >
-            Mật Khẩu
-          </Label>
-          <Input 
-            value={ this.state.password } 
-            onChange={ this.handleChange } 
-            type="password" 
-            name="password" 
-            id="inputPassword"
-          />
-        </FormGroup>
-        <Button className="w-100 mt-2" color="danger">Đăng Nhập Ngay</Button>
-      </Form>
+      <Fragment>
+        <Row>
+          <Col sm="12">
+            <Form onSubmit={ this.handleSubmit } className="pt-4">
+              <FormGroup>
+                <Label 
+                  className="text-light" 
+                  for="inputUsername"
+                >
+                  User Name
+                </Label>
+                <Input 
+                  value={ this.state.username } 
+                  onChange={ this.handleChange } 
+                  name="username" 
+                  id="inputUsername"
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label 
+                  className="text-light" 
+                  for="inputPassword"
+                >
+                  Mật Khẩu
+                </Label>
+                <Input 
+                  value={ this.state.password } 
+                  onChange={ this.handleChange } 
+                  type="password" 
+                  name="password" 
+                  id="inputPassword"
+                />
+              </FormGroup>
+              <Button className="w-100 mt-2" color="danger">Đăng Nhập Ngay</Button>
+            </Form>
+          </Col>
+        </Row>
+        <Social />
+      </Fragment>
     )
   }
 }

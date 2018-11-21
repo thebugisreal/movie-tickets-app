@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Form, Button, FormGroup, Label, Input } from 'reactstrap';
+import { Row, Col, Form, Button, FormGroup, Label, Input } from 'reactstrap';
 
 import { signup } from '../../actions/userActions';
+import Social from './Social';
 
 class SignUp extends Component {
   constructor(props) {
@@ -38,53 +39,61 @@ class SignUp extends Component {
 
   render() {
     return (
-      <Form onSubmit={ this.handleSubmit } className="pt-4">
-        <FormGroup>
-          <Label 
-            className="text-light" 
-            for="txtUsername"
-          >
-            User Name:
-          </Label>
-          <Input 
-            value={ this.state.username } 
-            onChange={ this.handleChange } 
-            name="username" 
-            id="txtUsername"
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label 
-            className="text-light" 
-            for="txtEmail"
-          >
-            Email:
-          </Label>
-          <Input 
-            value={ this.state.email } 
-            onChange={ this.handleChange }
-            type="email"
-            name="email" 
-            id="txtEmail"
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label 
-            className="text-light" 
-            for="txtPassword"
-          >
-            Mật Khẩu:
-          </Label>
-          <Input 
-            value={ this.state.password } 
-            onChange={ this.handleChange } 
-            type="password" 
-            name="password" 
-            id="txtPassword"
-          />
-        </FormGroup>
-        <Button className="w-100 mt-2" color="danger">Đăng Ký</Button>
-      </Form>
+      <Fragment>
+        <Row>
+          <Col sm="12">
+            <Form onSubmit={ this.handleSubmit } className="pt-4">
+              <FormGroup>
+                <Label 
+                  className="text-light" 
+                  for="txtUsername"
+                >
+                  User Name:
+                </Label>
+                <Input 
+                  value={ this.state.username } 
+                  onChange={ this.handleChange } 
+                  name="username" 
+                  id="txtUsername"
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label 
+                  className="text-light" 
+                  for="txtEmail"
+                >
+                  Email:
+                </Label>
+                <Input 
+                  value={ this.state.email } 
+                  onChange={ this.handleChange }
+                  type="email"
+                  name="email" 
+                  id="txtEmail"
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label 
+                  className="text-light" 
+                  for="txtPassword"
+                >
+                  Mật Khẩu:
+                </Label>
+                <Input 
+                  value={ this.state.password } 
+                  onChange={ this.handleChange } 
+                  type="password" 
+                  name="password" 
+                  id="txtPassword"
+                />
+              </FormGroup>
+              <Button className="w-100 mt-2" color="danger">Đăng Ký</Button>
+            </Form>
+          </Col>
+        </Row>
+        <Social />
+      </Fragment>
+      
     )
   }
 }

@@ -1,15 +1,23 @@
 import { LOGIN, SIGNUP, TOGGLE_NAV_MENU } from '../constants/userTypes';
 
 export const login = data => dispatch => {
-  dispatch({
-    type: LOGIN,
-    payload: data
+  fetch('http://localhost:5000/api/users/login', {
+    method: 'POST',
+    headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+    body: data
   })
+    .then(res => res.json())
+    .then(result => dispatch({
+      type: LOGIN,
+      payload: result
+    }));
 }
 
 export const signup = data => dispatch => {
-  console.log(data);
-  fetch('/api/users/sign-up', {
+  fetch('http://localhost:5000/api/users/sign-up', {
     method: 'POST',
     headers: {
     'Accept': 'application/json',

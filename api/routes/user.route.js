@@ -7,12 +7,12 @@ const validate = require('../validate/user.validate');
 // @route   POST api/users/sign-up
 // @desc    Create new user
 // @access  Public
-router.post('/sign-up', validate.createUser, controller.createUser);
+router.post('/sign-up', validate.checkUserName, validate.checkEmail, controller.createUser);
 
-// @route   PATCH api/users/update/:id
-// @desc    Update user info
+// @route   POST api/users/login
+// @desc    Login user
 // @access  Public
-router.patch('/update/:id', controller.updateUser);
+router.post('/login', controller.userLogin);
 
 // export router to use on server.js *important!
 module.exports = router;
@@ -37,6 +37,11 @@ module.exports = router;
 // @desc    Get user by id
 // @access  Public
 // router.get('/:id', controller.getUser);
+
+// @route   PATCH api/users/update/:id
+// @desc    Update user info
+// @access  Public
+// router.patch('/update/:id', controller.updateUser);
 
 // @route   PATCH api/users/new-ticker/:id
 // @desc    Add new ticket for user

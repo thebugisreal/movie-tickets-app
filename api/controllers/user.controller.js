@@ -16,16 +16,24 @@ module.exports.createUser = async (req, res) => {
 	}
 };
 
-// Update user info, import into an Object with key are: update
-module.exports.updateUser = async (req, res) => {
-	try {
-		const user = await User.findOneAndUpdate(
-			{ '_id': req.params.id }, { $set: req.body.update }, { new: true }
-		)
-		res.json({user: user});
-	} catch(err) {
-		res.status(404).json({success: false, error: err.message});
-	}
+// User login
+module.exports.userLogin = (req, res) => {
+	const userName = req.body.userName;
+	const password = req.body.password;
+
+	User.findOne({ userName: userName }, function(err, obj) {
+    if(!obj) return res.json({success: false, errors: {
+      userName: 'User name không tồn tại.',
+      password: null
+		}});
+
+		if(obj.password !== password) return res.json({success: false, errors: {
+			userName: null,
+			password: 'Sai mật khẩu. Vui lòng thử lại.'
+		}});
+
+		res.json({success: true, user: obj});
+  })
 };
 
 
@@ -49,13 +57,15 @@ module.exports.updateUser = async (req, res) => {
 // 	res.json(users);
 // };
 
-// Get user by id
-// module.exports.getUser = async (req, res) => {
+// Update user info, import into an Object with key are: update
+// module.exports.updateUser = async (req, res) => {
 // 	try {
-// 		const user = await User.findById(req.params.id);
-// 		res.json(user);
+// 		const user = await User.findOneAndUpdate(
+// 			{ '_id': req.params.id }, { $set: req.body.update }, { new: true }
+// 		)
+// 		res.json({user: user});
 // 	} catch(err) {
-// 		res.json(err);
+// 		res.status(404).json({success: false, error: err.message});
 // 	}
 // };
 
