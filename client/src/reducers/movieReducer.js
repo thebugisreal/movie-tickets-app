@@ -12,11 +12,15 @@ import {
   SHOW_TICKET,
   SHOW_SEAT,
   SHOW_PAYMENT,
-  CHOOSE_SEAT
+  CHOOSE_SEAT,
+  ADD_AMOUNT,
+  CHECKOUT,
+  MOVIE_LOADING
 } from '../constants/movieTypes';
 
 const initialState = {
   items: [],
+  isLoading: false,
   booking: {
     tickets: 1,
     combo: 0,
@@ -33,7 +37,8 @@ const initialState = {
     listDate: [],
     chooseDate: null,
     listTime: [],
-    chooseTime: null
+    chooseTime: null,
+    hasCheckout: false
   }
 }
 
@@ -187,6 +192,31 @@ export default function(state = initialState, action) {
           chooseSeat: getSeat
         }
       }
+    case ADD_AMOUNT:
+      return {
+        ...state,
+        booking: {
+          ...state.booking,
+          amount: action.payload
+        }
+      }
+    case CHECKOUT:
+      if(action.payload.success) {
+        return {
+          ...state,
+          isLoading: false,
+          booking: {
+            ...state.booking,
+            hasCheckout: true
+          }
+        }
+      }
+      break;
+    case MOVIE_LOADING:
+      return {
+        ...state,
+        isLoading: true
+      }
     case RESET_BOOKING:
       return {
         ...state,
@@ -206,7 +236,8 @@ export default function(state = initialState, action) {
           listDate: [],
           chooseDate: null,
           listTime: [],
-          chooseTime: null
+          chooseTime: null,
+          hasCheckout: false
         }
       }
     default:

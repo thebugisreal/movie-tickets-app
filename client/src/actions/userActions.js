@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP, TOGGLE_NAV_MENU } from '../constants/userTypes';
+import { LOGIN, SIGNUP, TOGGLE_MENU, LOADING, RESET } from '../constants/userTypes';
 
 export const login = data => dispatch => {
   fetch('http://localhost:5000/api/users/login', {
@@ -32,8 +32,20 @@ export const signup = data => dispatch => {
     }));
 }
 
-export const toggleNavMenu = () => dispatch => {
+export const toggleMenu = () => dispatch => {
   dispatch({
-    type: TOGGLE_NAV_MENU
+    type: TOGGLE_MENU
+  })
+}
+
+export const loading = () => dispatch => {
+  dispatch({
+    type: LOADING
+  })
+}
+
+export const reset = () => dispatch => {
+  dispatch({
+    type: RESET
   })
 }

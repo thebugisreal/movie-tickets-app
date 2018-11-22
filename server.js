@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 
 // use routes
 app.use('/api/users', cors(), userRoute);
-app.use('/api/movies', movieRoute);
+app.use('/api/movies', cors(), movieRoute);
 app.use('/api/posts', postRoute);
 
 // to know when server starting...

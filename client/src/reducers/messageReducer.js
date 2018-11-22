@@ -1,23 +1,24 @@
-import { ERROR_MS, CLOSE_MS } from '../constants/messageTypes';
+import { SHOW_MS, CLOSE_MS } from '../constants/messageTypes';
 
 const initialState = {
-  errorMessage: '',
-  isShowError: false
+  message: '',
+  type: null,
+  isShowMessage: false
 }
 
 export default function(state = initialState, action) {
   switch(action.type) {
-    case ERROR_MS:
+    case SHOW_MS:
     return {
       ...state,
-      errorMessage: action.payload,
-      isShowError: true
+      message: action.payload.message,
+      type: action.payload.type,
+      isShowMessage: true
     }
     case CLOSE_MS:
     return {
       ...state,
-      errorMessage: '',
-      isShowError: false
+      isShowMessage: false
     }
     default:
       return state;

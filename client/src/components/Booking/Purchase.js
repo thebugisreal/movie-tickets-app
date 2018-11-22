@@ -1,10 +1,51 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col, Button } from 'reactstrap';
+import { withRouter } from 'react-router'
+import ReactLoading from 'react-loading';
+
+import { checkout, addAmount, movieLoading } from '../../actions/movieActions';
 
 class Purchase extends Component {
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.hasCheckout === true) {
+      this.props.history.push('/checkout')
+    }
+  }
+
+  handleSubmit = () => {
+    this.props.movieLoading();
+    const { movie, cinema, date, time, tickets, combo, getSeat } = this.props;
+
+    const amount = tickets*movie.price + combo*40000;
+    this.props.addAmount(amount)
+
+    let indexOfCinema = movie.cinema.findIndex(e => e.name === cinema.name);
+    let indexOfDate = movie.cinema[indexOfCinema].info.findIndex(e => e.date === date.date);
+    let indexOfTime = movie.cinema[indexOfCinema].info[indexOfDate].ticket.findIndex(e => e.time === time.time);
+
+    let checkSeat = movie.cinema[indexOfCinema].info[indexOfDate].ticket[indexOfTime].seat.map(item => {
+      if(getSeat.includes(item.name)) {
+        return {
+          name: item.name,
+          status: true
+        }
+      }
+      return item;
+    })
+
+    const result = {...movie};
+    result.cinema[indexOfCinema].info[indexOfDate].ticket[indexOfTime].seat = checkSeat;
+
+    this.props.checkout(JSON.stringify({
+      id: result._id,
+      cinema: result.cinema
+    }));
+  }
+
   render() {
-    const { movie, tickets, combo, getSeat } = this.props;
+    const { movie, tickets, combo, getSeat, isLoading } = this.props;
     return(
       <div>
         <img className="mb-3 w-100" src={ movie.image } alt={ movie.name } />
@@ -42,7 +83,10 @@ class Purchase extends Component {
             { tickets*movie.price + combo*40000 }
           </Col>
         </Row>
-        <Button className="w-100" color="danger">THANH TOÁN</Button>
+        <Button onClick={ this.handleSubmit } className="w-100" color="danger">
+          { isLoading && <ReactLoading className="d-inline-block mr-2" type={'spin'} color={'#fff'} height={'20px'} width={'20px'} /> }
+          <span>HOÀN TẤT ĐƠN HÀNG</span>
+        </Button>
       </div>
     )
   }
@@ -50,9 +94,14 @@ class Purchase extends Component {
 
 const mapStateToProps = state => ({
   movie: state.movies.booking.chooseMovie,
+  cinema: state.movies.booking.chooseCinema,
+  date: state.movies.booking.chooseDate,
+  time: state.movies.booking.chooseTime,
   tickets: state.movies.booking.tickets,
   combo: state.movies.booking.combo,
-  getSeat: state.movies.booking.chooseSeat
+  getSeat: state.movies.booking.chooseSeat,
+  hasCheckout: state.movies.booking.hasCheckout,
+  isLoading: state.movies.isLoading
 })
 
-export default connect(mapStateToProps, null)(Purchase);
+export default withRouter(connect(mapStateToProps, { checkout, addAmount, movieLoading })(Purchase));

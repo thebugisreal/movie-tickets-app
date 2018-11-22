@@ -12,3 +12,6 @@ export const SHOW_TICKET = 'SHOW_TICKET';
 export const SHOW_SEAT = 'SHOW_SEAT';
 export const SHOW_PAYMENT = 'SHOW_PAYMENT';
 export const CHOOSE_SEAT = 'CHOOSE_SEAT';
+export const ADD_AMOUNT = 'ADD_AMOUNT';
+export const CHECKOUT = 'CHECKOUT';
+export const MOVIE_LOADING = 'MOVIE_LOADING';

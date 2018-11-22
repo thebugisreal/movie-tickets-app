@@ -13,8 +13,19 @@ router.get('/', controller.getMovies);
 // @access  Public
 router.post('/', controller.addMovie);
 
+// @route   PATCH api/movies/checkout
+// @desc    Update movie info
+// @access  Public
+router.patch('/checkout', controller.checkout);
+
 // export router to use on server.js *important!
 module.exports = router;
+
+
+
+
+
+
 
 
 

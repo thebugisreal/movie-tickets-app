@@ -4,7 +4,7 @@ import { Container, TabContent, TabPane, Nav } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classnames from 'classnames';
 
-import { toggleNavMenu } from '../../actions/userActions';
+import { toggleMenu } from '../../actions/userActions';
 import Login from './Login';
 import SignUp from './SignUp';
 
@@ -27,20 +27,20 @@ class Auth extends Component {
   }
 
   render() {
-    const { navMenu } = this.props;
+    const { isShowMenu } = this.props;
     return (
       <div>
         <div
-          onClick={ () => this.props.toggleNavMenu() }
-          className={`${classnames({active: navMenu === true})} customNav__overlay w-100 h-100 position-fixed`}
+          onClick={ () => this.props.toggleMenu() }
+          className={`${classnames({active: isShowMenu === true})} customNav__overlay w-100 h-100 position-fixed`}
         >
         </div>
-        <div className={`${classnames({active: navMenu === true})} customNav h-100 position-fixed`}>
+        <div className={`${classnames({active: isShowMenu === true})} customNav h-100 position-fixed`}>
           <div className="position-relative">
             <FontAwesomeIcon 
               className="position-absolute customNav__back d-none d-md-block"
               icon="times"
-              onClick={ () => this.props.toggleNavMenu() }
+              onClick={ () => this.props.toggleMenu() }
             />
             <Container>
               <Nav className="pt-3">
@@ -48,7 +48,7 @@ class Auth extends Component {
                   <FontAwesomeIcon 
                     className="text-white mr-3 d-block d-md-none"
                     icon="angle-left"
-                    onClick={ () => this.props.toggleNavMenu() }
+                    onClick={ () => this.props.toggleMenu() }
                   />
                 </li>
                 <li>
@@ -85,7 +85,7 @@ class Auth extends Component {
 }
 
 const mapStateToProps = state => ({
-  navMenu: state.users.navMenu
+  isShowMenu: state.users.isShowMenu
 })
 
-export default connect(mapStateToProps, { toggleNavMenu })(Auth);
+export default connect(mapStateToProps, { toggleMenu })(Auth);

@@ -1,49 +1,78 @@
-import { LOGIN, SIGNUP, TOGGLE_NAV_MENU } from '../constants/userTypes';
+import { LOGIN, SIGNUP, TOGGLE_MENU, LOADING, RESET } from '../constants/userTypes';
 
 const initialState = {
-  navMenu: false,
-  isLogin: false,
-  errorMessage: '',
+  isShowMenu: false,
+  isShowLoading: false,
+  logged: false,
+  registered: false,
+  signUpErrors: {
+    userName: null,
+    email: null
+  },
+  loginErrors: {
+    userName: null,
+    password: null
+  },
   user: null
 }
 
 export default function(state = initialState, action) {
   switch(action.type) {
-    case TOGGLE_NAV_MENU:
+    case TOGGLE_MENU:
       return {
         ...state,
-        navMenu: !state.navMenu
+        isShowMenu: !state.isShowMenu
+      }
+    case LOADING:
+      return {
+        ...state,
+        isShowLoading: true
       }
     case SIGNUP:
-      console.log(action.payload)
-      return {
-        ...state,
-        user: action.payload
+      if(!action.payload.success) {
+        const { errors } = action.payload;
+        return {
+          ...state,
+          signUpErrors: errors,
+          isShowLoading: false
+        }
+      } else {
+        return {
+          ...state,
+          registered: true,
+          isShowLoading: false
+        }
       }
     case LOGIN:
-      console.log(action.payload);
-      const userList = state.user;
-      const data = action.payload;
-      const checkUserName = userList.filter(item => {
-        return (item.userName === data.userName);
-      })
-      const checkPassword = userList.filter(item => {
-        return (item.password === data.password);
-      })
-      if(checkUserName.length === 0 || checkPassword.length === 0) {
+      if(!action.payload.success) {
+        const { errors } = action.payload;
         return {
           ...state,
-          errorMessage: 'Invalid user name or password.'
+          loginErrors: errors,
+          isShowLoading: false
         }
-      } 
-      if(checkUserName.length !== 0 && checkPassword.length !== 0) {
+      } else {
         return {
           ...state,
-          isLogin: true,
-          navMenu: false
+          isShowMenu: false,
+          isShowLoading: false,
+          logged: true,
+          user: action.payload.user
         }
       }
-    break;
+    case RESET:
+      return {
+        ...state,
+        signUpErrors: {
+          userName: null,
+          email: null
+        },
+        loginErrors: {
+          userName: null,
+          password: null
+        },
+        registered: false
+      }
     default: 
       return state
   }

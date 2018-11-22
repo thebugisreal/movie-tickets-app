@@ -1,8 +1,8 @@
-import { ERROR_MS, CLOSE_MS } from '../constants/messageTypes';
+import { SHOW_MS, CLOSE_MS } from '../constants/messageTypes';
 
-export const errorMessage = content => dispatch => {
+export const showMessage = content => dispatch => {
   dispatch({
-    type: ERROR_MS,
+    type: SHOW_MS,
     payload: content
   })
 }

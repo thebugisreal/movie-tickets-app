@@ -29,6 +29,14 @@ module.exports.addMovie = async (req, res) => {
 	}
 };
 
+module.exports.checkout = async (req, res) => {
+  const { id, cinema } = req.body;
+
+  Movie.findOneAndUpdate({ _id: id }, { cinema: cinema }, function(err, doc) {
+    if(err) return res.status(404).json({success: false, error: err});
+    res.status(202).json({success: true})
+  })
+}
 
 
 

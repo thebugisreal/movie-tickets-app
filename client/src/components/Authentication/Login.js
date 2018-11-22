@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Row, Col, Form, Button, FormGroup, Label, Input } from 'reactstrap';
+import { Row, Col, Form, Button, FormGroup, Label, Input, FormFeedback,  } from 'reactstrap';
+import ReactLoading from 'react-loading';
+import classnames from 'classnames';
 
-import { login } from '../../actions/userActions';
+import { login, loading, reset } from '../../actions/userActions';
 import Social from './Social';
 
 class Login extends Component {
@@ -28,6 +30,8 @@ class Login extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.loading();
+    this.props.reset();
     const data = {
       userName: this.state.username,
       password: this.state.password
@@ -36,6 +40,7 @@ class Login extends Component {
   }
 
   render() {
+    const { loginErrors, isShowLoading } = this.props;
     return (
       <Fragment>
         <Row>
@@ -53,7 +58,10 @@ class Login extends Component {
                   onChange={ this.handleChange } 
                   name="username" 
                   id="inputUsername"
+                  className={`${classnames({'is-invalid': loginErrors.userName !== null})}`}
+                  required
                 />
+                <FormFeedback>{ loginErrors.userName }</FormFeedback>
               </FormGroup>
               <FormGroup>
                 <Label 
@@ -68,9 +76,15 @@ class Login extends Component {
                   type="password" 
                   name="password" 
                   id="inputPassword"
+                  className={`${classnames({'is-invalid': loginErrors.password !== null})}`}
+                  required
                 />
+                <FormFeedback>{ loginErrors.password }</FormFeedback>
               </FormGroup>
-              <Button className="w-100 mt-2" color="danger">Đăng Nhập Ngay</Button>
+              <Button className="w-100 mt-2" color="danger">
+                { isShowLoading && <ReactLoading className="d-inline-block mr-2" type={'spin'} color={'#fff'} height={'20px'} width={'20px'} /> }
+                 <span>Đăng Nhập Ngay</span>
+              </Button>
             </Form>
           </Col>
         </Row>
@@ -80,4 +94,9 @@ class Login extends Component {
   }
 }
 
-export default connect(null, { login })(Login);
+const mapStateToProps = state => ({
+  isShowLoading: state.users.isShowLoading,
+  loginErrors: state.users.loginErrors
+})
+
+export default connect(mapStateToProps, { login, loading, reset })(Login);

@@ -6,6 +6,7 @@ import NewsListPage from './pages/NewsListPage';
 import NewsPage from './pages/NewsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import BookingPage from './pages/BookingPage';
+import CheckoutPage from './pages/CheckoutPage';
 
 const routes = [
   {
@@ -37,6 +38,11 @@ const routes = [
     path: '/news/:slug',
     exact: true,
     main: ({match}) => <NewsPage match={match} />
+  },
+  {
+    path: '/checkout',
+    exact: true,
+    main: () => <CheckoutPage />
   },
   {
     path: '',

@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
 import { showTicket, showSeat, showPayment } from '../../actions/movieActions';
-import { toggleNavMenu } from '../../actions/userActions';
-import { errorMessage } from '../../actions/messageActions';
+import { toggleMenu } from '../../actions/userActions';
+import { showMessage } from '../../actions/messageActions';
 import { ERR_CHOOSE_SEAT } from '../../constants/messageTypes';
 
 class Navbar extends Component {
@@ -18,8 +18,8 @@ class Navbar extends Component {
   }
 
   checkShowPayment() {
-    if(this.props.tickets !== this.props.chooseSeat.length) return this.props.errorMessage(ERR_CHOOSE_SEAT);
-    if(!this.props.isLogin) return this.props.toggleNavMenu();
+    if(this.props.tickets !== this.props.chooseSeat.length) return this.props.showMessage({ message: ERR_CHOOSE_SEAT, type: 'danger'});
+    if(!this.props.logged) return this.props.toggleMenu();
     return this.props.showPayment();
   }
 
@@ -63,9 +63,9 @@ const mapStateToProps = state => ({
   isShowTicket: state.movies.booking.isShowTicket,
   isShowSeat: state.movies.booking.isShowSeat,
   isShowPayment: state.movies.booking.isShowPayment,
-  isLogin: state.users.isLogin,
   tickets: state.movies.booking.tickets,
-  chooseSeat: state.movies.booking.chooseSeat
+  chooseSeat: state.movies.booking.chooseSeat,
+  logged: state.users.logged
 })
 
-export default connect(mapStateToProps, { showTicket, showSeat, showPayment, toggleNavMenu, errorMessage })(Navbar);
+export default connect(mapStateToProps, { showTicket, showSeat, showPayment, toggleMenu, showMessage })(Navbar);

@@ -12,7 +12,10 @@ import {
   SHOW_TICKET,
   SHOW_SEAT,
   SHOW_PAYMENT,
-  CHOOSE_SEAT
+  CHOOSE_SEAT,
+  ADD_AMOUNT,
+  MOVIE_LOADING,
+  CHECKOUT
 } from '../constants/movieTypes';
 
 export const fetchMovies = () => dispatch => {
@@ -104,5 +107,34 @@ export const chooseSeat = (seat) => dispatch => {
   dispatch({
     type: CHOOSE_SEAT,
     payload: seat
+  })
+}
+
+export const addAmount = data => dispatch => {
+  dispatch({
+    type: ADD_AMOUNT,
+    payload: data
+  })
+}
+
+export const checkout = data => dispatch => {
+  fetch('http://localhost:5000/api/movies/checkout', {
+    method: 'PATCH',
+    headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+    body: data
+  })
+    .then(res => res.json())
+    .then(result => dispatch({
+      type: CHECKOUT,
+      payload: result
+    }));
+}
+
+export const movieLoading = () => dispatch => {
+  dispatch({
+    type: MOVIE_LOADING
   })
 }

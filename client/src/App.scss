@@ -35,10 +35,15 @@ body {
   }
 }
 
-.customAlert {
+.message {
+  @include transition(all .3s ease);
   left: 50%;
   transform: translateX(-50%);
-  top: 35px;
   z-index: 9999;
   width: max-content;
+}
+
+.checkout__title {
+  color: #777;
+  font-size: .8rem;
 }

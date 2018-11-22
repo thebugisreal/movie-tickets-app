@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Row, Col, Form, Button, FormGroup, Label, Input } from 'reactstrap';
+import { Row, Col, Form, Button, FormGroup, Label, Input, FormFeedback } from 'reactstrap';
+import classnames from 'classnames';
+import ReactLoading from 'react-loading';
 
-import { signup } from '../../actions/userActions';
+import { signup, loading, reset } from '../../actions/userActions';
 import Social from './Social';
 
 class SignUp extends Component {
@@ -16,6 +18,13 @@ class SignUp extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleReset = this.handleReset.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.registered === true ) {
+      this.handleReset();
+    }
   }
 
   handleChange(e) {
@@ -29,6 +38,8 @@ class SignUp extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.loading();
+    this.props.reset();
     const data = {
       userName: this.state.username,
       email: this.state.email,
@@ -37,7 +48,16 @@ class SignUp extends Component {
     this.props.signup(JSON.stringify(data))
   }
 
+  handleReset() {
+    this.setState({
+      username: '',
+      email: '',
+      password: ''
+    });
+  }
+
   render() {
+    const { signUpErrors, registered, isShowLoading } = this.props;
     return (
       <Fragment>
         <Row>
@@ -55,7 +75,10 @@ class SignUp extends Component {
                   onChange={ this.handleChange } 
                   name="username" 
                   id="txtUsername"
+                  className={`${classnames({'is-invalid': signUpErrors.userName !== null})}`}
+                  required
                 />
+                <FormFeedback>{ signUpErrors.userName }</FormFeedback>
               </FormGroup>
               <FormGroup>
                 <Label 
@@ -70,7 +93,10 @@ class SignUp extends Component {
                   type="email"
                   name="email" 
                   id="txtEmail"
+                  className={`${classnames({'is-invalid': signUpErrors.email !== null})}`}
+                  required
                 />
+                <FormFeedback>{ signUpErrors.email }</FormFeedback>
               </FormGroup>
               <FormGroup>
                 <Label 
@@ -85,17 +111,27 @@ class SignUp extends Component {
                   type="password" 
                   name="password" 
                   id="txtPassword"
+                  required
                 />
               </FormGroup>
-              <Button className="w-100 mt-2" color="danger">Đăng Ký</Button>
+              <Button className="w-100 mt-2" color="danger">
+                 { isShowLoading && <ReactLoading className="d-inline-block mr-2" type={'spin'} color={'#fff'} height={'20px'} width={'20px'} /> }
+                 <span>Đăng Ký</span>
+              </Button>
+              { registered && <div className="text-light mt-3">Đăng ký tài khoản thành công.</div> }
             </Form>
           </Col>
         </Row>
         <Social />
       </Fragment>
-      
     )
   }
 }
 
-export default connect(null, { signup })(SignUp);
+const mapStateToProps = state => ({
+  isShowLoading: state.users.isShowLoading,
+  signUpErrors: state.users.signUpErrors,
+  registered: state.users.registered
+})
+
+export default connect(mapStateToProps, { signup, loading, reset })(SignUp);
