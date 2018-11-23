@@ -1,11 +1,12 @@
 Use:
-  - Font End:
+  - Front-end:
     + ReactJS
     + Redux
     + SASS
 
-  - Back End:
+  - Back-end:
     + NodeJS
     + ExpressJS
     + Mongodb
     + Mongoose
+    + REST API
