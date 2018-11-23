@@ -23,7 +23,7 @@ const db = mongoose.connection;
 
 const cors = require('cors')
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 // Bodyparser Middleware
 app.use(bodyParser.json());
