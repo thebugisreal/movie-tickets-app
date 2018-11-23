@@ -4,6 +4,7 @@ require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const path = require('path');
 
 // routes
 const userRoute = require('./api/routes/user.route');
@@ -31,6 +32,16 @@ app.use(bodyParser.json());
 app.use('/api/users', cors(), userRoute);
 app.use('/api/movies', cors(), movieRoute);
 app.use('/api/posts', postRoute);
+
+// Serve static assets if in production
+if(process.env.NODE_ENV === 'production') {
+	// Set static folder
+	app.use(express.static('client/build'));
+
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+	});
+}
 
 // to know when server starting...
 app.listen(port, () => {
