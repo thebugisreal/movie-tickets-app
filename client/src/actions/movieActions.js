@@ -19,7 +19,7 @@ import {
 } from '../constants/movieTypes';
 
 export const fetchMovies = () => dispatch => {
-  fetch('/api/movies')
+  fetch('api/movies')
     .then(res => res.json())
     .then(movies => dispatch({
       type: FETCH_MOVIES,

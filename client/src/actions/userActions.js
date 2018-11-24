@@ -1,7 +1,7 @@
 import { LOGIN, SIGNUP, TOGGLE_MENU, LOADING, RESET } from '../constants/userTypes';
 
 export const login = data => dispatch => {
-  fetch('http://localhost:5000/api/users/login', {
+  fetch('api/users/login', {
     method: 'POST',
     headers: {
     'Accept': 'application/json',
@@ -17,7 +17,7 @@ export const login = data => dispatch => {
 }
 
 export const signup = data => dispatch => {
-  fetch('http://localhost:5000/api/users/sign-up', {
+  fetch('api/users/sign-up', {
     method: 'POST',
     headers: {
     'Accept': 'application/json',
